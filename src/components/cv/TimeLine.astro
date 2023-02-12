@@ -1,5 +1,6 @@
 ---
-const { title, subtitle, desc } = Astro.props;
+const { title, subtitle, link } = Astro.props;
+const href = `https://${link}`
 ---
 
 <div class="flex">
@@ -10,8 +11,9 @@ const { title, subtitle, desc } = Astro.props;
   <div class="experience__data bd-grid px-5">
     <h3 class="font-semibold mb-1">{title}</h3>
     <span class="font-light text-sm">{subtitle}</span>
+    { link && (<span> • </span><a href={href} target="_blank">{link}</a>)}
     <p class="my-2 text-justify">
-      {desc}
+      <slot/>
     </p>
   </div>
 </div>

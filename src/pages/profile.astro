@@ -1,0 +1,196 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TimeLineElement from "../components/cv/TimeLine.astro";
+---
+
+<BaseLayout title = "CV">
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Profile</div>
+  </div>
+
+  <div class="mb-10 text-justify">
+    <p class="pb-2">
+      Hands-on expertise with system architecture and delivery of full-stack,
+      scalable, serverless, containerized, commercial/consumer software in the
+      cloud on Azure, Google Cloud, and AWS in both enterprise and VC-backed
+      startups.
+    </p>
+
+    <p class="pb-2">
+      Technical generalist with a broad set of experience and skills from
+      architecture to infrastructure to devops and software development from the
+      ground up.
+    </p>
+
+    <p class="pb-2">
+      15 years of experience in regulated industries building large-scale, GxP
+      validated, commercial off the shelf software solutions actively used in
+      production by enterprise customers such as Novo Nordisk, Boehringer-Ingelheim,
+      Roche, and more.
+    </p>
+
+    <p class="pb-2">
+      Qualified, hired, trained, mentored, and led software engineering teams
+      building commercial enterprise software. Over a decade of experience building
+      and managing remote-first teams.
+    </p>
+
+    <p class="pb-2">
+      Passion for learning, teaching, and writing about software engineering.
+    </p>
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Experience</div>
+  </div>
+
+  <div class="time-line-container mb-10">
+    <TimeLineElement
+      title="Principal Software Engineer"
+      subtitle="Ownit Commerce • 05.2022 - Present"
+      link="ownit.co">
+      Providing strategic technical expertise with technical architecture in addition to hands- on development and delivery of Ownit’s omni-channel commerce solution to AWS. Implementing continuous delivery via GitHub with integrated test automation, build, deployment, and monitoring. Mentoring and training engineers on best practices for building modern cloud solutions.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Lead Software Engineer"
+      subtitle="Motion (YC W20) • 02.2022 - 05.2022"
+      link="usemotion.com">
+      Full-stack application development of Motion’s React frontend and Google Functions backend application with TypeScript on Node. Designed a Google Pub/Sub based message-oriented architecture to provide greater system resiliency and address quota limitations with external service APIs. Implemented complex scheduling algorithms. Developed extensive Playwright browser test automation to support automatic end-to- end release validation.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Founding Engineer"
+      subtitle="Thinktastic • 12.2020 - Present"
+      link="thinktastic.com">
+      Building a cloud-native SaaS using .NET 6 on Azure serverless cloud architecture to deliver an NLP and machine learning powered solution that empowers teams to collaborate and operationalize information embedded in unstructured document content sources.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Senior Advisor"
+      subtitle="Apprentice • 09.2021 - 11.2021"
+      link="apprentice.io">
+      Worked with CEO and senior VP leadership team to provide strategic guidance for GxP validation. Provided hands-on technical training to engineering and product teams using test automation with Playwright and document automation using Confluence.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Session Presenter"
+      subtitle="Azure Serverless Conference • 09.2021"
+      link="microsoft.com">
+      One of five community presenters for Microsoft’s inaugural Azure Serverless Conference (North America). <a href="https://learn.microsoft.com/en-us/events/azure-serverless-azure-serverless-conf/surfacing-fda-covid-data-using-serverless-functions-and-cosmosdb-with-charles-chen" target="_blank">Prepared and presented an open source project for a live session on building serverless architectures using .NET Azure Functions and Azure CosmosDB to a global audience</a>.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Director of Engineering"
+      subtitle="InnovoCommerce • 07.2011 - 12.2020"
+      link="innovocommerce.com">
+      <p class="pb-2">
+      Managed the <a href="https://www.businesswire.com/news/home/20150820005415/en/Boehringer-Ingelheim-Upgrades-to-Massively-Scalable-innovoPOINT%C2%AE-6.6-for-Enterprise-Scalable-Clinical-and-Investigator-Portal-Solution" target="_blank">investigatorFIRST</a> product pipeline from requirements scoping to development to multi-million dollar go-lives and ongoing support.  The product is used by customers such as Novo Nordisk to manage secure exchange of essential documents, FDA 21 CFR Part 11 electronic signatures, SCORM training, and distribution of time sensitive safety notifications to clinical trial sites at a global scale (60,000+ users at 12,000+ sites around the world exchanging over 1 million documents annually).
+      </p>
+      <p class="pb-2">
+      Designed and implemented the core distributed, high-throughput batch event processing architecture using ZeroMQ to enable an event-driven architecture managing millions of nodes in a Neo4j graph database.
+      </p>
+      <p class="pb-2">
+      Collaborated with customer IT leaders to scope and design enterprise systems integrations to eTMF (Veeva Vault, FirstDoc), CTMS (Impact), and SSO (<a href="https://www.exostar.com/press/innovocommerce-announces-partnership-with-exostar-for-high-assurance-single-sign/" target="_blank">Exostar</a>, Ping Identity, <a href="https://www.businesswire.com/news/home/20160608005493/en/InnovoCommerce%C2%AE-Announces-innovoPOINT%C2%AE-Clinical-Investigator-Portal-Integration-with-Microsoft%C2%AE-Office-365-and-Azure-Active-Directory-for-Single-Sign-On" target="_blank">Office 365</a>).  Coordinated cross-functional efforts across engineering, QA, and support leads.
+      </p>
+      <p class="pb-2">
+      Built near-shore and on-shore engineering teams from the ground up; responsible for recruiting, training, mentoring, and supporting remote team members.
+      </p>
+      <p class="pb-2">
+      Implemented code quality standards, defined SDLC processes, evaluated emerging technologies, planned engineering roadmap, expedited the QA process via automation and streamlined documentation, and refined the DevOps pipeline.
+      </p>
+    </TimeLineElement>
+    <TimeLineElement
+      title="Senior Consultant"
+      subtitle="Paragon Solutions (Now CGI) • 10.2009 - 01.2011">
+      Worked with clients Abbott Labs, Citibank, Merck, GSK, Sanofi-Aventis,
+      Cephalon, and Bank of America to define requirements, deliver proof of
+      concept solutions, and roll out line of business solutions.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Senior Consultant"
+      subtitle="Computer Sciences Corportaion (Now DXC, via Acquisition) • 02.2008 - 10.2009">
+      (Acquired First Consulting Group) Led team of associate consultants and provided senior technical leadership, guidance, and direction for development of a custom publishing tool.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Senior Software Engineer"
+      subtitle="First Consulting Group (via Acquisition) • 07.2007 - 02.2008">
+      (Acquired Zorch Software)
+    </TimeLineElement>
+    <TimeLineElement
+      title="Lead Software Engineer"
+      subtitle="Zorch Software • 03.2006 - 07.2007">
+      Architected and led development of the <a href="https://www.bioprocessonline.com/doc/first-consulting-group-introduces-firstpoint-0001" target="_blank">FirstPoint product for management of documents in regulated workflows.</a>
+    </TimeLineElement>
+    <TimeLineElement
+      title="Senior Consultant"
+      subtitle="International Network Services (Now BT) • 01.2005 - 03.2006">
+      Technical solution design and development for various Fortune 500 companies across a broad set of clients including Pfizer, Northrop Grumman, and Angelo Gordon.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Contract Software Engineer"
+      subtitle="Merrill Lynch • 10.2004 - 12.2004">
+      Developed automated processes and tools for intranet HR applications and ETL packages.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Contract Software Engineer"
+      subtitle="Dow Jones • 07.2004 - 10.2004">
+      Front-end web application engineer modernizing Dow Jones Factiva with a focus on web and accessibility standards.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Contract Software Engineer"
+      subtitle="ITT Industries • 06.2003 - 05.2004">
+      Planned and executed database modernization, optimization, and upsizing. Rearchitected, consolidated, and modernized intranet HR applications. Performed technical evaluation of portal technologies for senior IT leadership.
+    </TimeLineElement>
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Education</div>
+  </div>
+
+  <div class="time-line-container grid gap-4 mb-10">
+    <TimeLineElement
+      title="Rutgers Univeristy -  New Brunswick, NJ"
+      subtitle="1999 to 2003 - B.Sc. Computer Science, Mathematics minor"
+    />
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Tech</div>
+  </div>
+
+  <ul class="list-disc md:columns-5 columns-2 mx-6">
+    <li>AWS</li>
+    <li>Azure</li>
+    <li>Google Cloud</li>
+    <li>CSS</li>
+    <li>HTML</li>
+    <li>JavaScript</li>
+    <li>React</li>
+    <li>TypeScript</li>
+    <li>Vue</li>
+    <li>.NET</li>
+    <li>C#</li>
+    <li>Entity Framework</li>
+    <li>GraphQL</li>
+    <li>Node.js</li>
+    <li>CosmosDB</li>
+    <li>DynamoDB</li>
+    <li>Firestore</li>
+    <li>Neo4j</li>
+    <li>Microsoft SQL Server</li>
+    <li>Postgres</li>
+    <li>Azure AD B2C</li>
+    <li>AWS Cognito</li>
+    <li>Google Firebase Auth</li>
+    <li>OAuth</li>
+    <li>Cypress</li>
+    <li>Jest</li>
+    <li>Playwright</li>
+    <li>Vitest</li>
+    <li>GitHub Actions</li>
+    <li>GitLab CI/CD</li>
+    <li>Kubernetes</li>
+    <li>PowerShell</li>
+    <li>Shell Scripting</li>
+  </ul>
+</BaseLayout>
+
+<style>
+  a { text-decoration: underline;}
+</style>
