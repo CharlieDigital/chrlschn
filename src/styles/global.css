@@ -1,3 +1,26 @@
 .time-line-container>div:last-child .education__time>.education__line {
     display: none;
 }
+
+img + em {
+    display: block;;
+    text-align: center;
+    font-size: .7em;
+    padding: 0px 72px;
+    margin-top: -24px;
+}
+
+code {
+    counter-reset: step;
+    counter-increment: step 0;
+}
+
+code .line::before {
+    content: counter(step);
+    counter-increment: step;
+    width: 1rem;
+    margin-right: 1.5rem;
+    display: inline-block;
+    text-align: right;
+    color: rgba(115,138,148,.4)
+}
