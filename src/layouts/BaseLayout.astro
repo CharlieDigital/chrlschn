@@ -28,5 +28,24 @@ const { image, title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.prop
       </div>
       <SideBar />
     </div>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyCJr0X8Esyv0AqNFh8XK2CX6a1wnjakBD4",
+        authDomain: "chrlschn.firebaseapp.com",
+        projectId: "chrlschn",
+        storageBucket: "chrlschn.appspot.com",
+        messagingSenderId: "113528813396",
+        appId: "1:113528813396:web:a94c0b8e8a15402e38fac1",
+        measurementId: "G-WFRTR0X1T6"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
   </body>
 </html>

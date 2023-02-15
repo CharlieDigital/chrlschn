@@ -56,6 +56,8 @@ const last_posts = posts.slice(0, 3);
           title={post.data.title}
           img={post.data.heroImage}
           desc={post.data.description}
+          pubDate={post.data.pubDate}
+          tags={post.data.tags?.split(",")}
           url={"/blog/" + post.slug}
           target="_self"
         />

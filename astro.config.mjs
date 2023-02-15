@@ -21,6 +21,16 @@ export default defineConfig({
       // Note: Shiki has countless langs built-in, including .astro!
       // https://github.com/shikijs/shiki/blob/main/docs/languages.md
       langs: []
-    }
+    },
+    rehypePlugins: [
+      'rehype-slug',
+      ['rehype-autolink-headings', { behavior: 'append' }],
+      ['rehype-toc', { headings: ['h1', 'h2', 'h3'] }],
+      ['rehype-rewrite', { rewrite: (node) => {
+        if (node.tagName === 'img') {
+          node.properties.src = node.properties.src.replaceAll('/public/', '/')
+        }
+      }}]
+    ]
   }
 });

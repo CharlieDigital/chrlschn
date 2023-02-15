@@ -16,6 +16,17 @@ interface Props {
 }
 
 const { entry } = Astro.props;
+
+// Sanitize "/public/"
+
+if (entry.data.socialImage) {
+  entry.data.socialImage = entry.data.socialImage.replaceAll("/public/", "/")
+}
+
+if (entry.data.heroImage) {
+  entry.data.heroImage = entry.data.heroImage.replaceAll("/public/", "/")
+}
+
 const post: BlogSchema = entry.data;
 const { Content } = await entry.render();
 ---
