@@ -227,7 +227,7 @@ In the React world, directly mutating properties on objects in state is frowned 
 
 To help demonstrate these principles as well as state, we’ll expand our application a bit and fill out `Index.vue` to show our list of checklists and `ChecklistDialog.vue` where we can create/edit a single checklist.
 
-### 3.1 Reactivity via ref()
+### 3.1) Reactivity via ref()
 
 We’ve already seen this in action. `ref` is the equivalent of React’s `[state, setState]` pair. But note that when we read or write the value, we need to use `.value` :
 
