@@ -99,7 +99,7 @@ In [The Perks of a High-Documentation, Low -Meeting Work Culture](https://www.tr
 
 Brendan O’Leary — formerly of GitLab — [wrote about some of his key takeaways from his time there](https://boleary.dev/what-i-learned-at-gitlab-that-i-dont-want-to-forget/):
 
-![](/public/img/3-tips/3-tips-5.webp)
+![](/public/img/3-tips/3-tips-6.webp)
 *First on his list.*
 
 How does writing things down help?

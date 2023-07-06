@@ -42,7 +42,9 @@ My own internal mental model of Vue is decomposed into three layers of three cor
 
 We’ll explore these concepts in the context of building a simple checklist management application, but it scales surprisingly well and it’s the same foundation I’ve used to make apps like Turas.app:
 
-<iframe width="665" height="382" src="https://www.youtube.com/embed/qFx5fJUR53I" title="Turas: Getting Started in 120 Seconds" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="margin: auto auto"></iframe>
+<div class="video-container">
+<iframe src="https://www.youtube.com/embed/qFx5fJUR53I" title="Turas: Getting Started in 120 Seconds" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="margin: auto auto"></iframe>
+</div>
 
 ----
 
