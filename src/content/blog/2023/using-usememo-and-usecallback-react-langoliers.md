@@ -21,7 +21,9 @@ I’m inspired to write this article after recently troubleshooting an issue in 
 
 [If you’ve never seen this adaptation of the Stephen King novel](https://en.wikipedia.org/wiki/The_Langoliers_(miniseries)), a plane ends up in a time gap in the past and [the passengers encounter the Langoliers who are responsible for “cleaning up” past space-time by devouring it](https://www.youtube.com/clip/Ugkx6Le03R6Bl3soS7qG3iI0S3xtA1vAUFRG).
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/x_2LpM3gNj8?clip=Ugkx6Le03R6Bl3soS7qG3iI0S3xtA1vAUFRG&amp;clipt=EPTFAxjHgwQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="margin: auto auto;"></iframe>
+<div class="video-container">
+<iframe src="https://www.youtube.com/embed/x_2LpM3gNj8?clip=Ugkx6Le03R6Bl3soS7qG3iI0S3xtA1vAUFRG&amp;clipt=EPTFAxjHgwQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="margin: auto auto;"></iframe>
+</div>
 
 [Consider the following super basic React app](https://jsfiddle.net/0zsh85rv/):
 
