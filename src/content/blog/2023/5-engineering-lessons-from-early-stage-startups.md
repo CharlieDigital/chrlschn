@@ -11,7 +11,7 @@ tags: "startups,engineering"
 
 ![Sprout](/public/img/5-startup-lessons/plant-sprout.png)
 
-Over the past three years, I've left behind a 10-year stint leading an engineering team building enterprise, commercial SaaS for customers - like Novo Nordisk and Boehringer-Ingelheim - and dove head-first into the VC-backed startup world as well as working on my own startups like [Turas.app](https://turas.app).
+Over the past three years, I've left behind a 10-year stint leading an engineering team building enterprise, commercial SaaS- for customers  like Novo Nordisk and Boehringer-Ingelheim - and dove head-first into the VC-backed startup world as well as working on my own startups like [Turas.app](https://turas.app).
 
 In that time, I've worked with a range of companies in different stages of maturity from seed-stage to Series B/C and re-oriented my engineering mindset significantly around architecture, technical design, engineering practices, and teams.
 
@@ -32,9 +32,9 @@ All three introduce operational complexity, development friction, and complicate
 
 There’s a time and a place to consider moving to each of these paradigms.
 
-Microservices: once you start to have separate teams that need to deploy on separate schedules or have teams that own entirely different technology stacks as part of the same solution. Or some part of the system is more economical to operate and scale separately from other parts of the system. Microservices make sense as a reflection of organizational and infrastructure boundaries and not simply as application interfaces.
+Microservices: once you start to have separate teams that need to deploy on separate schedules or have teams that own entirely different technology stacks as part of the same solution. Or some part of the system is more economical to operate and scale separately from other parts of the system. Microservices make sense as a reflection of organizational, process, and infrastructure boundaries and not simply as application interfaces.
 
-GraphQL: once you start to adopt microservices, then GraphQL makes much more sense as an API of APIs; a gateway to the different microservices. If you only have one API at the onset, then GraphQL increases the level of complexity with very little benefit.
+GraphQL: once you start to adopt microservices, then GraphQL makes much more sense as an API of APIs; a gateway to the different microservices. If you only have one API at the onset, then GraphQL increases the level of complexity with very little benefit. Since you’re working full-stack with a single API in the early days anyways, it’s easy enough to just shape your REST responses exactly how you want in the front-end and reap the benefits of the simplicity of REST.
 
 Kubernetes: early on, only if your domain requires control of the underlying virtual hardware (and even then, perhaps it may be better to use a VM to start). There will be an inflection point when operating a K8s cluster will become either necessary due to constraints on serverless alternatives or the pricing of the K8s option (including the expertise) becomes cheaper than the serverless option.
 
