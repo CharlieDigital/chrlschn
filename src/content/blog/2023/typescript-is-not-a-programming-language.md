@@ -17,7 +17,7 @@ My conclusion is that it starts at the very name: “***Type***Script” and a m
 
 It is not.
 
-In reality, it’s probably easier to not think about TypeScript as a programming language or even as a type system. In fact, the easiest way to wrap your head around TypeScript is to think of it as a ***shape definition language***.
+In reality, it’s probably easier to not think about TypeScript as a programming language or even as a type system. Perhaps the easiest way to wrap your head around TypeScript is to think of it as a ***shape definition markup***.
 
 ---
 
@@ -68,7 +68,7 @@ When we run this code, we can see that it behaves precisely as expected:
 
 ![TS Output](/public/img/typescript/ts-shape.png)
 
-What should be apparent looking at the function definition on **line 12** is that TypeScript is ***not*** a *type* system; it’s actually a *shape* definition system (or more formally, a structural type system).
+What should be apparent looking at the function definition on **line 12** is that TypeScript is ***not*** a *static type system*; it’s actually a *shape* definition system (or more formally, a structural type system, but it's easier if you think of it as describing valid shapes).
 
 And if we peek at the JavaScript:
 
@@ -96,6 +96,8 @@ process(r3);
 ```
 
 It’s pretty clear why this works. You can see that in the output JavaScript, the TypeScript disappears. This is because the sole purpose of TypeScript is to inform the compiler and dev time language server about the valid *shapes*. In fact, neither Node nor the browser run TypeScript; they only interpret JavaScript.
+
+(We'll revisit this at the end)
 
 ### TypeScript is Still Duck-Typed
 
@@ -166,7 +168,7 @@ function process(
 }
 ```
 
-Each is simply a different way of describing the valid shapes.
+Each is simply a different way of describing the valid shapes.  `Pick<>` and `Omit<>` are simply ways for us to derive a different shape from an existing shape.
 
 ### TypeScript Generics
 
@@ -210,6 +212,28 @@ function process<T extends Identifiable & Instruction>( // Defining the shape us
 ```
 
 TypeScript happily accepts it all because our shapes still match.
+
+### There is no ~~Spoon~~ Type
+
+![Matrix no spoon](/public/img/typescript/no-spoon.jpg)
+
+Remember that JavaScript we saw earlier?
+
+```ts
+function process(req: Req) {
+    console.log(`${req.uid} ${req.operation}`)
+
+    if ( /* req is Req type */ ) {
+        // Do Req specific thing
+    } else {
+        // Do other thing
+    }
+}
+```
+
+One of the most common misunderstandings that arises is when developers want to perform different branching logic based on the *type* in the TypeScript code.  Because the resultant JavaScript carries no actual type metadata, this simply doesn't work.  It is often confusing for developers coming from statically typed language systems like C# where it *does* work.
+
+The reason this is worth highlighting is to really emphasize the purpose of TypeScript: to inform the dev time language server and the compiler about the valid shapes -- nothing more.
 
 ---
 
