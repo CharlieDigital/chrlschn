@@ -2,7 +2,7 @@
 title: "TypeScript is not a Programming Language"
 description: "If you're struggling with TypeScript, reshaping your perspective might help."
 pubDate: "2023 Sep 12"
-socialImage: "/public/img/typescript/mastodon-post.png"
+socialImage: "/public/img/typescript/no-spoon.jpg"
 slug: "2023/09/typescript-is-not-a-programming-language"
 tags: "typescript,javascript,programming"
 ---
@@ -17,11 +17,13 @@ My conclusion is that it starts at the very name: “***Type***Script” and a m
 
 It is not.
 
+> TypeScript is not a statically typed programming language; TypeScript is JavaScript with shape definitions.
+
 In reality, it’s probably easier to not think about TypeScript as a programming language or even as a type system. Perhaps the easiest way to wrap your head around TypeScript is to think of it as a ***shape definition markup***.
 
 ---
 
-## Understanding Type vs Shape
+## Rethinking Type as Shape
 
 A simple example to highlight this is [the following code snippet](https://www.typescriptlang.org/play?#code/C4TwDgpgBAShCOUC8UDeAoKWoFcCWAJgFxQDOwATngHYDmm2A9pBQIbB6PUnlV3oBfdOhrAIFAGasAxtDjwATGgZZ8xMpRr1sUZuPaduGvrQA0KqKwrSAFngBuEEgAoAlMgB8Ue40KDhEjjU0hxcUGAUjLKkpM4UCCSouIQ8mnSmuiwGXKkmAu4YOtJcpIwANhAAdGWMtM4ABgAkqPHwlWoCUM2tlXpsodQC9a7+6MXU5FAUAIzIyjpqJADkM0vmOn3ZRkusBARLo+OTFAok8nOF2ItQKwprFpsDy7v7hyXAUwDMZwhKKJeqFI3Cife4bLJPG4vMHYKy2BxOKBuTxQI7lKo1OpLACC1jsjgIAEIliMhOgIlEIDE4tMRhTorETnTIgy4p9XEA):
 
@@ -109,7 +111,7 @@ A variant of the code snippet above may help further highlight this:
 
 ![TS Req](/public/img/typescript/ts-req.png)
 
-Note the subtle change on **line 12**: we describe the function as requiring a parameter `req` that is shaped like the type `Req` but the function will happily accept an object of the interface `Req2` precisely because TypeScript is not a type system.  In a statically typed language like C#, *this will fail* because the *type metadata* does not match, even though the shapes match (we can still achieve this in statically typed languages like C# and Java by defining type contracts like an interface or abstract base class).
+Note the subtle change on **line 12**: we describe the function as requiring a parameter `req` that is shaped like the type `Req` but the function will happily accept an object of the interface `Req2` precisely because TypeScript is not a static type system.  In a statically typed language like C#, *this will fail* because the *type metadata* does not match, even though the shapes match (we can still achieve this in statically typed languages like C# and Java by defining type contracts like an interface or abstract base class).
 
 With this in mind, then many of the other utility types and odd “*type gymnastics*” makes sense: they’re all simply ways of *describing shapes* -- often in the context of other, existing shapes.
 
@@ -176,7 +178,7 @@ Each is simply a different way of describing the valid shapes.  `Pick<>` and `Om
 
 ![TS Generic](/public/img/typescript/ts-generic.png)
 
-It works all the same.
+It works all the same because we haven't changed the resultant shape -- just how we describe that shape.
 
 ### Intersection Types
 
@@ -220,10 +222,22 @@ TypeScript happily accepts it all because our shapes still match.
 Remember that JavaScript we saw earlier?
 
 ```ts
+// TypeScript
 function process(req: Req) {
     console.log(`${req.uid} ${req.operation}`)
 
-    if ( /* req is Req type */ ) {
+    if ( /* req is Req type */ ) { // ❌
+        // Do Req specific thing
+    } else {
+        // Do other thing
+    }
+}
+
+// Transpiled JavaScript doesn't make sense
+function process(req) {
+    console.log(`${req.uid} ${req.operation}`);
+
+    if ( /* ??? */ ) {
         // Do Req specific thing
     } else {
         // Do other thing
