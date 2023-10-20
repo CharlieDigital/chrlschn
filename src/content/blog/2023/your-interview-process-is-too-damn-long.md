@@ -15,22 +15,27 @@ tags: "musings,software engineering"
 
 A [Reddit post on r/dotnet](https://www.reddit.com/r/dotnet/comments/1788wag/optimizing_net_interviews_for_better_results/) recently caught my attention.  The subject was regarding optimizing interviews and how to get better results.
 
-As an engineer, I have been opportunistic in the last few years as I've worked on my own startups so I've also had the chance to participate in many, many interviews at different organizations ranging from seed-stage startups to enterprises.  And indeed, the interview process nowadays feels unnecessarily complex -- much like building modern web UIs with layers and layers of libraries, processes, and tooling; it's just HTML, CSS, and JavaScript for goodness sake!
+I have had the opportunity to participate in many interviews at different organizations ranging from seed-stage startups to enterprises since exiting a 10 year tenure at the end 2020.  Since then, I have interviewed at companies ranging from seed-stage to enterprise.  And indeed, to my experience, today's interview process feels decidedly more *excessive* compared to those of the decade prior.
 
-From ***4-day*** take-home assignments to timed leetcode challenges to long, drawn out, 6 hour+ interview processes -- it all feels a little unnecessary and inefficient for all parties involved.
+Nowadays, interviews seem to have adopted a level of complexity not unlike what we see in web front-end development: at the end of the day, it's just HTML, CSS, and JavaScript, but now we have layers on layers of complexity for building what used to be simple, 10 line scripts.  Like modern web front-ends, the interview process seems to have evolved from something that should be fairly straight forward to something decidedly Rube Goldberg!
 
-![Too damn long](/public/img/interview/too-damn-long.jpg)
+![Rube Goldberg](/public/img/interview//rube-goldberg-banner.png)
 
-***But the problem is that many of these practices simply result in selecting the "least worst" candidates*** because it filters out many great candidates that don't want to go through these long slogs.
+From ***4-day*** take-home assignments to timed leetcode challenges to long, drawn out, multi-session, multi-team, 6 hour+ interview processes -- it all feels a little unnecessary and frankly quite inefficient for all parties involved.
 
-As a technical lead and director of engineering at a small bootstrapped startup for almost 10 years, I had the opportunity over that time to personally interview and qualify dozens of candidates.  I also occasionally did contract work to help other companies perform technical screenings for key roles.
+***But the problem is that many of these practices simply result in selecting the "least worst" candidates*** because it filters out many great candidates that don't want to or do not have the scheduling flexibility go through these long slogs.
 
-I always approached hiring with 2 simple, high level objectives:
+As a technical lead and director of engineering at the aforementioned small bootstrapped startup for almost 10 years, I had the opportunity over that time to personally interview and qualify dozens of candidates.  I also occasionally did contract work to help other companies perform technical screenings for key roles.
+
+I always approached hiring with 3 simple, high-level objectives:
 
 1. Make the process efficient and not waste my own time, my team's time, nor the candidate's time.
 2. Identify candidates that fit with the team and culture *on one key trait*.
+3. Reduce the latency from initial interview to decision and offer
 
 ---
+
+![Too damn long](/public/img/interview/too-damn-long.jpg)
 
 ## Efficient use of time
 
@@ -149,9 +154,24 @@ I've hired a candidate that have failed almost every item on a technical assessm
 
 When I start the interview, I preface and say that if the candidate doesn't know the answer to a question, they should say so right away and we can either skip the question or I can walk them through it.  This is really key because if you run even a few of these interviews, I can quickly identify candidates that have an *ego* and a *fixed mindset* versus one that has a *growth mindset* and is capable of rapidly learning.
 
-The short technical assessment is designed to be easy enough for an experienced engineer to complete without much trouble, but to find those gems that can be brought up to speed quickly, I'm looking for something that's perhaps a bit more subjective: how they react and respond when they hit something they don't know.  Do they readily acknowledge it?  Do they ask for help? Do they take guidance well when given?
+The short technical assessment is designed to be easy enough for an experienced engineer to complete without much trouble.  But to find those gems that can be brought up to speed quickly, I'm looking for something that's perhaps a bit more *subjective*: how they react and respond when they hit something they don't know.  Do they readily acknowledge it?  Do they ask for help? Do they take guidance well when given?
 
-Engineers with a growth mindset can adapt quickly, learn what needs to be learned, explore what needs to be explored, and aren't afraid to un-stuck themselves by asking questions and seeking help.  To me, this is a key trait that often gets overlooked.
+Engineers with a growth mindset can adapt quickly, learn what needs to be learned, explore what needs to be explored, and aren't afraid to un-stuck themselves by asking questions and seeking help.  A growth mindset also tends to be a strong correlation with a candidate's humility and lack of ego.  To me, these are key traits that are often overlooked.
+
+---
+
+## Reducing latency
+
+Part of the reason why having an efficient, focused process is important is that if you are working with *active* candidates, they are likely concurrently interviewing with multiple other companies.  If you find a great candidate that is a great fit for yor culture and can quickly plug into the team and project, the biggest favor you can do for yourself -- especially as a small team -- is to act expediently and reduce the latency from initial screening to the offer.
+
+Consider a typical take home:
+
+1. **(1d)** I would meet with the candidate 30-60 minutes first.
+2. **(1-7d)** Then I'd assign a take home, but it would need to work within the candidate's schedule which may mean a weekend.
+3. **(1d)** Once the take home is returned, I'd need to review the take home first and schedule  followup.
+4. **(1d)** Because a candidate could ostensibly "cheat" on a take home, this final session needs to be a hands on coding session again so I can actually ask the candidate to extend the project in some way while watching.
+
+Rather than jumping through all of these hoops, using a focused set of questions -- in 1 single live coding session -- that measure for experience and seniority seems far better at reducing the latency involved with drawn out process. But this also requires a shift away from a focus on static measures of present knowledge and skills against current needs and towards perhaps a more subjective sense of a candidate's level of experience and growth mindset.
 
 ---
 
@@ -164,3 +184,11 @@ Rather than focus technical interviews on long, multi-hour or multi-day take hom
 Acknowledge that algorithmically challenging work rarely happens in a vacuum and often involves collaborating with peers, research, and discussion so it seems a silly primary facet to select for unless the field demands it (e.g. computer graphics, ultra low-latency systems, mathematical computation, etc.).
 
 Finally, find ways to seek those with the right culture fit and a growth mindset because good *teammates* are hard to find and the specifics of a tool or platform can be taught and learned.
+
+---
+
+## Addendum
+
+Check out my OSS project [CodeRev.app](https://coderev.app): a simple, lightweight tool designed to facilitate code review as interview.
+
+And the blog post [Interviews in the Age of AI: Ditch Leetcode - Try Code Reviews Instead](https://chrlschn.dev/blog/2023/07/interviews-age-of-ai-ditch-leetcode-try-code-reviews-instead/).
