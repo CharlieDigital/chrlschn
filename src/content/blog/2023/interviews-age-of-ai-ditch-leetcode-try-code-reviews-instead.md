@@ -123,3 +123,9 @@ As our industry shifts and the profession comes to rely more on AI tools like Co
 Replacing leetcode with code reviews as interview can help teams not only better measure candidates on the whole, but also prepare for this shift in how we approach building software by focusing on more relevant skills and those aspects of a candidate that make for a better *human* teammate.
 
 *Thanks for [Lefan Tan](https://lefantan.com/), Arash Rohani, and Rob Alarcon for reviewing draft versions of this article and providing their feedback.*
+
+---
+
+If you liked this article, also check out ***[Your Interview Process Is Too Damn Long (and How To Fix It)](https://chrlschn.dev/blog/2023/10/your-interview-process-is-too-damn-long/)***
+
+![Too damn long](/public/img/interview/too-damn-long.jpg)

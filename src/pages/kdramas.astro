@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import { Content as KDramas } from '../content/pages/kdramas.md'
+---
+
+<BaseLayout title = "CV">
+  <main class="md:flex md:justify-center">
+    <article class="prose prose-lg max-w-[750px] prose-img:mx-auto">
+      <div class="title text-3xl w-full font-bold">KDramas</div>
+
+      <KDramas/>
+    </article>
+  </main>
+
+  <div class="divider my-6"></div>
+
+  <div>
+    <script src="https://utteranc.es/client.js"
+      repo="CharlieDigital/chrlschn"
+      issue-term="pathname"
+      theme="github-dark"
+      crossorigin="anonymous"
+      async>
+    </script>
+  </div>
+
+</BaseLayout>
