@@ -5,7 +5,7 @@
 
 KDramas have become kind of a guilty pleasure for my wife and I.
 
-It started with the excellent *Extraordinary Attorney Woo* which we randomly put on one night.  My wife -- a special education supervisor -- found it to be an amazing depiction of autism and disabilities.  What particularly caught her attention was how the show dealt with a topic in a way that we rarely see in Western media.
+It started with the excellent *Extraordinary Attorney Woo* which we randomly put on one night.  My wife -- a special education supervisor -- found it to be an amazing depiction of autism and cognitive disabilities.  What particularly caught her attention was how the show dealt with a topic in a way that we rarely see in Western media.
 
 In fact, this has been an observation that we've come across as we watched more shows: KDramas are much more willing to address social issues outside of the social mainstream.
 
@@ -23,7 +23,7 @@ Cognitive disabilities being one.  Both *Extraordinary Attorney Woo* and *Crash 
 
 Perhaps this is because Asian cultures tend to be more conservative and formal; media then becomes an outlet for these social issues like divorce and socio-economic disparities that the citizenry otherwise have difficulty in discussing openly.
 
-I sometimes wonder if this is a concerted move by the Korean government to normalize certain social topics like single parenthood, divorce, cognitive disabilities, socio-economic injustice, etc..
+I sometimes wonder if this is a concerted move by the Korean government to normalize certain social topics like single parenthood, divorce, cognitive disabilities, socio-economic injustice, gender equality (the CEOs of both of the prestigious law firms at the center of the plot of *Woo* are both middle-aged females), etc.
 
 ### Stronger story lines
 
@@ -31,7 +31,7 @@ I don't know the ins and outs of Korean media production, but to my eyes, it see
 
 1. **Story lines are more complete**.  You don't see as many plot holes because it feels like the screenplay is written from start-to-finish and this affords an extraordinary sense of completeness when you finish a series.
 2. **Story telling structure is richer**.  Because these seasons are written start-to-finish in 16-20 episodes, it affords richer *structure* in storytelling without feeling retconned.  *The Light in Your Eyes* is a perfect example of this and simply an ***AMAZING*** piece of storytelling that can only make sense if it's written and structured from start to finish.
-3. **You see more range from actors and actresses**.  In the US, if a show takes off, it would mean that the actors and actresses on the show could end up in a years-long contract for the show.  On the other hand, because Korean dramas tend to end with one or two seasons, you see actors and actresses across a spectrum of topics and genres.  I think this is quite unique because it better showcases the range of an actor or actress' talents and it's always amazing to see their work from show-to-show.  What's really cool is seeing the actors and actresses work together on different shows; their chemistry is often very apparent.
+3. **You see more range from actors and actresses**.  In the US, if a show takes off, it would mean that the actors and actresses on the show could end up in a years-long contract for the show and locked into one genre.  On the other hand, because Korean dramas tend to end with one or two seasons, you see actors and actresses across a spectrum of topics and genres.  I think this is quite unique because it better showcases the range of an actor or actress' talents and it's always amazing to see their work from show-to-show.  What's really cool is seeing the actors and actresses work together on different shows; their chemistry is often very apparent.
 4. **Emotionally charged storylines**.  I rarely tear up with American television media, but I'm going to be honest here: there have been several shows where I straight up teared up.  I find the story lines to be more more emotionally charged and willing to explore difficult topics.
 5. **Strong female roles**. It's odd because my impression of Korea is that it is extraordinarily patriarchal, but many shows feature positive, strong female leads.  *King's Affection*, *Extraordinary Attorney Woo*, *One Spring Night*, etc.
 
@@ -41,7 +41,7 @@ What puzzles me is that looking at crime statistics, Korea is not particularly n
 
 ### No genre boundaries
 
-Korean shows -- even ones that deal with quite heavy topics like *My Mister* -- are simply not afraid to cross genres.  *My Mister* features corporate espionage, light comical touches between the three brothers at the core of the show, dark scenes with domestic abuse, and more.
+Korean shows -- even ones that deal with quite heavy topics like *My Mister* -- are simply not afraid to cross genres.  *My Mister* switches between corporate espionage, light comical touches between the three brothers at the core of the show, dark scenes with domestic abuse, and more.
 
 It's the same for shows like *Behind Your Touch* where one moment, it feels like slapstick and the next episode it's a dark thriller.
 
@@ -49,17 +49,17 @@ Korean dramas never feel constrained by their genre.
 
 ### Korean entertainers are perhaps more like classic Hollywood entertainers
 
-You'll notice that many shows feature actors and actresses who were or still are members of K-pop groups.  Not only are many of them great musical and stage performers, but are then trained for acting as well.  In the US, it feels rare to have such well-rounded *entertainers* who can perform in different genres and with different skillsets from acting to singing to dancing.  [IU's](https://en.wikipedia.org/wiki/IU_(singer)) performance in *My Mister*; [Han Ji Min's](https://www.youtube.com/watch?v=hY6eDVS_gi0) performance in *The Light in Your Eyes*; [Park Eun Bin](https://www.youtube.com/watch?v=2gv5uS18pHE) from *Extraordinary Attorney Woo*.
+You'll notice that many shows feature actors and actresses who were or still are members of K-pop groups.  Not only are many of them great musical and stage performers, but are then trained for acting as well.  In the US, it feels rare to have such well-rounded *entertainers* who can perform in different genres and with different skillsets from acting to singing to dancing.  [IU's](https://en.wikipedia.org/wiki/IU_(singer)) performance in *My Mister*; [Han Ji Min's](https://www.youtube.com/watch?v=hY6eDVS_gi0) performance in *The Light in Your Eyes*; [Park Eun Bin](https://www.youtube.com/watch?v=2gv5uS18pHE) from *Extraordinary Attorney Woo*; [Lee Junho and Yoona](https://www.youtube.com/watch?v=Z0203cVXRWQ) from *King the Land*.
 
 In general, it feels like Korean actors and actresses are more well-rounded in the performing arts.
 
 ### More investment in character development
 
-Korean shows seem incredibly strong at character development.  This is possibly a side effect of how single-season focus so structuring the plot allows for better development of even minor side characters.  The net result is that it's easier to understand character motivations and makes these characters more relatable in the process.  I feel like this is also the reason why I tend to feel more emotional when watching some of these shows: you simply get pulled into the world of the story because of the richer development of characters.
+Korean shows seem incredibly strong at character development.  This is possibly a side effect of the single-season focus.  Structuring the plot with a concrete end in mind seems to allow for better pacing and development of even minor side characters.  The net result is that it's easier to understand character motivations and makes these characters more relatable in the process.  I feel like this is also the reason why I tend to feel more emotional when watching some of these shows: you simply get pulled into the world of the story because of the richer character and world development.
 
 ### Tropes
 
-Indeed, Korean dramas are simply *filled* with tropes.  If it's raining, you can be assured that the male lead is going to show up with an umbrella.  Koreans apparently drink an obscene amount of alcohol -- no matter the occasion.  The childhood encounters.  And on and on.
+Indeed, Korean dramas are simply *filled* with tropes.  If it's raining, you can be assured that the male lead is going to show up with an umbrella.  Koreans apparently drink an obscene amount of alcohol -- no matter the occasion.  The childhood encounters.  The inevitable road trip/vacation/adventure that often feels like it's written into the contracts for the cast.  And on and on.
 
 ---
 
@@ -73,7 +73,7 @@ A bit slow to start and doesn't really pick up until episode 4, but an absolutel
 
 ### *The Light in Your Eyes*
 
-An incredibly unique story that I was just blown away by.  The ending is classic Shyamalan and just incredible once you get there.  It features a topic matter and an elderly female lead that would be rare to see in Western media.  This show should be watched twice because the second watching makes the story line abd structure all the more amazing.  I appreciated it even more on a second watching.
+An incredibly unique story that I was just blown away by.  The ending is classic Shyamalan and just incredible once you get there.  It features a topic matter and an elderly female lead that would be rare to see in Western media.  This show should be watched twice because the second watching makes the story line and structure all the more amazing.  I appreciated it even more on a second watching.
 
 ### *When the Camellia Bloom*
 
@@ -110,6 +110,10 @@ We watched this show after *Extraordinary Attorney Woo* and it was really amazin
 ### *Doom at Your Service*
 
 A show with an interesting premise at the core and the interlocking of the fate of the male and female leads.  Strong performances by them, but some weak performances by the supporting cast.
+
+### *See You in My 19th Life*
+
+Absolutely loved the premise and the excellent performance by Shin Hae Sun, but falls apart a bit by the middle of the series and let down a bit by the weaker supporting cast.
 
 ### *Crash Course in Romance*
 
