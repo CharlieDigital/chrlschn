@@ -28,7 +28,7 @@ From ***4-day*** take-home assignments to timed leetcode challenges to long, dra
 
 As a technical lead and director of engineering at the aforementioned small bootstrapped startup for almost 10 years, I had the opportunity over that time to personally interview and qualify dozens of candidates.  I also occasionally did contract work to help other companies perform technical screenings for key roles.
 
-I always approached hiring with 3 simple, high-level objectives:
+My approach to hiring focused on 3 simple, high-level objectives:
 
 1. Make the process efficient and not waste my own time, my team's time, nor the candidate's time.
 2. Identify candidates that fit with the team and culture *on one key trait*.
@@ -41,7 +41,7 @@ I always approached hiring with 3 simple, high-level objectives:
 
 ## Efficient use of time
 
-Selfishly, I hated wasting my own time with protracted, multi-session interview processes.  To that end, for any particular type of role, I ended up designing a tight set of technical questions that aimed to identify a candidate's level of experience in 10-12 questions/exercises for any given topic.
+Selfishly, I hate wasting my own time with protracted, multi-session interview processes.  To that end, for any particular type of role, I end up designing a tight set of technical questions that aim to identify a candidate's level of experience in 10-12 questions/exercises for any given topic.
 
 Take an example of a C#/.NET backend engineer; I ended up with an assessment that only requires ~45 minutes and 10 questions to determine a candidate's level of seniority and experience:
 
@@ -60,7 +60,7 @@ The first two are on generics. The next three are on passing functions around an
 
 You can see the progression on the last 3. The last one, if the candidate starts with an `if-else` or `switch-case`, I ask how they would make it more extensible and maintainable and iterate on the design. The goal is to see which constructs and techniques they already know. If the candidate can come up with an `OperationBase`, `AddOperation`, `DeleteOperation`, `UpdateOperation`, and `OpTypeAttribute(string operation)`, then we're pretty much all set. Alternatively, if the candidate suggest `if/else` or `switch/case` with source generators and why it would be preferable to reflection (perf, AOT), even better!
 
-Put it another way: ***what are you hoping to see in a take home exercise and can you just reduce the interview to just seeing if a candidate can produce that desired output? What solution or approach would be a home run if you saw it in a take home? Can you create a simple scenario that can yield such an outcome without all of the cruft?***
+Put it another way: ***what are you hoping to see in a take home exercise and can you just reduce the interview to just seeing if a candidate can produce that desired output? What solution or approach would be a "home run" if you saw it in a take home? Can you create a simple scenario that can yield such an outcome without all of the cruft?***
 
 Here's a perfectly satisfactory solution to #10, the only open-ended question (code doesn't have to work):
 
@@ -131,14 +131,14 @@ These questions are designed so that I can very quickly understand:
 3. What will we have to teach them?
 4. What should we pay them? (level of experience and seniority)
 
-I don't bother with data access, unit testing, project setup, algorithmic complexity, etc. because I start with the assumptions that:
+There's really no need to bother with data access, unit testing, project setup, algorithmic complexity, etc. because the assumption is that:
 
 1. There is going to be a body of code in place or an existing one to model; I'd rather a candidate that can follow the existing patterns and practices than one that will go rogue.
 2. Tools, techniques, and best practices can be taught and trained if we like a candidate; skill gaps can be filled quickly as needed if we hire the right people.
-3. Important design decisions where there may be algorithmic or system design complexity are usually done as a team; not as a one-person decision.  Not only that, we'll usually research, sandbox, and try different algorithms and designs anyways if we are working on a really critical part of the system.
+3. Important design decisions where there may be algorithmic or system design complexity are usually performed as a team; not as a one-person decision.  Not only that, we'll usually research, sandbox, and try different algorithms and designs anyways if we are working on a really critical part of the system.
 4. There is no one "right" design or implementation; "right" is heavily situational and contextual to the business objectives; moreover, complexity in systems is emergent over time and based on shifting demands. This means that arriving at a "right" solution often requires a lot of history and situational context.
 
-If you believe the above to be true, *then you don't need a sum of 6+ hours to select a good candidate*; you only need 10-12 well-selected technical exercises and 1-2 hours.  (Take home projects are a particularly egregious waste of time since it almost always requires an initial interview and a followup interview to review the project and expand the take home to test that the candidate actually coded it).
+If you believe the above to be true, *then you don't need a sum of 6+ hours to select a good candidate*; you only need 10-12 well-selected technical exercises and 1-2 hours.
 
 Perhaps even more important than technical acumen, is whether the candidate is a good culture fit in one specific trait...
 
@@ -166,20 +166,20 @@ Engineers with a growth mindset can adapt quickly, learn what needs to be learne
 
 ## Reducing latency
 
-Part of the reason why having an efficient, focused process is important is that if you are working with *active* candidates, they are likely concurrently interviewing with multiple other companies.  If you find a great candidate that is a great fit for yor culture and can quickly plug into the team and project, the biggest favor you can do for yourself -- especially as a small team -- is to act expediently and reduce the latency from initial screening to the offer.
+Part of the reason why having an efficient, focused process is important is that when working with *active* candidates, they are likely concurrently interviewing across multiple opportunities.  If you find a great candidate that is a fit for yor culture and can quickly plug into the team, the biggest favor you can do for yourself -- especially as a small team -- is to act expediently and reduce the *latency* from initial screening to the offer.
 
 Consider a typical take home:
 
-1. **(1d)** I would meet with the candidate 30-60 minutes first.
-2. **(1-7d)** Then I'd assign a take home, but it would need to work within the candidate's schedule which may mean a weekend.
-3. **(1d)** Once the take home is returned, I'd need to review the take home first and schedule a followup.
-4. **(1d)** Because a candidate could ostensibly "cheat" on a take home, this final session needs to be a hands on coding session again so I can actually ask the candidate to extend the project in some way while watching.
+1. **(1d)** Meet with the candidate 30-60 minutes first.
+2. **(1-7d)** Assign a take home, but it would need to work within the candidate's schedule which may mean a weekend.
+3. **(1d)** Once the take home is returned, review the take home submission first and schedule a followup.
+4. **(1d)** Because a candidate could ostensibly "cheat" on a take home, this final session needs to be a hands on coding session again to actually ask the candidate to extend the project in some way while watching.
 
-Remember my earlier comment about the increasing complexity of web front-ends?  It is easy to see that to even support this process requires complex software to manage candidate tracking, scheduling, and calendar reconciliation across 1-3 weeks.  The excessive process *is* the source of complexity, friction, and latency.
+Remember the earlier comment about the increasing complexity of web front-ends?  It is easy to see that to even support this protracted process requires complex software to manage candidate tracking, scheduling, and calendar reconciliation across 1-3 weeks.  The excessive process *is* the source of complexity, friction, and latency.
 
-In a competitive market or for a great resource, you can easily lose out with an excessively long process and not showing decisiveness. This extended process creates multiple opportunities to lose otherwise great candidates in the funnel due to either their time constraints or other opportunities getting to an offer faster.
+In a competitive market or for a great resource, it is easy to lose out with an excessively long process and not showing decisiveness. This extended process creates multiple opportunities for attrition in the funnel due to either time constraints or other opportunities getting to an offer faster; ***the net result is picking from the "least worst" candidates -- ones that had no other choice but to stick around***.
 
-Rather than jumping through all of these hoops, using a focused set of questions that measure for experience and seniority  --  in 1 single live coding session - -  seems far better at reducing the latency involved with more drawn out processes since the time expended per candidate is significantly lower and allows a team to compare more candidates in a smaller window.  If a process can qualify candidates faster with lower attrition rates in the funnel, it yields access to a bigger pool of candidates.
+Rather than jumping through all of these hoops, using a focused set of questions that measure for experience and seniority  --  in 1 single live coding session - -  seems far better at reducing the latency involved with more drawn out processes since the time expended per candidate is significantly lower.  The side effect is that it allows a team to *compare more candidates* in a smaller window; if a process can qualify candidates faster with lower attrition rates in the funnel, it yields access to a bigger pool of candidates.
 
 But this also requires a shift away from a focus on static measures of present knowledge and skills against current needs and towards perhaps a more subjective sense of a candidate’s level of experience and growth mindset.
 
