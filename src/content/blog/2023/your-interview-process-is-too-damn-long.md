@@ -9,6 +9,15 @@ tags: "musings,software engineering"
 
 ----
 
+## Summary
+
+- Long, convoluted interview processes waste time for all parties and ***such interviews often yield the "best-worst candidate"*** because such processes are more accessible to candidates with time to participate in a drawn out interview process (unemployed, underemployed, or simply unengaged with their work in the first place) and thereby filtering out potentially better candidates.
+- If your interview process includes a take home, consider what would really blow your socks off if you saw it in the submission.  Rather than issuing a take home, can you structure a series of  questions or a simple exercise in such a way to illicit the same response from a candidate with a 10-15 minute session instead?  In other words, ***can you design a better experiment?***  A take home isn't palatable to many candidates (leaving you with the best worst candidates) and also requires an investment in time on the hiring team to review as well.
+- In a landscape where technology is constantly changing, ***the ability to identify candidates with a "growth mindset" is highly underrated***.  These candidates can grow quickly with your team and adapt to shifting priorities, changes in technologies, and rapidly absorb business requirements.  There's no magic formula, but candidates who know what they don't know and quickly acknowledge these gaps, candidates who ask great questions, candidates who show curiosity will often be individuals with a growth mindset.
+- A more efficient process ultimately lets a hiring team evaluate more candidates faster and with less wasted motions.  Therefore, ***a tight, well-designed process means that your team gets to the pick from a larger pool of candidates with less effort*** and a better chance of closing your best candidates rather than the best-worst candidates.
+
+----
+
 ## Intro
 
 ![Reddit post](/public/img/interview/reddit-post.png)

@@ -69,11 +69,25 @@ If your interest is piqued, then here are my thoughts on shows my wife and I hav
 
 ### *My Mister*
 
-A bit slow to start and doesn't really pick up until episode 4, but an absolutely amazing story from start to finish with an incredibly strong performance by the female lead, IU.  Slow pacing at the start, but picks up speed about a third of the ways through. Don't be put off by the corporate espionage at the core of the first two episodes; this setup is necessary for the rest of the story line and understanding the motivations of each of the factions.  A strong recommend!
+The first half and second half of this series feel miles apart, but like any great journey, the whole is more than the sum of the parts.  This story is a slow and long embrace filled with deep emotions -- sometimes ugly ones -- that we often try to avoid.  I think that this show is the richest, most complex television media I've seen on the topic of "love" in its various forms and depths.  Love for your friends, love for your partner or spouse, love for your family, love for those that give you strength, and perhaps most importantly love of yourself.  Part of the reason why it's hard to start is that the beginning of the show is stark in its absence of love; our leads are both apathetic and engrossed in their own self-pity born from internalized insecurities and shame.  But slowly, through small gestures and subtle kindness, each finds a path out of their own despair, releasing the encapsulated pain.  A fantastic piece of television that is easy to skip because of the slow start, but by episode ~6, it becomes absolutely engrossing.  Don't give up on it!
+
+### *My Liberation Notes*
+
+From the same writer as *My Mister*, this show carries many of the same core themes of loving oneself.  The start is just as slow with characters that feel just as apathetic and seemingly stuck in their own insecurities, but each finds acceptance along the way.  If you liked *My Mister*, you'll like this.
+
+### *Lovestruck in the City*
+
+Sometimes, we put up a mask to escape from our own flaws.  Sometimes, we put up masks to seek the attention and approval of others.  What happens in those cases when we are seen for who we are beneath the mask?  Is the mask a façade?  Or are we both what we project and what we hide?  *Lovestruck in the City* proposes that we are at once who we think we are, how others perceive us, and who we wish we could be.  It is often only our selves that are so caught up in our own flaws and insecurities, that we can't recognize these different perspectives of our identities.  Kim Ji Won, who coincidentally also portrays a struggling graphic designer in *My Liberation Notes*, delivers a character with tremendous range and subtlety.  Well-paced, relatively short episodes, and very
 
 ### *The Light in Your Eyes*
 
 An incredibly unique story that I was just blown away by.  The ending is classic Shyamalan and just incredible once you get there.  It features a topic matter and an elderly female lead that would be rare to see in Western media.  This show should be watched twice because the second watching makes the story line and structure all the more amazing.  I appreciated it even more on a second watching.
+
+### *Run On*
+
+Another underrated show, but both my wife and I found the dialogue quite unique and the humor to be subtle but with an outsized impact.  Finding our selves can be hard, especially so when so much of one's identity is defined by others or by some external trait like beauty, wealth, or success.  In every type of relationship, when expectations are set unilaterally, such misalignment can lead to disappointment, insecurity, and self-consciousness.  Whether that's a parent-child relationship, business partners, or lovers.  Our egos can often make it difficult to manage such relationships because we fear failing to meet those expectations; we question whether we are good enough or worthy enough of such lofty expectations.  Those doubts often lead us down a path that pushes us away from those that we need the most.  Im Si-Wan's character (Ki Seon-Gyeom) -- with his naiveté and the social awareness of a toddler -- provides a vehicle for the characters around him to explore what if we could let go of those fears?
+
+Some reviewers called out the "effeminate" portrayal of the male lead by Im Si-Wan.  Rather I'd say that his is a portrayal of masculinity without the toxicity where he's able to support the hopes and dreams of those around him without the need to feed his own ego.
 
 ### *When the Camellia Bloom*
 
