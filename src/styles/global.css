@@ -10,6 +10,10 @@ img + em {
     margin-top: -24px;
 }
 
+article img {
+    border-radius: 6px;
+}
+
 code {
     counter-reset: step;
     counter-increment: step 0;
