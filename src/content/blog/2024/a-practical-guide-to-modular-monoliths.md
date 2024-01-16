@@ -134,6 +134,8 @@ if (RuntimeEnv.IsDevelopment) {
 ![Local dev](/public/img/momo/momo-dev.png)
 *The local development runtime components; everything in a single process for ease of startup, tracing, debugging, and development.*
 
+For development, this simplicity makes it easier when debugging, testing locally, and especially when onboarding new engineers.
+
 When running this in production, neither of the monitoring services are loaded into the API runtime which makes the API runtime suitable for scale-to-zero serverless container runtimes like Google Cloud Run or Azure Container Apps. If there is no need to scale-to-zero, an option is to flag which services to add and simply have one single container image that can run different “slices” of our codebase by loading different services based on environment variables.
 
 In fact, this is how the second service runtime will be configured.
@@ -195,6 +197,21 @@ For example, if there is a need to run each in a separate runtime, we can easily
 The Docker Compose file `docker-compose-run.yaml` shows how this would look:
 
 ```yaml
+# The API in one container
+api:
+  image: momo/api
+  build:
+    context: ./
+    dockerfile: ./Dockerfile.core
+  expose:
+    - 8080
+  ports:
+    - "8080:8080"
+  depends_on:
+    - postgres
+  networks:
+    - momo
+
 # We run the work item status monitor
 svc1:
   image: momo/svc1
@@ -233,7 +250,7 @@ This approach yields several positive outcomes just as described in the paper:
 
 1. **The local DX is excellent**: a single runtime to start, trace, and debug; there is no need to run multiple processes and perform complex tracing of inter-process data flows for local development.
 2. **Packaging and deployment is straight forward and all dependencies ship at the once**. The .Dockerfile shows just how straight forward it is to ship this. In CI/CD, there's no need to set up complex build pipelines to build dependent projects and generate new bindings.
-3. **It is still possible to deploy this application into a variety of topologies depending on how we need it to scale**. For example, a load balancer sitting in front of two API only instances and a single instance running both services. If there is a need to scale the two services independently, it is possible to change the environment variable on the runtime to and split two instances out.
+3. **It is still possible to deploy this application into a variety of topologies depending on how we need it to scale**. For example, a load balancer sitting in front of two API only instances and a single instance running both services. If there is a need to scale the two services independently, it is possible to change the environment variable on the runtime and split two instances out.
 
 ----
 
