@@ -4,14 +4,14 @@ description: "Feeling too much friction from your microservices architecture? It
 pubDate: "2024 Jan 14"
 socialImage: "/public/img/momo/momo-conceptual.png"
 slug: "2024/01/a-practical-guide-to-modular-monoliths"
-tags: "architecture,software engineering"
+tags: ".net,architecture,docker,software engineering"
 ---
 
 ----
 
 ## Summary
 
-.NET's host runtime model and built-in dependency injection makes building scalable "modular monoliths" easier than ever.  This lets teams -- especially startups -- move faster with less development, deployment, and operational friction while still maintaining many of the benefits of microservices such as independent scaling of services, isolation of responsibilities, and so on.
+A 2023 paper titled *[Towards Modern Development of Cloud Applications](https://dl.acm.org/doi/10.1145/3593856.3595909)*, published by a team at Google, once again highlights the pitfalls of microservices architecture and the many benefits of the much maligned and misunderstood monolith. .NET's host runtime model and built-in dependency injection makes building scalable "modular monoliths" easier than ever.  This lets teams -- especially startups -- move faster with less development, deployment, and operational friction while still maintaining many of the benefits of microservices such as independent scaling of services, isolation of responsibilities, and so on.
 
 ⮑ GitHub Repo: https://github.com/CharlieDigital/dn8-modular-monolith
 
@@ -45,7 +45,7 @@ Jason Warner, former CTO of GitHub, [wrote in tweet in 2022](https://twitter.com
 >
 > Monolith > apps > services > microservices
 
-Now [a new paper](https://dl.acm.org/doi/pdf/10.1145/3593856.3595909) titled ***Towards Modern Development of Cloud Applications*** has been released by a team from Google that throws more fuel on the (dumpster) fire of microservices architectures:
+Last year, a team from Google published [a new paper](https://dl.acm.org/doi/pdf/10.1145/3593856.3595909) titled ***Towards Modern Development of Cloud Applications*** that throws more fuel on the (dumpster) fire of microservices architectures:
 
 > When writing a distributed application, conventional wisdom says to split your application into separate services that can be rolled out independently. This approach is well-intentioned, but a microservices-based architecture like this often backfires, introducing challenges that counteract the benefits the architecture tries to achieve. **Fundamentally, this is because microservices conflate logical boundaries (how code is written) with physical boundaries (how code is deployed)**.
 
@@ -67,7 +67,7 @@ These reasons are particularly important to consider in the context of a startup
 
 For startups and enterprise teams alike, understanding how to build “modular monoliths” (“MoMo”) can help increase velocity and reduce the drag caused by the friction of microservices.
 
-Let's explore how with a practical example in .NET.
+Our objective isn’t to recreate the Google paper’s architecture, but to meet the same goals of increasing velocity with a monolithic codebase that still affords flexibility in deployment. Let’s explore how with a practical example in .NET.
 
 ----
 
@@ -117,7 +117,7 @@ In total, the application will have 3 main components:
 ![Logical application design](/public/img/momo/momo-conceptual.png)
 *The logical structure of our application with an API that updates a Postgres database. Two services are responsible for watching for changes and performing additional actions out-of-band. In this simple case, we use the database as signaling layer, but it is easy to swap this out for an event queue like SQS.*
 
-A key to making this work is to separate the logic of the service from the *runtime* container for the service. This is quite straightforward and natural with .NET’s host paradigm because of the built-in dependency injection framework that allows selection and configuration the services to load into the host at runtime.  With .NET 8, this model is now consistent whether building a REST API or console application.
+A key to making this work is to separate the logic of the service from the *runtime* container for the service. This is quite straightforward and natural with .NET’s host paradigm because of the built-in dependency injection framework that allows selection and configuration of the services to load into the host at runtime.
 
 In this example, all of the application logic is implemented in the `core` project and during development on the local machine environment, the single API will load all of the components into one runtime including our two services:
 
@@ -251,9 +251,9 @@ Teams that find themselves struggling with the friction of working with microser
 
 ## Addendum
 
-So when do separate (micro)services make sense? Generally, I think there are a very small number of use cases for most teams:
+So when *do* separate (micro)services make sense? Generally, I think there are a very small number of use cases for most teams:
 
 1. **Team and process boundary isolation**. If different teams have different release processes, it may make sense to isolate these processes at a service boundary.
-2. **Deployment efficiency**. For example, the base Playwright Docker image is quite hefty and it may be more efficient to deploy any code that is programmatically using Playwright separately from the main codebase.
+2. **Deployment efficiency**. For example, the base Playwright Docker image is quite hefty and it may be more efficient to deploy any code that is programmatically using Playwright separately from the main codebase to avoid introducing the dependencies unnecessarily.
 3. **Platform fit**. In some cases, tooling may make the choice of one language and platform over another more attractive. This is often the case with AI and ML where Python provides better tooling but the rest of the application stack may be in Java, Go, or .NET.
 4. **Special cases**. AWS CloudFront Functions and AWS Lambda @ Edge are both examples where moving very specific workloads close to the edge has benefits. For a use case like CloudFront Functions, the runtime limitations necessitate very targeted almost nano services.
