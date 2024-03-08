@@ -140,7 +140,7 @@ They could have copped to an honest error, admitted that these technologies requ
 
 React’s complexity is well hidden but is inherent in the render cycle’s assumption of stateless components which means that developers need to understand when and where to carefully place state.
 
-React’s functional model makes certain assumptions about the difficulty of managing state which I think simply aren’t true. [World of BS has a nice, concise writeup on different programming philosopies and how they view state](https://www.worldofbs.com/minimize-state/):
+React’s functional model makes certain assumptions about the difficulty of managing state which I think simply aren’t true. [World of BS has a nice, concise writeup on different programming philosophies and how they view state](https://www.worldofbs.com/minimize-state/):
 
 <blockquote>
 I recently realized that all the various programming philosophies are concerned with state, and can be boiled down into a simple statement about how to work with state.
