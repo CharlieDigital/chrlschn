@@ -37,15 +37,17 @@ On the surface, this macro's utility seems subtle, but it has a *profound* effec
 
 In general, there are 3 scopes of state when we think about modern frontend applications (excluding `window` level truly global state).
 
-1. **Global, shared state**.  This is state that is accessible across different components within the entire hierarchy.
-2. **Hierarchical component state**.  This is state that is accessible across different components within a subtree of the hierarchy.
-3. **Single component level state**.  This is state that is accessible only within a single component within a hierarchy.
+1. **Global, shared state**.  This is state that is accessible across different components within the entire hierarchy for truly global state like the logged in user account information and information shared between routes.
+2. **Hierarchical component state**.  This is state that is accessible across different components within a subtree of the hierarchy. Examples are a listing-detail editor view.
+3. **Single component level state**.  This is state that is accessible only within a single component within a hierarchy and does not leave the boundary of the component as state interactions do not need to go up or down the tree.
 
-*(We'll examine these a bit more in a moment)*
+At the global level, there are many libraries and solutions for solving this. For example, React’s Zustand, Jotai, Recoil, Redux (among others) and Vue’s Pinia help pull state out from the component tree into a global scope to cut across the tree. It’s intended to hold truly global state like light/dark mode or tenant ID’s.
 
-At the global level, there are many libraries and solutions for solving this.  For example, React's Zustand, Jotai, Recoil, Redux (among others) and Vue's Pinia help pull state *out* from the component tree into a global scope to cut across the tree.
+This second layer of state is where teams encounter the friction of “prop drilling” — whether in React, Vue, or other libraries or frameworks. Part of it is that it is onerous to manage moving state up and down this tree between components.
 
-This second layer of state is where teams encounter the friction of "prop drilling" -- whether in React, Vue, or other libraries or frameworks.  Part of it is that it is onerous to manage moving state up and down this tree between components.  The natural decision teams make in this case is to move state out into a global store instead to make it easier.  But `defineModel` has a game changing effect on how teams can simplify managing this type of state without pulling it out into global state.
+The natural decision teams make in this case is to move state out into a global store or fall into the third component scope of state *and simply keep piling into one massive component* to avoid that friction — creating another kind of pain instead.
+
+Wouldn’t it be nice if it were *easy* to separate state without the friction and pain of prop drilling while maintaining Vue’s reactive two way binding? This is precisely where `defineModel` comes into play as it *dramatically* reduces the friction of moving state between components in a tree while maintaining Vue’s two way binding.
 
 ## What is `defineModel`?
 
@@ -134,35 +136,17 @@ const name = defineModel<string>({ required: true })
 </script>
 ```
 
-The parent component remains unchanged, but a large volume of boilerplate code has been removed!
+The parent component remains unchanged, but a large volume of boilerplate code has been removed! *This tiny macro completely changes the ergonomics of managing state.*
 
 ---
 
-## What's the Big Deal?
+## A Practical Example
 
-On the surface, this seems quite a trivial change.  Sure, some convenience has been gained, but how does this really affect how developers manage state?  Isn't it preposterous to claim so when it's just a simple macro?
+On the surface, this seems quite a trivial change. Sure, some convenience has been gained, but how does this really affect how developers manage state? Isn’t it preposterous to claim so when it’s just a simple macro?
 
-The reality is that developers tend to take the path of least resistance and if the path of least resistance is one of bad practices then, well, developers ***will*** create a codebase with many, many bad practices -- AKA "Tech Debt". If you've seen a 1000+ line React or Vue component (*and who among us hasn't?*), then the likely reason is that there was simply too much friction in parceling out the state in a manageable way as the component grew organically; it was easier to just keep sharing the same state than to break out a new component.
+The reality is that developers tend to take the path of least resistance and if the path of least resistance is one of bad practices then, well, developers ***will*** create a codebase with many, many bad practices — AKA “Tech Debt”. If you’ve seen a 1000+ line React or Vue component (*and who among us hasn’t?*), then the likely reason is that there was simply too much friction in parceling out the state in a manageable way as the component grew organically; *it was easier to just keep sharing the same state in one massive component than to break out a new component.*
 
-What `defineModel` does is it creates a path of least resistance that also happens to help improve how teams can think about state.  Suddenly, that middle ground of managing hierarchical component state becomes trivially easy and removes the temptation to move state into a global scope.
-
-Before we dive into how, I think it's useful to think about a conceptual model of state, components, and where to create boundaries.
-
-### A Conceptual Model of State
-
-If we revisit our list of state scopes, it's instructive to think about what we *ought* to put into each scope in concrete terms.  Generally, there are 3 scopes where state can be placed in a component hierarchy:
-
-1. **Global state**.  Truly global state like user account information; information shared between different routes.
-2. **Hierarchical state**.  A grouping of state within a component subtree; typically within a single route. Like a summary-detail editor view.
-3. **Single component state**.  The state relevant to a single, standalone component where the state interaction does not bubble out of the component nor need to go down into a sub component.
-
-![A diagram showing a model of component state](/public/img/vue34-model/state.png)
-
-While global state certainly has its use cases -- for example the state of the logged in user or light/dark mode or the currently selected tenant -- it's easy to see that it can be abused as a "cure all" when there is a need to manage shared state in a hierarchical manner beyond one or two levels deep.
-
-Component state is simple: if a control is fully self-contained with no dependencies on its siblings nor ancestors, then there is no need to think about how to share that state between the different components; we just keep all of the state and mutations inside of the component.
-
-But hierarchical state is the most interesting because this maps to common scenarios where it would be nice if it were *easy* to separate state without the friction and pain of prop drilling while maintaining Vue's reactive two way binding.  This is precisely where `defineModel` comes into play as it *dramatically* reduces the friction of prop drilling.
+What `defineModel` accomplishes is that it creates a path of least resistance that also happens to help improve how teams can think about state. Suddenly, that middle ground of managing hierarchical component state becomes trivially easy and removes the temptation to move state into a global scope or take the lazy route and resist breaking large components into smaller components because shuttling state up and down is painful (how 1000+ line components typically come to be).
 
 ### Using `defineModel` to Simplify Hierarchical State
 
@@ -173,7 +157,7 @@ Consider the following simple contact management app:
 
 Take note of the hierarchy in this example.  When a user selects a contact from `Listing.vue`, the app should show the details in `Details.vue`.  When the user edits the details and save the changes in `Details.vue`, the app should update the entry in `Listing.vue`.
 
-If we want to share state between `Listing.vue` and `Details.vue`, it has to either be global state or hierarchical state that starts from the common parent `Example3.vue`.
+If we want to share state between `Listing.vue` and `Details.vue`, it has to either be global state or hierarchical state that starts from the common parent `Example3.vue` — otherwise, it’s easy to see the temptation to glob everything into one massive component!
 
 In this case, this is what our hierarchical state looks like:
 
@@ -293,7 +277,7 @@ function handleDone() {
 </script>
 ```
 
-This component has been written with the intent of having a set of state that gets a copy of the contact details.  When the `selected` contact changes, the component copies the values into the local state so that it can mutate the state (`name` and `handle`) without affecting the original until the user saves.  With this, the user can also cancel any edits as well.
+This component has been written with the intent of having a set of state that gets a copy of the contact details. When the `selected` contact changes, the component copies the values into the local state so that it can mutate the state (`name` and `handle`) without affecting the original until the user saves. With this, the user can also cancel any edits as well.
 
 (For larger sets of properties, consider making a full reactive copy of the object and bind directly to it instead.)
 
@@ -364,7 +348,7 @@ Let's see how this whole thing comes together:
 ![Example 3 in action](/public/img/vue34-model/example3.gif)
 *Our components in action, sharing state within the hierarchy of our example component tree.*
 
-Without `defineModel` to help simplify this interaction, it's easy to see how the instinct would be to take shortcuts or move this into global state since writing the various `emits` and `computed` would create quite a bit of friction, even in this small example!
+Without `defineModel` to help simplify this interaction, it is easy to see how the instinct would be to take shortcuts or move this into global state since writing the various `emits` and `computed` would create quite a bit of friction, even in this small example!
 
 As Billy Mays might say, "*But wait!  There's more!*"; let's take a look how it is possible to further make this code easier to understand and more manageable by using *composables*.
 
@@ -434,7 +418,7 @@ const {
 </script>
 ```
 
-It's easy to see if we wanted to move more of the logic and state out from `Details.vue`, for example, it would be easy to move the `name` and `handle` refs as well as the `handleCancel()` and `handleDone()` functions into *another composable* and share them:
+It’s easy to see if we wanted to move more of the logic and state out from `Details.vue`, for example, it would be very low friction to move the name and handle refs as well as the `handleCancel()` and `handleDone()` functions into another composable and share them:
 
 ```ts
 // useDetailsEditor.ts
@@ -523,7 +507,7 @@ const {
 </script>
 ```
 
-This works nicely to cleanly separate and encapsulate related state and logic by using Vue 3 composables and Vue 3.4's `defineModel` macro.  What I hope is clear is just how *easy* it is to refactor code to this pattern by simply copying out your state, functions, watchers, and computed values wholesale and pasting them into a composable.
+This works nicely to cleanly separate and encapsulate related state and logic by using Vue 3 composables and Vue 3.4’s `defineModel` macro. What I hope is clear is just how *easy* it is to refactor code to this pattern by simply copying out state, functions, watchers, and computed values wholesale and pasting them into a composable.
 
 This pattern can make even large sub-trees of components easy to manage, refactor, and test.
 
@@ -531,9 +515,11 @@ This pattern can make even large sub-trees of components easy to manage, refacto
 
 ## Closing Thoughts
 
-The introduction of `defineModel` in Vue 3.4 is actually a profound change that will help teams to follow best practices and build better, more manageable components.  By removing a lot of the friction involved in building hierarchical state, it makes it so that teams are less likely to resort immediately to global state or fall back to sloppy practices.
+The introduction of `defineModel` in Vue 3.4 is actually a profound change that will help teams to follow best practices and build better, more manageable components. By removing a lot of the friction involved in building hierarchical state, it makes it so that teams are less likely to resort immediately to global state or fall back to sloppy practices.
 
 By combining `defineModel` with Vue composables, teams can create even cleaner components that are easy to read and understand by organizing and encapsulating related state and logic.
 
-When Evan You first proposed the Composition API for Vue 3, there was a lot of consternation and outcry from the community that wanted to retain the simplicity and approachability of the Options API.  In retrospect, it is clear to see that the path Evan You set to help Vue scale better for teams building larger projects was the right call.  With 3.4, it feels as if that vision now feels far more complete because of how streamlined and straightforward it makes state management.  In a way, it helps add clarity to the often complex decision making process of where to place state by making the easy, obvious choice the right one.
+When Evan You first proposed the Composition API for Vue 3, there was much consternation and outcry from the community that wanted to retain the simplicity and approachability of the Options API. In retrospect, it is clear to see that the path Evan You set to help Vue scale better for teams building larger projects was the right call.
+
+With 3.4, it feels as if that vision now feels far more complete because of how streamlined and straightforward it makes state management. In a way, it helps add clarity to the often complex decision making process of where to place state by making the easy, obvious choice the right one. `defineModel` feels like a small stone, cast into the ocean, who’s ripple could one day become a crashing wave!
 

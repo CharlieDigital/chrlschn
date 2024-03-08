@@ -71,13 +71,21 @@ If your interest is piqued, then here are my thoughts on shows my wife and I hav
 
 The first half and second half of this series feel miles apart, but like any great journey, the whole is more than the sum of the parts.  This story is a slow and long embrace filled with deep emotions -- sometimes ugly ones -- that we often try to avoid.  I think that this show is the richest, most complex television media I've seen on the topic of "love" in its various forms and depths.  Love for your friends, love for your partner or spouse, love for your family, love for those that give you strength, and perhaps most importantly love of yourself.  Part of the reason why it's hard to start is that the beginning of the show is stark in its absence of love; our leads are both apathetic and engrossed in their own self-pity born from internalized insecurities and shame.  But slowly, through small gestures and subtle kindness, each finds a path out of their own despair, releasing the encapsulated pain.  A fantastic piece of television that is easy to skip because of the slow start, but by episode ~6, it becomes absolutely engrossing.  Don't give up on it!
 
+### *Crash Landing on You*
+
+Towards the end, it dawned on me that there is a very strong parallel to the Lord of the Rings trilogy.  Our protagonist stumbles upon a precious and must protect it from an all-seeing entity that seeks the power of the precious.  He must embark on a dangerous journey to deliver the precious to its origins.  He sets off with a fellowship out of his cozy village through various adventures and dangerous mobs.  He becomes enamored with the precious and has a hard time letting go, even though he knows he must.  Eventually, he returns to his village, but has been changed by this journey and must leave the Shire.
+
+There are a few scenes where even the music is reminiscent of the LotR.
+
+This show is the epitome of a guilty pleasure that just feels so good.  The plot is largely predictable and it has the typical tropes *in heaps upon heaps* -- but it's so charming, well shot, the cast delivers solid performances, and it's just a fun time.  You can turn your brain off and just enjoy it.  It is surely a "typical" K-drama rom-com, but done so well that it feels elevated somehow.  That the two leads ended up getting married in real life afterwards is a sign of just how great their on-screen chemistry was in this show.
+
 ### *My Liberation Notes*
 
 From the same writer as *My Mister*, this show carries many of the same core themes of loving oneself.  The start is just as slow with characters that feel just as apathetic and seemingly stuck in their own insecurities, but each finds acceptance along the way.  If you liked *My Mister*, you'll like this.
 
 ### *Lovestruck in the City*
 
-Sometimes, we put up a mask to escape from our own flaws.  Sometimes, we put up masks to seek the attention and approval of others.  What happens in those cases when we are seen for who we are beneath the mask?  Is the mask a façade?  Or are we both what we project and what we hide?  *Lovestruck in the City* proposes that we are at once who we think we are, how others perceive us, and who we wish we could be.  It is often only our selves that are so caught up in our own flaws and insecurities, that we can't recognize these different perspectives of our identities.  Kim Ji Won, who coincidentally also portrays a struggling graphic designer in *My Liberation Notes*, delivers a character with tremendous range and subtlety.  Well-paced, relatively short episodes, and very
+Sometimes, we put up a mask to escape from our own flaws.  Sometimes, we put up masks to seek the attention and approval of others.  What happens in those cases when we are seen for who we are beneath the mask?  Is the mask a façade?  Or are we both what we project and what we hide?  *Lovestruck in the City* proposes that we are at once who we think we are, how others perceive us, and who we wish we could be.  It is often only our selves that are so caught up in our own flaws and insecurities, that we can't recognize these different perspectives of our identities.  Kim Ji Won, who coincidentally also portrays a struggling graphic designer in *My Liberation Notes*, delivers a character with tremendous range and subtlety.  Well-paced, relatively short episodes, and very easy to binge.
 
 ### *The Light in Your Eyes*
 
