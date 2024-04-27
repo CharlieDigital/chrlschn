@@ -142,7 +142,7 @@ The parent component remains unchanged, but a large volume of boilerplate code h
 
 ## A Practical Example
 
-On the surface, this seems quite a trivial change. Sure, some convenience has been gained, but how does this really affect how developers manage state? Isn’t it preposterous to claim so when it’s just a simple macro?
+On the surface, this seems quite a trivial change. Sure, some convenience has been gained, but how does this really affect how developers manage state? Isn’t it *preposterous* to claim so when it’s just a simple macro?
 
 The reality is that developers tend to take the path of least resistance and if the path of least resistance is one of bad practices then, well, developers ***will*** create a codebase with many, many bad practices — AKA “Tech Debt”. If you’ve seen a 1000+ line React or Vue component (*and who among us hasn’t?*), then the likely reason is that there was simply too much friction in parceling out the state in a manageable way as the component grew organically; *it was easier to just keep sharing the same state in one massive component than to break out a new component.*
 
@@ -418,7 +418,7 @@ const {
 </script>
 ```
 
-It’s easy to see if we wanted to move more of the logic and state out from `Details.vue`, for example, it would be very low friction to move the name and handle refs as well as the `handleCancel()` and `handleDone()` functions into another composable and share them:
+It’s easy to see if we wanted to move more of the logic and state out from `Details.vue`, for example, it would be very low friction to move the name and handle `refs` as well as the `handleCancel()` and `handleDone()` functions into another composable and share them:
 
 ```ts
 // useDetailsEditor.ts
