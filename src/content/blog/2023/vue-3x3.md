@@ -52,7 +52,7 @@ We’ll explore these concepts in the context of building a simple checklist man
 
 This first layer describes how logic is organized at the application level: the app, the state, and the routing.
 
-## 1.1) The App
+### 1.1) The App
 
 Let’s start by creating an app:
 
