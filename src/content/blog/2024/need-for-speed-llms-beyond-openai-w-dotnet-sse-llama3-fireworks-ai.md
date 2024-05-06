@@ -55,9 +55,9 @@ But what if the use case has a different need?  *What if there is a need for spe
 
 One of the problems with OpenAI's poor throughput is that it can subjectively make the user experience worse, even if the content ultimately adds value.
 
-Using ChatGPT, it may not be obvious as the SSE masks the fact that a chat response could take several seconds to complete.  It is not readily apparent until trying the alternatives just how lacking GPT-4 is in this respect.
+Using OpenAI's ChatGPT, it may not be obvious as the SSE masks the fact that a chat response could take several seconds to complete.  This lack of throughput with GPT-4 is not readily apparent until trying the alternatives.
 
-### Groq
+### Groq.com
 
 Groq is an interesting platform as their claim to fame is custom hardware specifically designed for LLMs dubbed an "LPU" or "Language Processing Unit":
 
@@ -65,7 +65,7 @@ Groq is an interesting platform as their claim to fame is custom hardware specif
 
 At least on paper, it does seem to be more than just marketing hype and the platform is objectively high throughput.
 
-But the main problem comes down to their current SaaS:
+But the main problem comes down to their current SaaS offering:
 
 ![Groq currently lacks an intermediate paid tier.](/public/img/need-for-speed/groq-billing.png)
 *Groq currently lacks an intermediate paid tier with only free or enterprise billing.*
@@ -77,7 +77,7 @@ The free tier is only usable for experiments and even then, just barely:
 
 So even though Groq is quite fast, it's unusable except for sandboxing and then possibly via their enterprise billing.
 
-### Fireworks
+### Fireworks.ai
 
 As of this writing, Fireworks' Llama-3 70B comes in at 9th overall and is the second fastest Llama-3 70B:
 
@@ -194,7 +194,7 @@ public async Task GenerateAsync(
 
   var completion = fragmentHandler();
 
-  // 👇 (4) Now we run the generation prompts in parallel
+  // 👇 (4) Now we run the generation prompts concurrently
   Task.WaitAll([
     handler(new ("alt", alternates)),
     GenerateIngredientsAsync(recipe, ingredientsOnHand, request.PrepTime, cancellation),
@@ -232,7 +232,7 @@ private async Task GenerateIntroAsync(
 }
 ```
 
-And the method for executing our prompts:
+And the method for executing the prompts:
 
 ```csharp
 /// <summary>
@@ -243,20 +243,14 @@ private async Task ExecutePromptAsync(
   string prompt,
   OpenAIPromptExecutionSettings settings,
   Action<string>? resultHandler = null,
+  string? modelOverride = null,
   CancellationToken cancellation = default
 ) {
-  // 👇 Build our Semantic Kernel instance
-  var kernelBuilder = Kernel.CreateBuilder();
-  var kernel = kernelBuilder
-      .AddOpenAIChatCompletion( // 👈 Fireworks.ai is API compatible with OpenAI
-          modelId: _model,
-          apiKey: _key,
-          endpoint: _endpoint
-      )
-      .Build();
-
   // 👇 Initialize our chat
-  var chat = kernel.GetRequiredService<IChatCompletionService>();
+  var chat = _kernel.GetRequiredService<IChatCompletionService>(
+    modelOverride ?? "70b" // Use 70b if no override is specified.
+  );
+
   var history = new ChatHistory();
   var buffer = new StringBuilder();
 
@@ -264,7 +258,7 @@ private async Task ExecutePromptAsync(
 
   // 👇 Stream the response and write each part to our channel
   await foreach (var message in chat.GetStreamingChatMessageContentsAsync(
-      history, settings, kernel, cancellation
+      history, settings, _kernel, cancellation
     )
   ) {
       await _channel.Writer.WriteAsync( // 👈 The writer end of our channel
@@ -280,6 +274,52 @@ private async Task ExecutePromptAsync(
   // 👇 If the caller wants the full result, we have it here
   resultHandler?.Invoke(output);
 }
+```
+
+The `Kernel` instance is configured and during application startup via dependency injection:
+
+```csharp
+// Program.cs
+var builder = WebApplication.CreateBuilder(args);
+
+var fireworksEndpoint = new Uri("https://api.fireworks.ai/inference/v1/chat/completions");
+var groqEndpoint = new Uri("https://api.groq.com/openai/v1/chat/completions");
+
+var config = builder.Configuration
+  .GetSection(nameof(RecipesConfig))
+  .Get<RecipesConfig>();
+
+// Set up Semantic Kernel, registering as many LLMs as we need.
+var kernelBuilder = Kernel.CreateBuilder();
+var kernel = kernelBuilder
+  .AddOpenAIChatCompletion(
+    modelId: "accounts/fireworks/models/llama-v3-70b-instruct",
+    apiKey: config!.FireworksKey,
+    endpoint: fireworksEndpoint,
+    serviceId: "70b" // 👈 Use this serviceId by default for better results
+  )
+  .AddOpenAIChatCompletion(
+    modelId: "accounts/fireworks/models/llama-v3-8b-instruct",
+    apiKey: config!.FireworksKey,
+    endpoint: fireworksEndpoint,
+    serviceId: "8b" // 👈 Use this serviceId when we need more speed
+  )
+  .AddOpenAIChatCompletion(
+    modelId: "llama3-8b-8192",
+    apiKey: config!.GroqKey,
+    endpoint: groqEndpoint,
+    serviceId: "groq-8b" // 👈 Use this serviceId for max throughput
+  )
+  // Register other LLMs here.
+  .Build();
+
+builder.Services
+  .Configure<RecipesConfig>(
+    builder.Configuration.GetSection(nameof(RecipesConfig))
+  )
+  .AddCors()
+  .AddSingleton(kernel)  // 👈 Add our configured kernel as a singleton
+  .AddScoped<RecipeGenerator>();
 ```
 
 ### Simultaneous Streams with SSE
@@ -309,7 +349,7 @@ The front-end receives a stream of these messages which gets accumulated into di
 
 On the front-end, [@microsoft/fetch-event-source](https://www.npmjs.com/package/@microsoft/fetch-event-source) is polyfilled for the native `EventSource` to allow the usage of `POST`.
 
-> Note: it is non-trivial to render the output as HTML either on the client side or on the server side.  Part of the problem is that the output is generated partially so writing out `<` results in the HTML entity `&lt;` if we don't have the rest of the element (assuming we output HTML from the backend).
+> Note: it is non-trivial to render the output as HTML either on the client side or on the server side.  Part of the problem is that the output is generated partially so writing out `<` results in the HTML entity `&lt;` if we don't have the rest of the element (assuming we output HTML from the backend).  Probably the best solution is to "cache" the raw HTML text in a hidden element along with a rendered version.
 
 The receiver takes each message and decodes it:
 
@@ -334,7 +374,7 @@ A special note with `text/event-stream` is that double newlines indicate the end
 
 The CSS simply needs to account for this:
 
-```csharps
+```css
 #add, #ing, #ste {
   white-space: pre-line;
 }
