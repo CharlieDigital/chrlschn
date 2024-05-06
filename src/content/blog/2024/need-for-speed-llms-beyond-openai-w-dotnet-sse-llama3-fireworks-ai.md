@@ -1,8 +1,8 @@
 ---
-title: "Need for Speed: LLMs Beyond OpenAI with .NET 8 SSE + Channels, Llama3, and Fireworks.ai"
+title: "Need for Speed: LLMs Beyond OpenAI with C#, .NET 8 SSE + Channels, Llama3, and Fireworks.ai"
 description: "If your gen AI use case has a need for speed, then it might be time to move beyond OpenAI GPT and combine that with a backend capable of high-throughput concurrent processing."
 pubDate: "2024 May 05"
-socialImage: "/public/img/vue34-model/state.png"
+socialImage: "/public/img/need-for-speed/generation-example.gif"
 slug: "2024/05/need-for-speed-llms-beyond-openai-w-dotnet-sse-channels-llama3-fireworks-ai"
 tags: "ai,.net,sse,channels"
 ---
@@ -11,15 +11,15 @@ tags: "ai,.net,sse,channels"
 
 ## Summary
 
-- While OpenAI's GTP-4 is undoubtedly the champ when it comes to general purpose workloads, its overall throughput leaves ***a lot*** to be desired.  This makes it great for "offline" workloads, but can leave it feel less than suitable for applications where users are expecting for responsiveness and may even preclude some use cases due to the inferior UX.
-- A recent post on Hackernews by the team at [TheFastest.ai](https://thefastest.ai/) highlights just how big this disparity can be in terms of both the model and the platform.  In particular, [Groq.com](https://groq.com) (not to be confused with Musk's Grok) and [Fireworks.ai](https://fireworks.ai) paired with Meta's Llama 3 70B provides blazing throughput with minimal sacrifice in output compared to GPT-4.
-- Combining this with .NET 8 `System.Threading.Channel` and server-sent events (SSE), novel use cases can be built that simply would not work with OpenAI due to the low throughput and high latency.
+- While OpenAI's GTP-4 is undoubtedly the champ when it comes to general purpose workloads, its overall throughput (or rather lack thereof) leaves ***a lot*** to be desired.  This makes it great for "offline" workloads, but can leave it feeling less than suitable for applications where users are expecting more responsiveness and may even preclude some use cases due to the inferior UX.
+- [A recent post on Hackernews](https://news.ycombinator.com/item?id=40137441) by the team at [TheFastest.ai](https://thefastest.ai/) highlights just how big this disparity can be in terms of both the model and the platform.  In particular, [Groq.com](https://groq.com) (not to be confused with Musk's Grok) and [Fireworks.ai](https://fireworks.ai) paired with Meta's Llama 3 70B provides blazing throughput with minimal sacrifice in output compared to GPT-4 for some workloads.
+- Combining this with C#/.NET 8 `System.Threading.Channels` and server-sent events (SSE), novel use cases can be built that simply would not work with OpenAI due to the low throughput and high latency.
 
 ---
 
 ## Intro
 
-While we await GPT-5, few would argue that in May, 2024, OpenAI's GPT-4 is still the champ when it comes to overall performance as an LLM.  Where it comes up short is its relatively low throughput and high latency.
+While we await GPT-5, few would argue that in May, 2024, OpenAI's GPT-4 is still the champ when it comes to overall performance as an LLM.  Where it comes up short is its relatively low throughput and high latency which can make it sub-optimal if the UX requires a more interactive experience.
 
 What may not be obvious is just how low throughput it is if the use case has a need for speed.
 
@@ -27,21 +27,29 @@ A recent Hackernews thread led me to [TheFastest.ai](https://thefastest.ai) and 
 
 *(The former is unfortunate in that it is often confused with Musk's Grok AI)*.
 
+In this article, we'll explore building an app with Fireworks.ai, Meta Llama 3 8B/70B, .NET 8, `System.Threading.Channels`, and Server Sent Events (SSE).
+
+> 💡 Full repo is available here: https://github.com/CharlieDigital/dn8-sk-llama3-fireworks.  Follow the instructions in the `README.md` to get it up and running.  Start by signing up for a free account and credits at Fireworks.ai
+
 ## Measuring the Difference
 
 The top of the stack is dominated by Llama-3 and Groq with Fireworks.ai rounding out the top 5 (we'll discuss in a bit why teams should *probably* choose Fireworks)
 
 ![Highest throughput options from groq.com running llama-3](/public/img/need-for-speed/top-of-the-stack.png)
+*TTFT = Time to First Token, TPS = Tokens Per Second, Total = Total Time to Last Token*
 
 In contrast, OpenAI's GPT-4 sits near the bottom:
 
 ![OpenAI GPT-4 sits near the bottom in throughput](/public/img//need-for-speed/back-of-the-stack.png)
+*OpenAI GPT-4 nearly 10x slower to the last token*
+
+> Note that these benchmarks are subject to change on any given day based on various factors; these screenshots should only be considered relevant at the time they were captured.
 
 Anyone that has worked with OpenAI's GPT-4 is already aware of just how poor the throughput is.  But seeing it measured out like this just highlights how big this gap is.  ***Groq's Llama-3 70B is nearly 10x higher throughput to final token than GPT-4!***
 
-Given this, I have found that GPT-4 is really good for cases where isn't a need for interactivity (pre-processed), the workload requires the large context window, or where there is a need benchmark quality output.
+Given this, I have found that GPT-4 is really good for cases where: there is no need for interactivity (pre-processed), the workload requires the large context window, or where there is a need for "benchmark quality" output with complex prompts and contexts.
 
-But what if the use case has a different need?  *What if there is have a need for speed*?
+But what if the use case has a different need?  *What if there is a need for speed*?
 
 ## Kicking the Tires with Groq and Fireworks
 
@@ -73,15 +81,17 @@ So even though Groq is quite fast, it's unusable except for sandboxing and then 
 
 As of this writing, Fireworks' Llama-3 70B comes in at 9th overall and is the second fastest Llama-3 70B:
 
-![](/public/img/need-for-speed/fireworks-70b.png)
+![Fireworks.ai Llama 3 70B is still plenty fast](/public/img/need-for-speed/fireworks-70b.png)
+*At 250ms to the last token, it only trails groq.com's Llama 3 8B by 139ms*
 
 At 260ms to last token, it is still plenty fast while offering really good LLM performance comparable to something between GPT-3.5 and GPT-4 based on my use cases.
 
-It *also* lacks an intermediate paid tier, the 600 RPM is usable for small apps and there is hard token limit:
+While Fireworks.ai *also* lacks an intermediate paid tier, the 600 RPM is usable for small apps and there is no hard token limit:
 
 ![Pricing info for Fireworks.ai](/public/img/need-for-speed/fireworks-pricing.png)
+*Sign up and you'll get some free credits; enough for 1 million tokens generated*
 
-For teams trying to build something fast today, Fireworks.ai is probably the best bet.
+**For teams trying to build something fast today, Fireworks.ai is probably the best bet.** *(No, I'm not getting paid by them)*
 
 ---
 
@@ -89,7 +99,7 @@ For teams trying to build something fast today, Fireworks.ai is probably the bes
 
 To take the greatest advantage of this incredible throughput, what is needed is a concurrent processing strategy that will allow generation through multiple streams at once and then coalescing into one final output stream to the front-end.
 
-This is the perfect use case for combining .NET's `System.Threading.Channels` along with Server Sent Events (SSE) to fully exploit this throughput and build a highly responsive generative AI experience.
+This is the perfect use case for combining .NET's *`System.Threading.Channels`* along with *Server Sent Events (SSE)* to fully exploit this throughput and build a highly responsive generative AI experience.
 
 I've previously written about both topics separately:
 
@@ -117,7 +127,7 @@ Steps 3-6 can run in parallel, but because we need to pick a recipe first, step 
 
 The entrypoint of the API call is a single `POST` endpoint that will receive the request:
 
-```cs
+```csharp
 // 👇 The main entry point.
 app.MapPost("/generate", async (
   HttpContext context,          // From dependency injection
@@ -144,7 +154,7 @@ app.MapPost("/generate", async (
 
 The `RecipeGenerator.GenerateAsync` method contains the main flow:
 
-```cs
+```csharp
 /// <summary>
 /// The main entry point
 /// </summary>
@@ -202,7 +212,7 @@ public async Task GenerateAsync(
 
 Each of the generation steps follows a similar pattern:
 
-```cs
+```csharp
 private async Task GenerateIntroAsync(
   RecipeSummary recipe,
   CancellationToken cancellation = default
@@ -224,7 +234,7 @@ private async Task GenerateIntroAsync(
 
 And the method for executing our prompts:
 
-```cs
+```csharp
 /// <summary>
 /// Executes the prompt and writes the result to the channel.
 /// </summary>
@@ -274,7 +284,7 @@ private async Task ExecutePromptAsync(
 
 ### Simultaneous Streams with SSE
 
-The diagram below show show the execution flows:
+To help visualize this flow, check out the diagram below:
 
 ![Execution flow](/public/img/need-for-speed/flow-diagram.png)
 
@@ -286,6 +296,10 @@ In this case:
 
 ```
 data: ing|tomatoes
+
+data: ing|basil
+
+data: ste|3. Chop the
 ```
 
 The front-end receives a stream of these messages which gets accumulated into different sections of the UI.
@@ -320,7 +334,7 @@ A special note with `text/event-stream` is that double newlines indicate the end
 
 The CSS simply needs to account for this:
 
-```css
+```csharps
 #add, #ing, #ste {
   white-space: pre-line;
 }
@@ -346,18 +360,22 @@ The HTML itself is simple:
 
 ### Putting it Together
 
-Now that all the parts in place, running the app should yield the following experience:
+Now that all the parts are in place, running the app should yield the following experience:
 
 ![The layout of the sample app](/public/img/need-for-speed/generation-example.gif)
 
 There is a slight initial delay as the call to generate the list of recipes is blocking.
 
-However, once the list is generated and one is selected at random, the additional generation occurs in parallel with only the steps being blocked by the full list of ingredients (since we need that to generate accurate steps that reflect our full ingredient list).
+However, once the list is generated and one is selected at random, the additional generation occurs concurrently with only the steps being blocked by the full list of ingredients (since we need that to generate accurate steps that reflect our full ingredient list).
 
 ---
 
 ## Conclusion
 
-For applications where the UX benefits from having higher throughput and you can make it work with smaller context windows, Fireworks.ai with Llama-3 8B/70B is absolutely a game changer; it lets teams build for use cases that would otherwise compromise the overall UX with the high latency of OpenAI's GPT models.
+For applications where the UX benefits from having higher throughput and you can make it work with smaller context windows, **Fireworks.ai with Llama-3 8B/70B is absolutely a game changer**; it lets teams build for use cases that would otherwise compromise the overall UX with the high latency of OpenAI's GPT models.
 
 Plugging that into a .NET 8 web API using `System.Threading.Channels` combined with SSE means that it is possible to concurrently generate multiple chunks of content and open up a new set of possibilities for leveraging generative AI whether the objective is to build more interactive gen AI experiences or simply speeding up your generative workflows.
+
+The same techniques (minus SSE) can increase the throughput of your server generation workloads by processing multiple prompts in parallel using lower latency + higher throughput models and platforms.
+
+> 💡 Full repo is available here: https://github.com/CharlieDigital/dn8-sk-llama3-fireworks
