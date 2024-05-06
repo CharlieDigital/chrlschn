@@ -174,3 +174,8 @@ If your interest is piqued, check out these past articles:
 * [The Case for C# and .NET](https://itnext.io/the-case-for-c-and-net-72ee933da304)
 * [6 .NET Myths Dispelled](https://blog.devgenius.io/6-net-myths-dispelled-celebrating-21-years-of-net-652795c2ea27)
 * [Getting Functional with C#](https://itnext.io/getting-functional-with-c-6c74bf279616)
+
+**[2024-05-05]** If you're looking for more practical examples of `System.Threading.Channels`, check out these two posts:
+
+- [Need for Speed: LLMs Beyond OpenAI with .NET 8 SSE + Channels, Llama3, and Fireworks.ai](https://chrlschn.dev/blog/2024/05/need-for-speed-llms-beyond-openai-w-dotnet-sse-channels-llama3-fireworks-ai/#simultaneous-streams-with-sse)
+- [.NET Task Parallel Library vs System.Threading.Channels](https://chrlschn.dev/blog/2023/10/dotnet-task-parallel-library-vs-system-threading-channels/)

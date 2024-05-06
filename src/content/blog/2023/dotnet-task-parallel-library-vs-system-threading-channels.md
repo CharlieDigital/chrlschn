@@ -205,6 +205,11 @@ If you'd like to explore other options for building concurrent/parallel systems 
 - [ZeroMQ](https://zeromq.org/): socket abstraction for building distributed, multi-node clusters
 - [DotMP](https://github.com/computablee/DotMP): a .NET implementation of [OpenMP](https://www.openmp.org/)
 
+**[2024-05-05]** If you're looking for more practical examples of `System.Threading.Channels`, check out these two posts:
+
+- [Need for Speed: LLMs Beyond OpenAI with .NET 8 SSE + Channels, Llama3, and Fireworks.ai](https://chrlschn.dev/blog/2024/05/need-for-speed-llms-beyond-openai-w-dotnet-sse-channels-llama3-fireworks-ai/#simultaneous-streams-with-sse)
+- [Concurrent Processing in .NET 6 with System.Threading.Channels (Bonus: Interval Trees)](https://chrlschn.dev/blog/2022/11/concurrent-processing-dotnet6-channels-interval-trees/)
+
 ---
 
 ## Special Note
