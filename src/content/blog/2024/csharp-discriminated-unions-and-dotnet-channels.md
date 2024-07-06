@@ -15,7 +15,11 @@ tags: ".net,concurrency,discriminated unions"
 - Discriminated unions pair nicely with .NET channels as a way to process many different types of data simultaneously
 - When combined, .NET channels with discriminated unions make it easy to process and combine streams of data.
 
+> 💡 Full repository here: https://github.com/CharlieDigital/dotnet-du-channels
+
 ---
+
+!["Diagram"](/public/img/dn-du-channels/dotnet-du-channels.png)
 
 ## .NET and Discriminated Unions.
 
@@ -61,20 +65,32 @@ A perfect use case for .NET channels and discriminated unions.
 
 ## The Discriminated Union
 
+There are at least three reasonable ways to create the necessary types in this case:
+
+1. **Use a base class**; but the various parts are mostly discrete aside from sharing the ID of the call record.
+2. **Use a generic class** like `Fragment<T>` where `T` is the type of the fragment, but this has some ergonomic issues when it comes to handling the actual action on the aggregation side.
+3. **Use a discriminated union!**
+
 Since three types of facets can be produced from a single call record, a discriminated union of these three types can be used to model the structure:
 
 ```csharp
-public record UrgencyScore();
+public record UrgencyScore;
 
-public record RoutingTicket();
+public record RoutingTicket;
 
-public record KeywordTags();
+public record KeywordTags;
 
+/// <summary>
+/// The discriminated union representing "one of" the three types
+/// </summary>
 [GenerateOneOf]
-public partial class CallLogFacet : OneOfBase<UrgencyScore, RoutingTicket, KeywordTags> { }
+public partial class CallLogFacet
+  : OneOfBase<UrgencyScore, RoutingTicket, KeywordTags>;
 ```
 
 The type `CallLogFacet` can be *one of* `UrgencyScore`, `RoutingTicket`, or `KeywordTags`.
+
+It's worth noting that there is some obvious similarity to a `Fragment<T>` implementation, but the DU restricts the types to only the three specific types without the need to define a base class or interface.
 
 ## Setting Up the Producer
 
@@ -102,19 +118,13 @@ To support this, start by creating a `System.Threading.Channel` to process the r
 
 The channel is a fitting abstraction here as it simplifies the synchronization of the parallel processing to a single thread on the read side.
 
-There are at least three reasonable ways to type this channel:
-
-1. **Use a base class**; but the various parts are mostly discrete aside from sharing the ID of the call record.
-2. **Use a generic class** like `Fragment<T>` where `T` is the type of our fragment, but this has some ergonomic issues when it comes to handling the actual action on the aggregation side.
-3. **Use a discriminated union!**
-
 In this case, the channel is created using a tuple type which has the integer representing the ID and the facet of the call log that is produced:
 
 ```csharp
 var channel = Channel.CreateUnbounded<(int, CallLogFacet)>();
 ```
 
-The DU type `CallLogFacet` allows the channel to accept any of `UrgencyScore`, `RoutingTicket`, or `KeywordTags`.  Unlike a generic type constraint like  `Fragment<T>`, the channel is now bound specifically to these three types.
+The DU type `CallLogFacet` allows the channel to accept any of `UrgencyScore`, `RoutingTicket`, or `KeywordTags`.
 
 ## Main Processing Flow
 
@@ -238,4 +248,4 @@ Despite the fact that the channel can produce three totally different facets of 
 
 Discriminated unions pair nicely with .NET channels when the workload can be parallelized and each part of the workload produces a discrete result.  The channel eliminates much of the complexity with synchronization when it comes to multi-threaded workloads while the DU improves the ergonomics of working with a channel that can produce multiple types of output.
 
-While C# currently lacks native support for DUs, libraries like dunet and OneOf provide easy-to-adopt
+While C# currently lacks native support for DUs, libraries like dunet and OneOf provide easy-to-adopt and a welcome tool for workloads like the one in this example.
