@@ -4,7 +4,7 @@ description: "If your gen AI use case has a need for speed, then it might be tim
 pubDate: "2024 May 05"
 socialImage: "/public/img/need-for-speed/generation-example.gif"
 slug: "2024/05/need-for-speed-llms-beyond-openai-w-dotnet-sse-channels-llama3-fireworks-ai"
-tags: "ai,.net,sse,channels"
+tags: "ai,.net,sse,concurrency"
 ---
 
 ----
@@ -276,7 +276,7 @@ private async Task ExecutePromptAsync(
 }
 ```
 
-The `Kernel` instance is configured and during application startup via dependency injection:
+The `Kernel` instance is configured during application startup via dependency injection:
 
 ```csharp
 // Program.cs
