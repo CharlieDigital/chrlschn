@@ -96,7 +96,7 @@ The type `CallLogFacet` can be *one of* `UrgencyScore`, `RoutingTicket`, or `Key
 
 It's worth noting that there is some obvious similarity to a `Fragment<T>` implementation, but the DU restricts the types to only the three specific types without the need to define a base class or interface; the DU takes the place of the contract.
 
-## Setting Up the Producer
+## Setting Up the Data Source
 
 The exact mechanism of how the call records are sourced doesn't matter and is outside of the scope of this example.  In fact, this example uses a simple enumerable that produces a sequence of numbers.  (In the real world, this data might be read from a line of text from a CSV or a database):
 
@@ -250,7 +250,7 @@ Despite the fact that the channel can produce three totally different facets of 
 
 ## Closing Thoughts
 
-Discriminated unions pair nicely with .NET channels when the workload can be parallelized and each part of the workload produces a discrete result.  The channel eliminates much of the complexity with synchronization when it comes to multi-threaded workloads while the DU improves the ergonomics of working with a channel that can produce multiple types of output.
+Discriminated unions pair nicely with .NET channels when the workload can be parallelized and each part of the workload produces a discrete result.  The channel eliminates much of the complexity with synchronization when it comes to multi-threaded workloads while the DU improves the ergonomics of working with a channel that can produce multiple types of output in addition to providing an exhaustiveness constraint when aggregating the resultant fragments.
 
 While C# currently lacks native support for DUs, libraries like dunet and OneOf provide easy-to-adopt support for DUs in C# and are a welcome tool for workloads like the one in this example.
 

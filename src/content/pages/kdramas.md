@@ -71,6 +71,16 @@ If your interest is piqued, then here are my thoughts on shows my wife and I hav
 
 The first half and second half of this series feel miles apart, but like any great journey, the whole is more than the sum of the parts.  This story is a slow and long embrace filled with deep emotions -- sometimes ugly ones -- that we often try to avoid.  I think that this show is the richest, most complex television media I've seen on the topic of "love" in its various forms and depths.  Love for your friends, love for your partner or spouse, love for your family, love for those that give you strength, and perhaps most importantly love of yourself.  Part of the reason why it's hard to start is that the beginning of the show is stark in its absence of love; our leads are both apathetic and engrossed in their own self-pity born from internalized insecurities and shame.  But slowly, through small gestures and subtle kindness, each finds a path out of their own despair, releasing the encapsulated pain.  A fantastic piece of television that is easy to skip because of the slow start, but by episode ~6, it becomes absolutely engrossing.  Don't give up on it!
 
+### *Atypical Family*
+
+Billed as a story about a family with superpowers, it's not at all what you think it is -- the family isn't running around saving people.  Instead, when we first meet the family, the powers feel more like curses to the happiness of each of the family members.  Yet they are the central storytelling device that enable the structure of the story; it couldn't be told without these powers.
+
+Listen, this storyline has holes if you start thinking too deeply about it, but it is a creative piece of story telling that takes some notes from *A Time Called You*.  The cast was excellent; amazing performances all around. At 12 episodes, it feels just right.  I can see how some folks might find a few of the middle episodes slow-paced considering the faster pace of the bookend episodes, but it felt just right for me and the pacing was right for the thoughtful storytelling here.
+
+Soundtrack was well designed, cinematography was fantastic with really great camera work, all of the leads delivered in their roles.
+
+Really, really enjoyed this because I was not expecting it at all (Netflix descriptions are terrible).  I think if it took a cue from *Inception* for the ending, this storyline would have been elevated, IMO.
+
 ### *Crash Landing on You*
 
 Towards the end, it dawned on me that there is a very strong parallel to the Lord of the Rings trilogy.  Our protagonist stumbles upon a precious and must protect it from an all-seeing entity that seeks the power of the precious.  He must embark on a dangerous journey to deliver the precious to its origins.  He sets off with a fellowship out of his cozy village through various adventures and dangerous mobs.  He becomes enamored with the precious and has a hard time letting go, even though he knows he must.  Eventually, he returns to his village, but has been changed by this journey and must leave the Shire.

@@ -419,3 +419,9 @@ Plugging that into a .NET 8 web API using `System.Threading.Channels` combined w
 The same techniques (minus SSE) can increase the throughput of your server generation workloads by processing multiple prompts in parallel using lower latency + higher throughput models and platforms.
 
 > 💡 Full repo is available here: https://github.com/CharlieDigital/dn8-sk-llama3-fireworks
+
+If you'd like to read more on .NET channels, check out:
+
+- [C# Discriminated Unions and .NET Channels (2024-07-06)](https://chrlschn.dev/blog/2024/07/csharp-discriminated-unions-and-dotnet-channels/)
+- [.NET Task Parallel Library vs System.Threading.Channels (2023-10-04)](https://chrlschn.dev/blog/2023/10/dotnet-task-parallel-library-vs-system-threading-channels/)
+- [Concurrent Processing in .NET 6 with System.Threading.Channels (Bonus: Interval Trees) (2022-11-06)](https://chrlschn.dev/blog/2022/11/concurrent-processing-dotnet6-channels-interval-trees/)
