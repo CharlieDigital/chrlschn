@@ -175,7 +175,8 @@ If your interest is piqued, check out these past articles:
 * [6 .NET Myths Dispelled](https://blog.devgenius.io/6-net-myths-dispelled-celebrating-21-years-of-net-652795c2ea27)
 * [Getting Functional with C#](https://itnext.io/getting-functional-with-c-6c74bf279616)
 
-**[2024-05-05]** If you're looking for more practical examples of `System.Threading.Channels`, check out these two posts:
+If you're looking for more practical examples of `System.Threading.Channels`, check out these posts:
 
-- [Need for Speed: LLMs Beyond OpenAI with .NET 8 SSE + Channels, Llama3, and Fireworks.ai](https://chrlschn.dev/blog/2024/05/need-for-speed-llms-beyond-openai-w-dotnet-sse-channels-llama3-fireworks-ai/#simultaneous-streams-with-sse)
-- [.NET Task Parallel Library vs System.Threading.Channels](https://chrlschn.dev/blog/2023/10/dotnet-task-parallel-library-vs-system-threading-channels/)
+- [C# Discriminated Unions and .NET Channels (2024-07-06)](https://chrlschn.dev/blog/2024/07/csharp-discriminated-unions-and-dotnet-channels/)
+- [Need for Speed: LLMs Beyond OpenAI with C#, .NET 8 SSE + Channels, Llama3, and Fireworks.ai (2024-05-05)](https://chrlschn.dev/blog/2024/05/need-for-speed-llms-beyond-openai-w-dotnet-sse-channels-llama3-fireworks-ai/)
+- [.NET Task Parallel Library vs System.Threading.Channels (2023-10-04)](https://chrlschn.dev/blog/2023/10/dotnet-task-parallel-library-vs-system-threading-channels/)
