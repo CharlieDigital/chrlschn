@@ -11,7 +11,7 @@ tags: ".net,google cloud"
 
 ## Summary
 
-- When working with large data ETL, it can be useful to "checkpoint" your output to reduce costs if something fails.
+- When working with large dataset ETL, it can be useful to "checkpoint" your output to reduce costs if something fails.
 - Google Cloud Storage offers a nifty feature called [object composition](https://cloud.google.com/storage/docs/composing-objects#storage_compose_object-csharp) for merging multiple objects into one
 - This feature has some limits, but ultimately provides a useful way to perform ETL steps with a "checkpoint" to reduce the cost of recovery.
 
@@ -24,7 +24,7 @@ tags: ".net,google cloud"
 
 Google Cloud Storage has a really nifty feature that allows you to ["compose" multiple storage objects into one](https://cloud.google.com/storage/docs/composing-objects#storage_compose_object-csharp).
 
-This can be really useful if you're performing ETL-like tasks across a large dataset and you want to add resiliency to your process by allowing you to "checkpoint" you work by simply dumping out state into a storage object.  For example, imagine that you are moving data from an API and processing a large resultant CSV file (think tens of thousands of records).
+This can be really useful if you're performing ETL-like tasks across a large dataset and you want to add resiliency to your process by allowing you to "checkpoint" your work by simply dumping out state into a storage object.  For example, imagine that you are moving data from an API and processing a large resultant CSV file (think tens of thousands of records).
 
 That API call may be costly and may be subject to rate limiting.  So what happens if your process fails?  To solve for this, we can simply periodically dump out a fragment of our extract.  For example, imagine that we are extracting 30 days of data from some API.  We can simply dump out 1 day at a time and then at the end, merge all 30 days into one large object for the next step of processing.
 
@@ -186,7 +186,7 @@ LINE FOR: 1729868/fragment-39.csv
 
 Nice!
 
-With this mechanism in place, then we can easily checkout and dump out a partial CSV as we process a large dataset.
+With this mechanism in place, then we can easily checkpoint and dump out a partial CSV as we process a large dataset.
 
 If we need to restart, simply check if the dataset already exists in Cloud Storage and add the path if it does.  Otherwise, process the chunk and dump out a CSV.
 
@@ -235,7 +235,7 @@ Only one file remains; keeping everything tidy.
 
 ## Limited Chunks
 
-What if we actually don't want 1 massive file?  What if we want to compose say every _n_ files in to 1?  An example might a case where each file has 1,000 records and we want resultant files to max out at 10,000 records.
+What if we actually don't want 1 massive file?  What if we want to compose say every _n_ files in to 1?  An example might be a case where each file has 1,000 records and we want resultant files to max out at 10,000 records.
 
 Let's update our logic here so that we dump out a file for each subset:
 
