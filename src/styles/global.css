@@ -10,7 +10,7 @@ img + em {
     margin-top: -24px;
 }
 
-article img {
+article img, article video {
     border-radius: 6px;
 }
 
