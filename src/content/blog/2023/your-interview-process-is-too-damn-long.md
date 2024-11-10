@@ -45,9 +45,6 @@ My approach to hiring focused on 3 simple, high-level objectives:
 
 ---
 
-![Too damn long](/public/img/interview/too-damn-long.jpg)
-*4+ hours? Sessions spread over more than 1 day? Over a week to get to an offer?  Your interview process is too damn long.*
-
 ## Efficient use of time
 
 Selfishly, I hate wasting my own time with protracted, multi-session interview processes.  To that end, for any particular type of role, I end up designing a tight set of technical questions that aim to identify a candidate's level of experience in 10-12 questions/exercises for any given topic.
