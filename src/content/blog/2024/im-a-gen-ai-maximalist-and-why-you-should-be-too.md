@@ -166,3 +166,7 @@ While I do not yet have concrete thoughts on artificial general intelligence (AG
 The pattern is obvious: at each stage of bandwidth expansion, the ratio of producers to consumers increases and generative AI seems to be the engine that will push this ratio ever closer to 1.  The expansion always moves from text to images to audio to video to interactive.  To power this expansion, expect to see continued investments by the likes of Nvidia, Microsoft, Meta, Google, and Apple into generative AI.
 
 It is easy to look at the middling state of generated content today and dismiss "AI" as a dud; an over-hyped promise that has under-delivered.  But history has shown that technology that expands bandwidth for content and decreases the friction for production and distribution -- from the printing press to the World Wide Web -- will ultimately prevail and deliver riches.
+
+---
+
+Can AI startups actually create a moat?  Check out [AI Startup Moats: The Difference Between Bakers and Ovens](https://chrlschn.dev/blog/2024/11/ai-startup-moats-the-difference-between-bakers-and-ovens/)
