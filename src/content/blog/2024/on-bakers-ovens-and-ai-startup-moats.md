@@ -1,9 +1,9 @@
 ---
-title: "AI Startup Moats: The Difference Between Bakers and Ovens"
+title: "On Bakers, Ovens, and AI Startup Moats"
 description: "Are new AI startups \"just another wrapper for a 3rd party model\"? Does having an oven make you a baker?"
 pubDate: "2024 Nov 09"
 socialImage: "/public/img/ai-startups/just-a-wrapper.png"
-slug: "2024/11/ai-startup-moats-the-difference-between-bakers-and-ovens"
+slug: "2024/11/on-bakers-ovens-and-ai-startup-moats"
 tags: "ai"
 ---
 
@@ -40,7 +40,7 @@ What is clear through the many different iterations of services we've built arou
 - Without retrieval augmented generation (RAG), the LLM *will* hallucinate
 - A related problem is that, until web search was integrated, the LLM had no way of knowing about knowledge that came after its training data
 - Giving it access to web search creates another problem: search has become "enshittified" with ads and spam results so even giving it access to search can be risky
-- Of course, it also won't have knowledge about information that never never showed up in its training dataset or search (e.g. private enterprise data)
+- Of course, it also won't have knowledge about information that never showed up in its training dataset or search (e.g. private enterprise data)
 - Basic RAG has its limits so teams need to continuously find clever ways to improve the RAG like using graph-based RAG
 - The LLM's understanding of instructions for complex tasks is quite "robotic" in that it prefers following very specific instructions and any ambiguity risks undesired/useless output
 - Even when given precise instructions on the output format, LLMs often tend to generate incorrect output formats.  This was especially bad with JSON early on, but still present today and crops up when generating output in batches of thousands (you *will* see failures).
@@ -67,15 +67,33 @@ Startups that want to succeed working with AI similarly must understand that *th
 - How well does the team understand what data is needed and what datasets are available to achieve the desired output.
 - How creative the team is in transforming and using that data given the limitations of LLMs.
 - How the team thinks about combining different pieces of data to feed context into the LLM.
-- How the team puts the finishing touches on the output and presents the results to the consumer (often require parsing and transforming once again).
+- How the team puts the finishing touches on the output and presents the results to the consumer (often requiring parsing and transforming once again).
 
 It is not unlike the culinary arts: the best chefs and bakers deeply understand the input ingredients be it their flavor and texture profiles, how they should be shaped for different applications, how they have to be prepared, how one ingredient will complement another, how to combine it all, and how to present the finished product tastefully and creatively.  Hitting "bake" on the oven is simply one step that applies heat to combine and transform the ingredients; all of the artistry and science is actually in the preparation steps before and the presentation steps afterwards.
 
+![Diagram showing the process of science, transformation, and artistry in baking and working with LLMs](/public/img/ai-startups/science-tx-artistry.png)
+*The processes are not dissimilar and it is clear that the LLM is a core part of this process, but perhaps the least important part of the process as far as achieving high quality and contextually relevant output is concerned.*
+
 For most AI startups, the moat probably really comes down to how well the team can do ETL and how well the team understands the domain.  Does the team have some insight into datasets in a particular domain?  Have they come up with a novel or creative way to use that data?  Do they understand how to shape and prepare that data given the constraints of LLMs?  Can they combine the right pieces of data to achieve the desired output?
+
+These two videos from Ownit AI's work with retailer catalogs shows just how good the results can be when the underlying datasets have been extracted, transformed, loaded, and prepared for the LLM.
+
+In Safeway's case, the delta between the native Google-powered search results and the Ownit AI generated shelves is striking:
+
+<iframe style="aspect-ratio: 16/9; width: 100%;" src="https://www.youtube.com/embed/xQEfo_XCM2M"" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+In Ulta's case, the native platform misses entire classes of products when answering the query:
+
+<iframe style="aspect-ratio: 16/9; width: 100%;" src="https://www.youtube.com/embed/JL08UDxM_5M"" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+To achieve both, the process involved extracting and transforming the retailer's catalog ahead of the selection of the correct context (indeed, it would be impossible to select the correct context without this initial transformation into a graph).
+
+![Graph database which shows products organized into a graph.](/public/img/ai-startups/ownit-graph.png)
+*Much of the magic that enables Ownit to generate superior results is only possible from the acquisition and pre-processing of catalog data into a graph that has been augmented with AI-processed data ahead of time.*
 
 ## Closing Thoughts
 
-What's clear is that AI startups like Codebuff are anything *but* just another "wrapper for a 3rd party model".  That third party model is simply an oven; everyone has an oven, but few could claim to be world-class *patissiers* because at the end of the day, the oven is an appliance that transforms the input ingredients to the output product.  If the input is low effort with cheap ingredients, the chances of the output being high quality and world class -- at least with the current magical ovens -- are quite slim.
+What's clear is that AI startups like Codebuff are anything *but* just another "wrapper for a 3rd party model".  That third party model is simply an oven; everyone has an oven, but few could claim to be world-class *patissiers* because at the end of the day, the oven is but an appliance that transforms the input ingredients to the output product.  If the input is low effort with cheap ingredients, the chances of the output being high quality and world class -- at least with the current magical ovens -- are quite slim.
 
 In the case of Codebuff, the art and science is how the team prepares, resolves, and structures the correct and relevant pieces of the codebase to feed into the LLM; it is not just a simple matter of shoving all of the codebase into the context.  For Ownit, it is an analogous challenge (though perhaps a bit more abstract than a codebase) where we've invested an incredible amount of effort into acquiring, transforming, and mapping out product catalog data from retailers -- classic ETL -- so that we can accurately resolve the correct products.
 
