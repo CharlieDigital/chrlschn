@@ -60,6 +60,8 @@ In the hierarchy of things you can do before actually building a technical MVP:
 - It's OK if people complain and tell you that they won't pay you because of X, Y, Z.  They've just told you "I *would* pay, but for X, Y, Z".  Get them to commit to paying you if you solve X, Y, Z.  If you get the same X, Y, Z from multiple rejections, then the roadmap has defined itself.
 - It's OK if customers churn; expect people to churn.  Don't worry about breaking things and causing customers to churn.  At Motion, customers were constantly churning early on for sometimes head-scratching reasons.  What is important is to capture the reason why they are churning.  This becomes the priority queue of problems to solve to triage the churn.
 
+Potential non-technical co-founders will *insist* that if you build it, customers will come. DO NOT build it until there is proof that there are customers.  Build the simplest possible asset -- a deck, a Figma, etc. -- first and have the non-technical co-founder sell that.  If they cannot even sell it to their close circle, there is probabaly no chance.
+
 **Advice to self**: don't build anything until someone has committed to paying.  Only build if it's for fun or if the idea is so out there that you really need to see it to understand (but there's a lot of inherent risk there).  When you build, don't overbuild until it is clear what customers value ($$$).  Perfect is the enemy of shipping.
 
 ## On the Elusive Product Market Fit (PMF)
