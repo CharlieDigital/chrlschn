@@ -22,5 +22,6 @@ pnpm-debug.log*
 .astro/
 
 # Firebase
+.firebase
 .firebase/
 .firebase/*.cache
