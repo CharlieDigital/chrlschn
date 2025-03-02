@@ -120,11 +120,13 @@ As Alex Russell writes in his opinion piece:
 The market for lemons depends on customers having less information than those selling shoddy products. Some who hyped these stacks early on were earnestly ignorant, which is forgivable when recognition of error leads to changes in behaviour. But that’s not what the most popular frameworks of the last decade did.
 </blockquote>
 
-Andrew Clark’s vision of using more compiler magic to solve for React’s shortcomings is indeed a very Facebook-esque approach to solving problems with performance and suitability of the underlying technical model. We’ve seen the same with the [HipHop Virtual Machine](https://en.wikipedia.org/wiki/HHVM) — created to solve PHP’s issues at scale — and [Hack programming language](https://en.wikipedia.org/wiki/Hack_(programming_language)).
+Andrew Clark’s vision of using more compiler magic to solve for React’s shortcomings is indeed a very Facebook-esque approach to solving problems with performance and suitability of the underlying technical model. We’ve seen the same with the [HipHop Virtual Machine](https://en.wikipedia.org/wiki/HHVM) — created to solve PHP’s issues at scale — and [Hack programming language](https://en.wikipedia.org/wiki/Hack_(programming_language)). But the compiler is fundamentally solving the wrong problem; ***it is a band-aid on a self-inflicted wound caused by React’s “special” model of reactivity built around the component function instead of a reactive callback:***
+
+<iframe style="aspect-ratio: 16/9; width: 100%;" src="https://www.youtube.com/embed/7OhyP8H7KW0?si=1ZdRcv4IHcwoPVmK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 On the one hand, I do think we should praise the React team for ensuring that teams that have invested in React don’t have to toss their efforts by starting from the ground up (much as they were able to scale poor performing PHP with HipHop). However, on the other hand, you can see that the solution to the failings of React is to stray further from progressive approaches to building web-UIs by forcing more of the “magic” into a compiler to make a broken model work.
 
-It is clear to me that React is a dead-end and its fundamental failings can only be solved by compiler magic. We’re building JavaScript and HTML front-ends here, not operating systems!
+It is clear to me that React is a dead-end and its fundamental failings can only be “solved” by compiler magic slapping band-aids labeled `useMemo` and `useCallback` into the transpiled output. We’re building JavaScript and HTML front-ends here, not operating systems!
 
 ### Complexity
 

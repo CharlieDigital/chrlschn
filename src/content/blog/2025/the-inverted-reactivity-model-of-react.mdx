@@ -132,6 +132,62 @@ What should be clear here is that React's unit of reactivity is actually the com
 
 While this seems trivial and basic, this is often the root of many issues in React codebases related to multiple, unexpected entrancy of code as well as performance and memory issues when code is placed in the wrong scope (inside/outside of a component function) and also the reason why React double renders in `StrictMode` to expose these common code placement issues and unintended side effects.
 
+React's model of re-executing the entire component function on re-renders and the difficulty in getting memoization correct is one of the reasons why React can easily run into performance issues at scale unless you really, really know what you're doing with respect to state management, code placement, and memoization.
+
+<iframe style="aspect-ratio: 16/9; width: 100%;"  src="https://www.youtube.com/embed/INLq9RPAYUw?si=q6f9KfkQGyxu0F80" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+As Theo and Nadia point out, the new compiler can address many of the performance related issues related to missed memoization.  But to me it appears to be a bandaid applied to a self-inflicted wound; it is an inherently flawed paradigm that doesn't actually reduce complexity nor reduce defects in front-end codebases.  Using a signals-based approach and only re-executing relevant callbacks would actually address this fundamental design flaw.
+
 I think this is why if your first exposure to web applications was HTML and Vanilla JS, React always feels somewhat "off" in some way that Vue or Lit (web components) do not: *the model of reactivity with React functional components is "inverted"*.  If you're a React developer heading into Vue or Svelte or basically any other non-React framework that's based on signals or events, this is often the biggest adjustment to make (among others like effortless 2-way binding, events going *up* instead of callbacks going *down*, etc.)
 
 If you're a Vue developer heading into React land, it is equally important to understand this difference because it strongly affects proper placement of code with implications for performance, memory, and unexpected side effects.
+
+
+---
+
+## Addendum
+
+The examples above were meant to be simple ones so it may not be obvious why this is problematic.
+
+Here are two additional examples that model:
+
+```js
+room {
+  lightSwitch(),
+  music(),
+  light,
+  carpet {
+    sofa {
+      occupant
+    }
+  }
+}
+```
+
+With these examples, the point is to understand how React and Vue (or any signals-based framework) differ in terms of how they handle re-renders on state change.
+
+### Vue Component Tree
+
+If you play around with this example in the **Result** view, you'll see that when you toggle the `SWITCH` and `MUSIC!`, buttons, the different parts of the component tree render indepentently.
+
+Here's our Vue example: ([JSFiddle](https://jsfiddle.net/u2parjn3/3/)):
+
+<script async src="https://jsfiddle.net/u2parjn3/3/embed/result,js,html,css/dark/"></script>
+
+### React Component Tree
+
+This is not the case with React because of the nature of the way the reactivity system.
+
+Watch what happens to time as you toggle `SWITCH` and `MUSIC!`.
+
+Here's our React example: ([JSFiddle](https://jsfiddle.net/wkg8mc1y/7/)):
+
+<script async src="https://jsfiddle.net/wkg8mc1y/7/embed/result,js,html,css/dark/"></script>
+
+This is solvable, though, but you must manually memoize the component:
+
+```jsx
+const Carpet = React.memo(function Carpet(...) { ... }))
+```
+
+And this is one of the problems that the React compiler will solve for.

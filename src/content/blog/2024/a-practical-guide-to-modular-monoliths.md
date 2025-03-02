@@ -13,7 +13,10 @@ tags: ".net,architecture,docker,software engineering"
 
 A 2023 paper titled *[Towards Modern Development of Cloud Applications](https://dl.acm.org/doi/10.1145/3593856.3595909)*, published by a team at Google, once again highlights the pitfalls of microservices architecture and the many benefits of the much maligned and misunderstood monolith. .NET's host runtime model and built-in dependency injection makes building scalable "modular monoliths" easier than ever.  This lets teams -- especially startups -- move faster with less development, deployment, and operational friction while still maintaining many of the benefits of microservices such as independent scaling of services, isolation of responsibilities, and so on.
 
-⮑ GitHub Repo: https://github.com/CharlieDigital/dn8-modular-monolith
+👇 To make this more practical, I've implemented a full scaffold of how to achieve this in .NET 8:
+
+* **⮑ GitHub Repo: https://github.com/CharlieDigital/dn8-modular-monolith**
+* **⮑ [Google Slides Presentation](https://docs.google.com/presentation/d/1rZUXGtdb7gTU5Ywvf80wlDddJAUp808-EHfJjhDPOU0/edit?usp=sharing)**
 
 ----
 
@@ -68,6 +71,8 @@ These reasons are particularly important to consider in the context of a startup
 For startups and enterprise teams alike, understanding how to build “modular monoliths” (“MoMo”) can help increase velocity and reduce the drag caused by the friction of microservices.
 
 Our objective isn’t to recreate the Google paper’s architecture, but to meet the same goals of increasing velocity with a monolithic codebase that still affords flexibility in deployment. Let’s explore how with a practical example in .NET.
+
+<iframe style="aspect-ratio: 16/9; width: 100%;" src="https://www.youtube.com/embed/VEggfW0A_Oo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ----
 
@@ -249,20 +254,27 @@ Deployed as containers to Google Cloud Run, Azure Container Apps, or AWS ECS Far
 This approach yields several positive outcomes just as described in the paper:
 
 1. **The local DX is excellent**: a single runtime to start, trace, and debug; there is no need to run multiple processes and perform complex tracing of inter-process data flows for local development.
-2. **Packaging and deployment is straight forward and all dependencies ship at the once**. The .Dockerfile shows just how straight forward it is to ship this. In CI/CD, there's no need to set up complex build pipelines to build dependent projects and generate new bindings.
-3. **It is still possible to deploy this application into a variety of topologies depending on how we need it to scale**. For example, a load balancer sitting in front of two API only instances and a single instance running both services. If there is a need to scale the two services independently, it is possible to change the environment variable on the runtime and split two instances out.
+2. **Packaging and deployment is straight forward and all dependencies ship at once**. The .Dockerfile shows just how straight forward it is to ship this. In CI/CD, there's no need to set up complex build pipelines to build dependent projects and generate new bindings.
+3. **The dependencies are linked directly instead of using RPC (REST or gRPC)**.  This means that there's no performance penalty or added cost of serialization and deserialization since all calls are direct call-site invocations in the linked libraries.
+4. **It is still possible to deploy this application into a variety of topologies depending on how we need it to scale**. For example, a load balancer sitting in front of two API only instances and a single instance running both services. If there is a need to scale the two services independently, it is possible to change the environment variable on the runtime and split two instances out.
 
 ----
 
 ## Closing Thoughts
 
-As the Google paper mentions, it is important to understand that how code is written (as a monolith) and how it is deployed (as separate services) are two separate concerns and understanding this difference can guide teams towards an architecture that is more sensible for the needs of the team.
+As the Google paper mentions, it is important to understand that *how code is written* (as a monolith) and *how it is deployed* (as separate services) are two separate concerns and understanding this difference can guide teams towards an architecture that is more sensible for the needs of the team.
 
 It is not that microservices *never* make sense but that this style of application architecture can introduce so-called “accidental complexity” which can be crippling for small teams trying to move fast by creating more friction in every aspect of owning an application.
 
 In the past decade, many teams defaulted to this style of architecture starting from a negative association of “monolith” with “legacy” or a misconception that separate microservices is the only way isolate responsibilities rather than considering that monolithic codebases can still allow teams to build modularly and isolate responsibility in services that are simply deployed into different runtime in hosts.
 
-Teams that find themselves struggling with the friction of working with microservices in their every day workflow should consider whether moving to a modular monolith can help erase much of that friction yet still retain many of the benefits such as runtime isolation of responsibilities and independent scalability of services.
+Teams that find themselves struggling with the friction of working with microservices in their every day workflow should consider whether moving to a *modular monolith* can help erase much of that friction yet still retain many of the benefits such as runtime isolation of responsibilities and independent scalability of services.
+
+If you're ready to dive in an explore how to make this work, check out this open source, fully functioning scaffold that I've built:
+
+**⮑ GitHub Repo: https://github.com/CharlieDigital/dn8-modular-monolith**
+
+You can run it locally and explore how it works (read the docs closely for the details).
 
 ----
 

@@ -37,6 +37,10 @@ Not only that, as teams become more reliant on generated code to increase produc
 
 A while back, I had the opportunity to participate in an interview which was structured around *reviewing code* rather than writing code. It was a revelation. Rather than focus on coding exercises, using code reviews as interview can be a better way to evaluate software engineering candidates.
 
+To me, the code review approach felt more like a sandbox within which I could fully express my experience rather than merely a puzzle.  It feels like this approach allows an interviewer to measure for more "range" since a code review can have *multiple objectives* (performance, security, correctness, best practices, etc.) and therefore allows better stratification of candidate skill and experience.
+
+Leetcode typically has only two objectives: does it work?  Is it the most performant implementation?  The puzzles aren't designed to measure real world knowledge.  For example, performance is usually only relevant to the code and not to the system level interactions whereas a code review can incorporate a database schema as well where a candidate can express system level optimizations like index design and so on.
+
 ----
 
 ## 8 Reasons to consider code review as interview
@@ -53,7 +57,7 @@ There are a few reasons why I think code reviews make for an inherently better t
 
 ---
 
-## Strategies
+## 7 Strategies for incorporating code reviews in interviews
 If you're convinced, the next step is to think about different strategies to use when setting up your code review. There are a few strategies that you can mix and match to measure the range of a candidate.
 
 A common thread to each of the strategies is that rather than inventing - or worse finding - a time-boxed puzzle to solve, an approach focused on code reviews lends itself to using bits and pieces of an existing codebase and actual problems that a team has been working on.
@@ -88,12 +92,13 @@ For more senior positions, focusing on best practices is a great way to find can
 ---
 
 ## Try CodeRev.app
-If you're sold on the idea like me, check out my new project [CodeRev.app](https://coderev.app):
+If you're sold on the idea like me, check out my new free and open source project [CodeRev.app](https://coderev.app):
 
-![CodeRev screenshot](/public/img/code-review-as-interview/coderev-3.png)
-*CodeRev.app candidate workspace.*
+**Check out the full repo: https://github.com/CharlieDigital/coderev**
 
-CodeRev.app is a (free) lightweight tool that's designed to facilitate code review as interview. 
+<iframe style="aspect-ratio: 16/9; width: 100%;" src="https://www.youtube.com/embed/280_4NKvHlw?si=LDLdD_hRW7aTctpy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+CodeRev.app is a ***free, lightweight, open source*** tool that's designed to facilitate code review as interview. 
 
 Why use it instead of CodeSandbox, Stackblitz, or GitHub?
 
@@ -127,5 +132,3 @@ Replacing leetcode with code reviews as interview can help teams not only better
 ---
 
 If you liked this article, also check out ***[Your Interview Process Is Too Damn Long (and How To Fix It)](https://chrlschn.dev/blog/2023/10/your-interview-process-is-too-damn-long/)***
-
-![Too damn long](/public/img/interview/too-damn-long.jpg)
