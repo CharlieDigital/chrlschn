@@ -52,7 +52,7 @@ These are individuals that have let their ego drive their decisionmaking.
 
 ## A Path to Undoing Complexity
 
-As parent, I often grumble and reprimand my kids if they start playing with something new without cleaning up and putting away what they were playing with previously.  It is a simple rule to keep one's space clean and organized and also imparts a basic sense of responsibility upon the child.
+As a parent, I often grumble and reprimand my kids if they start playing with something new without cleaning up and putting away what they were playing with previously.  It is a simple rule to keep one's space clean and organized and also imparts a basic sense of responsibility upon the child.
 
 One simple solution to solving for new complexity?  Make the engineers clean up after themselves first.  No new complexity until the old complexity has been stabilized or simplified so that anyone can operate and maintain it and keep it in a stable state.  No toys left in a state of disarray; all things orderly in their place where they belong at the end of the day.  No half-finished promises and half-delivered (of course undocumented) solutions.
 
