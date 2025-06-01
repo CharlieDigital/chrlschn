@@ -71,3 +71,10 @@ I get it: simple, boring platform solutions just aren't exciting or thrilling to
 Why build following boring, tried, true, and established patterns and solutions following paths where the hard challenges have been solved for?  Where's the thrill in that?  How shall the moat of self-importance be created if these systems are boring, easy, and straightforward to build upon, operate, and maintain?
 
 So a word of warning to you, dear traveler: beware of the complexity merchants as you endeavor to create value and seek to gain velocity towards whatever your destination shall be.  You will know them by the trail of once new and shiny toys, only half played with, that they leave in their wake -- packaging strewn to the side.  You will feel the friction that they create and the control that they wish to exert.  Do not fall, time and again, for their promises of a Silver Bullet only half kept.
+
+---
+
+## Elsewhere...
+
+- [Hackernews](https://news.ycombinator.com/item?id=44090302)
+- [Reddit](https://www.reddit.com/r/programming/comments/1kny3em/beware_the_complexity_merchants/)
