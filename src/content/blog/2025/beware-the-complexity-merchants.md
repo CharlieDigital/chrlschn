@@ -50,9 +50,9 @@ For the complexity merchant to operate, they must always introduce a bit of fric
 
 All along, they will tell you that such complexity is unavoidable and essential; such problems, they will say, have no simple solutions.  They will tell tales of Airbnb and Facebook and Google and how yes, you -- your team -- also *needs* this complexity.  *You want to be Facebook, don't you?*
 
-Even in cases where there is no malicious intent, it can be driven by the need to feel accomplished by summiting that peak of complexity.
+Even in cases where there is no malicious intent, it can be driven by the need to feel accomplished by summiting that peak of complexity or the sense of power granted by the command of many serfs within their fief.
 
-These are individuals that have let their ego drive their decisionmaking.
+These are individuals that have let their ego drive their decision making.
 
 ## A Path to Undoing Complexity
 
