@@ -2,7 +2,7 @@
 title: "TypeScript Conditional Types for Type Safety (Without Assertions)"
 description: "Using conditional types to achieve type safety without having to use 'as'"
 pubDate: "2025 June 14"
-socialImage: "/public/img/complexity/rube-goldberg.gif"
+socialImage: "/public/img/conditional/ts-conditional.png"
 slug: "2025/06/typescript-conditional-types-for-type-safety-without-assertions"
 tags: "typescript"
 ---
@@ -11,7 +11,7 @@ tags: "typescript"
 
 ## Summary
 
-TypeScript conditional types are a useful tool to have in your tool belt for dealing with type safety across a large number of related types.  In this example, see how to use a type value to discriminate types without having to use the `as` assertion to "cast" the type.
+TypeScript conditional types are a useful tool to have in your tool belt for dealing with type safety across a large number of related types.  In this short tutorial, see how to use a property value to discriminate types without having to use the `as` assertion to "cast" the type.
 
 ---
 
@@ -108,4 +108,45 @@ function handleSync(msg: SyncMessage) {}
 function handleUnsupported(msg: UnsupportedMessage) {}
 ```
 
-Note how each handler method gets a typed parameter cleanly derived from the `msg.type` in the `switch` statement.
+Note how each handler method gets a typed parameter cleanly derived from the `msg.type` in the `switch` statement.  Each function receives a typed payload correctly and no type assertion with `as` is required to coerce the types!
+
+Now we have a single entry point where we can route the payload with the correct type to standalone handlers.  This is a very useful tool for writing scalable, well-encapsulated code by allowing types to flow through the call chain from a single entry point.
+
+---
+
+## Switch Expressions in C#
+
+I mentioned earlier that this strongly resembles switch expressions with pattern matching in C#.  How exactly does that look?
+
+```csharp
+void Receive(Message message)
+{
+  Action result = message switch
+  {
+    AuthMessage authMessage => () => handleAuthMessage(authMessage),
+    SyncMessage syncMessage => () => handleSyncMessage(syncMessage),
+    _ => () => handleUnknownMessage(message),
+  };
+
+  result();
+}
+
+void handleAuthMessage(AuthMessage authMessage) {}
+void handleSyncMessage(SyncMessage syncMessage) {}
+void handleUnknownMessage(Message message) {}
+
+enum MessageType { Auth, Sync };
+
+record Message(MessageType Type, string Id, string Payload);
+
+record AuthMessage(string Id, string Payload, string Identity)
+  : Message(MessageType.Auth, Id, Payload);
+
+record SyncMessage(string Id, string Payload, string SyncId)
+  : Message(MessageType.Sync, Id, Payload);
+```
+---
+
+## Closing Thoughts
+
+This mechanism of using TypeScript conditional types can help write easy to maintain, type-safe code paths when the system needs to handle a large number of payload variations without relying on type assertions with `as`.
