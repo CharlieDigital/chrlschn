@@ -2,7 +2,7 @@
 title: "TypeScript Conditional Types for Type Safety (Without Assertions)"
 description: "Using conditional types to achieve type safety without having to use 'as'"
 pubDate: "2025 June 14"
-socialImage: "/public/img/conditional/ts-conditional.png"
+socialImage: "/public/img/ts-conditional/conditional-types.png"
 slug: "2025/06/typescript-conditional-types-for-type-safety-without-assertions"
 tags: "typescript"
 ---
@@ -37,7 +37,7 @@ To start with, we'll define our message types:
 type MessageType = 'auth' | 'sync'
 ```
 
-Here, we user simple strings to define the different types of messages that we expect.  I'm not sure if there is a practical limit, but I tested up to 40 without issue.
+Here, we use simple strings to define the different types of messages that we expect.  (I'm not sure if there is a hard limit as is the case with discriminated type unions, but I tested up to 40 without issue.)
 
 ### Define the Base or Common Message
 
@@ -52,12 +52,12 @@ type MessageBase<T extends MessageType> = {
 
 type AuthMessage = {
   identity: string
-} & MessageBase<'auth'> // 👈 pick our type
+} & MessageBase<'auth'> // 👈 pick a specific type
 
 type SyncMessage = {
   timestamp: string
   topic: string
-} & MessageBase<'sync'> // 👈 pick our type
+} & MessageBase<'sync'> // 👈 pick a specific type
 ```
 
 ### Define the Conditional Type
@@ -74,9 +74,9 @@ type Message<T extends MessageType> =
 
 The conditional type allows us to define a "concrete" type based on *a discriminating property value*.
 
-If you're familiar with C#, this may look like [a C# switch expression with pattern matching](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/switch-expression).  In fact, it behaves very similarly.
+If you're familiar with C#, this may look like [a C# switch expression with pattern matching](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/switch-expression) (more on this later).  In fact, it behaves very similarly.
 
-An alternate is to declare an explicit `unsupported`:
+An alternate here is to declare an explicit `unsupported`:
 
 ```ts
 type MessageType = 'auth' | 'sync' | 'unsupported'
@@ -92,9 +92,10 @@ type Message<T extends MessageType> =
 
 ### Define the Handler Function
 
-Finally, we can define our handler function:
+Finally, we can define our handler functions:
 
 ```ts
+// 👇 This is the entrypoint for the generic payload
 function receive(msg: Message<MessageType>) {
   switch (msg.type) {
     case 'auth': return handleAuth(msg)
@@ -103,6 +104,7 @@ function receive(msg: Message<MessageType>) {
   }
 }
 
+// 👇 The specific handlers
 function handleAuth(msg: AuthMessage) {}
 function handleSync(msg: SyncMessage) {}
 function handleUnsupported(msg: UnsupportedMessage) {}
@@ -135,7 +137,7 @@ void handleAuthMessage(AuthMessage authMessage) {}
 void handleSyncMessage(SyncMessage syncMessage) {}
 void handleUnknownMessage(Message message) {}
 
-enum MessageType { Auth, Sync };
+enum MessageType { Auth, Sync }; // 👈 C# enums
 
 record Message(MessageType Type, string Id, string Payload);
 
@@ -145,6 +147,9 @@ record AuthMessage(string Id, string Payload, string Identity)
 record SyncMessage(string Id, string Payload, string SyncId)
   : Message(MessageType.Sync, Id, Payload);
 ```
+
+Here, you can see just how similar these two constructs are at achieving the same result.  The key difference is that the C# implementation remains type-safe at runtime as the type metadata remains whereas the TypeScript implementation should probably still be implemented with a schema like Zod or Valibot.
+
 ---
 
 ## Closing Thoughts
