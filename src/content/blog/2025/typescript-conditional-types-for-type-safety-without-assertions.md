@@ -13,6 +13,8 @@ tags: "typescript"
 
 TypeScript conditional types are a useful tool to have in your tool belt for dealing with type safety across a large number of related types.  In this short tutorial, see how to use a property value to discriminate types without having to use the `as` assertion to "cast" the type.
 
+Using conditional types this way can offer a limited facsimile of C# switch expressions with pattern matching (a very, very limited approximation 🤣).
+
 ---
 
 ## Intro
@@ -148,7 +150,9 @@ record SyncMessage(string Id, string Payload, string SyncId)
   : Message(MessageType.Sync, Id, Payload);
 ```
 
-Here, you can see just how similar these two constructs are at achieving the same result.  The key difference is that the C# implementation remains type-safe at runtime as the type metadata remains whereas the TypeScript implementation should probably still be implemented with a schema like Zod or Valibot.
+Here, you can see just how similar these two constructs are at achieving the same result.  The key difference is that the C# implementation *remains type-safe at runtime* as the type metadata remains whereas the TypeScript implementation should probably still be implemented with a schema like Zod or Valibot.
+
+It should be noted that C# switch expressions with pattern matching are much, much more powerful and allow for far more expressive pattern expressions than what has been demonstrated in this basic example.  [See Tim Deschryver's excellent writeup for a more in depth exploration](https://timdeschryver.dev/blog/pattern-matching-examples-in-csharp).
 
 ---
 
