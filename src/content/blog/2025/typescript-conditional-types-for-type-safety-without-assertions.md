@@ -127,8 +127,10 @@ void Receive(Message message)
 {
   Action result = message switch
   {
-    AuthMessage authMessage => () => handleAuthMessage(authMessage),
-    SyncMessage syncMessage => () => handleSyncMessage(syncMessage),
+    AuthMessage authMessage when message.Type == MessageType.Auth =>
+      () => handleAuthMessage(authMessage),
+    SyncMessage syncMessage when message.Type == MessageType.Sync =>
+      () => handleSyncMessage(syncMessage),
     _ => () => handleUnknownMessage(message),
   };
 
@@ -139,7 +141,7 @@ void handleAuthMessage(AuthMessage authMessage) {}
 void handleSyncMessage(SyncMessage syncMessage) {}
 void handleUnknownMessage(Message message) {}
 
-enum MessageType { Auth, Sync }; // 👈 C# enums
+enum MessageType { Auth, Sync };
 
 record Message(MessageType Type, string Id, string Payload);
 
