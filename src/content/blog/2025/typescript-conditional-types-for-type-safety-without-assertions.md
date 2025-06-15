@@ -4,18 +4,18 @@ description: "Using conditional types to achieve type safety without having to u
 pubDate: "2025 June 14"
 socialImage: "/public/img/ts-conditional/conditional-types.png"
 slug: "2025/06/typescript-conditional-types-for-type-safety-without-assertions"
-tags: "typescript"
+tags: "typescript,c#"
 ---
 
 ----
 
 ## Summary
 
-TypeScript conditional types are a useful tool to have in your tool belt for dealing with type safety across a large number of related types.  In this short tutorial, see how to use a property value to discriminate types without having to use the `as` assertion to "cast" the type.
+TypeScript conditional types are a useful tool to have in your tool belt for dealing with type safety across a large number of related types.  In this short walkthrough, see how to use a property value to discriminate types without having to use the `as` assertion to "cast" the type.
 
 Using conditional types this way can offer a limited facsimile of C# switch expressions with pattern matching (a very, very limited approximation 🤣).
 
----
+----
 
 ## Intro
 
@@ -27,44 +27,44 @@ It can be a bit gnarly to wrap your head around it the first time, but let's see
 
 > 💡 [See the finished TypeScript Playground example](https://www.typescriptlang.org/play/?#code/C4TwDgpgBAshDO8CGBzCAVc0C8UDkSArsABZ5QA++8IAdgMblV6G3yFhgD2ATsBABM8AKGGhIsBMjQAhJPAgAedFAgAPfrQHxJiVBiwA+KLgDewqFHEQAXFHQAaC1ACWAu-GA8XtFE8tgSCAANlxI7lCe3r7CAL6i1lAAgsQkcHpoJlDmlm4QtMAuoB5ePihxUABkutIQcgqKBKl4hglYUADKdPTptVk5Vi4AtgjASENgJdHllsBcYC70U2UV1b369Up4NAwtbRIAqmwc3HyC65m4F3XyW6zsnLz8Qq1i7dfKqhr52jX6mJBjLhnCp1Jpfk1SOQAPzJVLXKA2EFfcE6bbdGGdboIpGWI4PU7Pa6iABmrHohS4tCgPAg9AgLgAbhAABRDeAoOwfa4AiCGACU2Wc8AA7kV6CQoGyOQA6ayCgaWei3fBEKF2WnAQg8akkJBaYIQFKkaUofnOJUq9G7DUQLU6qB6g0QLoMU3myyWAQQElEYLAW323X6gSG-EnJ6Cd3OeLxYRkhiU4PO40kU12VPXBWiOMJikuKmOkOG130dNYhhZoVxUnkpNF53hx5nATlpuE85SfTZmvCIA)
 
---
+----
 
 ## Basic Example
 
 ### Define the Message Type
 
-To start with, we'll define our message types:
+To start with, we'll define the expected message types:
 
 ```ts
 type MessageType = 'auth' | 'sync'
 ```
 
-Here, we use simple strings to define the different types of messages that we expect.  (I'm not sure if there is a hard limit as is the case with discriminated type unions, but I tested up to 40 without issue.)
+Here, simple strings are used to define the different types of messages that the system will consume.  (I'm not sure if there is a hard limit as is the case with discriminated type unions, but I tested up to 40 without issue.)
 
 ### Define the Base or Common Message
 
-Now we can define a base or common message structure:
+Next define a base or common message structure that exposes a generic parameter which will be the type of the discriminating property (`MessageType` in this case):
 
 ```ts
 type MessageBase<T extends MessageType> = {
-  type: T,
+  type: T, // 👈 👆 The discriminator
   id: string,
   payload: string
 }
 
 type AuthMessage = {
   identity: string
-} & MessageBase<'auth'> // 👈 pick a specific type
+} & MessageBase<'auth'> // 👈 pick a specific value
 
 type SyncMessage = {
   timestamp: string
   topic: string
-} & MessageBase<'sync'> // 👈 pick a specific type
+} & MessageBase<'sync'> // 👈 pick a specific value
 ```
 
 ### Define the Conditional Type
 
-With our types in place, we can then define our conditional type:
+With the types in place, then it is possible to move on to defining the conditional type which will resolve into a specific type based on the `MessageType`:
 
 ```ts
 type Message<T extends MessageType> =
@@ -74,9 +74,7 @@ type Message<T extends MessageType> =
   never
 ```
 
-The conditional type allows us to define a "concrete" type based on *a discriminating property value*.
-
-If you're familiar with C#, this may look like [a C# switch expression with pattern matching](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/switch-expression) (more on this later).  In fact, it behaves very similarly.
+The conditional type allows defining a "concrete" type based on *a discriminating property value*.
 
 An alternate here is to declare an explicit `unsupported`:
 
@@ -92,9 +90,13 @@ type Message<T extends MessageType> =
   UnsupportedMessage
 ```
 
+This way, there is always a concrete type.
+
+For those familiar with C#, this may bear some resemblance to [C# switch expressions with pattern matching](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/switch-expression) (more on this later).  In fact, it behaves very similarly.
+
 ### Define the Handler Function
 
-Finally, we can define our handler functions:
+The last step is to define the receiver of these messages and routing to the handlers:
 
 ```ts
 // 👇 This is the entrypoint for the generic payload
@@ -114,9 +116,49 @@ function handleUnsupported(msg: UnsupportedMessage) {}
 
 Note how each handler method gets a typed parameter cleanly derived from the `msg.type` in the `switch` statement.  Each function receives a typed payload correctly and no type assertion with `as` is required to coerce the types!
 
-Now we have a single entry point where we can route the payload with the correct type to standalone handlers.  This is a very useful tool for writing scalable, well-encapsulated code by allowing types to flow through the call chain from a single entry point.
+This provides a single entry point where messages can be routed with the correct type to standalone handlers.  This is a very useful tool for writing maintainable, well-encapsulated code by allowing types to flow through the call chain from a single entry point.
 
----
+## Putting it All Together
+
+```ts
+type MessageType = 'auth' | 'sync' | 'unsupported'
+
+type MessageBase<T extends MessageType> = {
+  type: T,
+  id: string,
+  payload: string
+}
+
+type AuthMessage = {
+  identity: string
+} & MessageBase<'auth'>
+
+type SyncMessage = {
+  timestamp: string
+  topic: string
+} & MessageBase<'sync'>
+
+type UnsupportedMessage = MessageBase<'unsupported'>
+
+type Message<T extends MessageType> =
+  T extends 'auth' ? AuthMessage :
+  T extends 'sync' ? SyncMessage :
+  UnsupportedMessage
+
+function receive(msg: Message<MessageType>) {
+  switch (msg.type) {
+    case 'auth': return handleAuth(msg)
+    case 'sync': return handleSync(msg)
+    default: return handleUnsupported(msg)
+  }
+}
+
+function handleAuth(msg: AuthMessage) { }
+function handleSync(msg: SyncMessage) { }
+function handleUnsupported(msg: UnsupportedMessage) { }
+```
+
+----
 
 ## Switch Expressions in C#
 
@@ -156,7 +198,7 @@ Here, you can see just how similar these two constructs are at achieving the sam
 
 It should be noted that C# switch expressions with pattern matching are much, much more powerful and allow for far more expressive pattern expressions than what has been demonstrated in this basic example.  [See Tim Deschryver's excellent writeup for a more in depth exploration](https://timdeschryver.dev/blog/pattern-matching-examples-in-csharp).
 
----
+----
 
 ## Closing Thoughts
 
