@@ -138,6 +138,8 @@ While vendors were trying to sell us on their MCP implementations of integration
 
 Especially in `stdio` mode, MCP felt excessive and useless.  Indeed, in most use cases, MCP over `stdio` is probably not needed and adds complexity over writing a simple CLI.
 
+![Distinction between MCP over stdio and streamable HTTP](/public/img/mcp/mcp-stdio-http.png)
+
 But MCP over streamable HTTP?  ***This is an absolute game changer*** and will be a key linchpin in organizational and enterprise adoption shifting from *vibe-coding* to *agentic engineering*.
 
 ### Why Centralization is Key
