@@ -238,3 +238,7 @@ But a simple thought exercise of how teams can move engineering orgs from vibe-c
 We are still relatively in the early days of AI agents taking a leading role in software engineering, and because the field moves quickly, there is an emphasis on speed at all costs.  But as we've seen with [Amazon's recent challenges in their AWS division](https://arstechnica.com/ai/2026/03/after-outages-amazon-to-make-senior-engineers-sign-off-on-ai-assisted-changes/), *teams eventually have to operationalize and maintain these software systems produced by AI agents*.  And for that, we still need an engineering discipline that ensures consistency, high quality, and correctness -- even when the producer of that software is an AI agent.  Organizations need architectures and processes that start to move beyond cowboy, vibe-coding culture to organizationally aligned agentic engineering practices.  And for that, MCP is the right tool for orgs and enterprises.
 
 Long live MCP!
+
+----
+
+All content was human written; [see the file history in the repo](https://github.com/CharlieDigital/chrlschn/commits/main/src/content/blog/2026/mcp-is-dead-long-live-mcp.md).
