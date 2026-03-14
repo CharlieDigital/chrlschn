@@ -16,7 +16,7 @@ tags: "llms,ai.mcp"
 - There is a confusion of MCP over `stdio` versus MCP over HTTP; the latter is a very different use case
 - Many folks are also only familiar with MCP tools, but overlook MCP prompts and resources
 - Also misunderstood is why MCP auth is important and the role and importance of telemetry in understanding org-wide too use
-- For enterprise and org-level use cases, MCP is the present and future; teams that want to find the path from vibe coding to agentic engineering need to understand how to leverage MCP.s
+- For enterprise and org-level use cases, MCP is the present and future; teams that want to find the path from *vibe-coding* to *agentic-engineering* need to understand how to leverage MCP.s
 
 ----
 
@@ -51,13 +51,15 @@ There are two topics at the core of the debate of CLI vs MCP and the foundation 
 
 ### Do Token Savings Exist?
 
-Yes, they do.  There are two modalities in token savings to be had.
+Yes, they do.  There are two modalities in token savings to be had, but it might not be as dramatic as social media would have you believe.
 
 #### CLI Tools in the Training Dataset
 
-First is that for CLI utilities *in the models' training dataset* like `jq`, `curl`, `git`, `grep`, `psql`,  `aws`, `s3`, `gcloud`, etc. benefit tremendously from the underlying models already having encountered *innumerable examples* of how to use these tools.  Because of this, the agent does not need additional instruction, schemas, or context on how to use these tools; it can simply one-shot the tool in many cases.  This can be a significant savings over MCP because in MCP, the tools must be declared up front in the `tools/list` response.
+First is that for CLI utilities *in the models' training dataset* like `jq`, `curl`, `git`, `grep`, `psql`,  `aws`, `s3`, `gcloud`, etc. benefit tremendously from the underlying models already having encountered *innumerable examples* of how to use these tools.  Because of this, the agent does not need additional instruction, schemas (not true when calling custom REST APIs, though), or context on how to use these tools; it can simply one-shot the tool in many cases.  This can be a significant savings over MCP because in MCP, the tools must be declared up front in the `tools/list` response.
 
-However, this is *not* true of a custom, bespoke CLI tool.  The LLM has no way of knowing which CLI to use and how it should use it...unless each tool is listed with a description *somewhere* either in `AGENTS|CLAUDE.md` or a `README.md`.  You *must* provide the LLM some instruction on how and when to use a bespoke CLI tool.
+For CLI tools that will already be in the agents training dataset, ***absolutely*** always prefer them over MCP.
+
+However, this is *not* true of a custom, bespoke CLI tool.  The LLM has no way of knowing which CLI to use and how it should use it...unless each tool is listed with a description *somewhere* either in `AGENTS|CLAUDE.md` or a `README.md`.  You *must* provide the LLM some instruction on how and when to use a bespoke CLI tool that it has never seen before.
 
 It is possible to point it to a directory called `/cli-tools` and rely on descriptive naming to have the agent pick and choose the tool, but anyone that works with agents day in and day out already knows that agents are often not very good at this without more explicit instructions.
 
@@ -138,5 +140,101 @@ Especially in `stdio` mode, MCP felt excessive and useless.  Indeed, in most use
 
 But MCP over streamable HTTP?  ***This is an absolute game changer*** and will be a key linchpin in organizational and enterprise adoption shifting from *vibe-coding* to *agentic-engineering*.
 
-- Centralized security, logging, auditing, telemetry
-- Abstract background worker capabilities like indexing, etc.
+### Why Centralization is Key
+
+*(I preface that this is primarily relevant for orgs and enterprises; it really has no relevance for individual vibe-coders)*
+
+Most influencers talking about MCP fail to make a distinction between how MCP communicates locally over `stdio` mode versus streamable HTTP.
+
+In `stdio` mode, the MCP server runs locally with the agent and indeed, why bother with this over writing a simple CLI?
+
+But when accessed over streamable HTTP transport, it is possible to run that same logic *in a centralized server* and there are several unlocks when deployed and accessed by the agents under this modality.
+
+### Richer Underlying Capabilities
+
+What if the use case would benefit from having access to a Postgres instance?  With [Apache AGE](https://github.com/apache/age) enabled for cypher graph queries over indexed context?  This is very straight forward when the tooling is centralized on a server and accessed by a thin client.  It is possible to implement richer platform capabilities for the tooling because distribution is as simple as adding an MCP server.
+
+Yes, a local database like SQLite may also do the trick, but there is a limit to what's possible.
+
+### Ephemeral Agent Runtimes
+
+Remote MCP servers over HTTP also offer big advantages depending on the runtime context.
+
+For example, when exposing remote tools and APIs to agents running in GitHub.  Here, MCP makes it trivially easy to use tools that could require complex backends without any install and without restrictions of operating in the ephemeral nature of the GitHub Actions runtime environment.
+
+![Copilot Agent MCP configuration](/public/img/mcp/copilot-agent-mcp.png)
+
+If offloads management of stateful workloads in stateless, ephemeral contexts to a centralized server.
+
+### Auth and Security
+
+Moving workloads into a server also improves the story around auth and security.  CLIs that need to access secured API endpoints using `curl`, as an example, require that every developer have access to keys to those APIs.  It's easy to see why this is bad and a pain in the ass for an ops teams.
+
+Centralizing this behind MCP allows each developer to authenticate via OAuth to the MCP server and sensitive API keys and secrets can be controlled behind the server like any other server bog-standard API using (more or less) bog standard OAuth.  The exposure of secrets is controlled, limited, and easy to audit.
+
+An engineer leaves your team?  Revoke their OAuth token and access to the MCP server; they never had access to other keys and secrets to start with.
+
+### Telemetry and Observability
+
+For teams, another big win with centralized streamable MCP is the story around telemetry and observability.  Which tools are having an impact?  Which agent runtimes are the team using?  Which tools are low value?
+
+With a centralized MCP server, this is simply a matter of emitting OpenTelemetry traces and metrics and collecting them using standard, off-the-shelf tooling.
+
+![Datadog dashboard showing OTEL metrics](/public/img/mcp/mcp-telemetry.png)
+
+While this is achievable with CLI tools, it is far easier to do so when deploying a single server *because local delivery requires consumers to update*.
+
+### Standardized, Instant Delivery of Up-To-Date Content
+
+Distributed tooling (e.g. via packages) have much the same problem as working with distributed apps: keeping deployments up to date with the latest release and compatibility.  While it is relatively straightforward to update a server to add new capabilities, if tool capabilities are delivered as local CLI tools that interact with those APIs, now API version compatibility becomes a concern.
+
+MCP includes provisions for this: **[subscriptions and notifications](https://modelcontextprotocol.io/specification/2025-11-25/architecture#clients)** which allow servers to call back to the client notifying them of updates.
+
+While most folks are aware of MCP tools, relatively fewer are aware of *MCP prompts* and *MCP resources*.
+
+![From the MCP specification page](/public/img/mcp/prompts-resource-tools.png)
+
+Look carefully and you can see:
+
+- MCP Prompts are effectively server-delivered `SKILL.md`
+- MCP Resources are effectively server-delivered `/docs`
+
+Why would an org, team, or enterprise want this?
+
+Well, it's easy to see several benefits.
+
+1. **Dynamic content**.  While `*.md` files in a repo are static text files that need to be manually updated, synced, and maintained, server produced prompts and resources have no such restrictions.  It is possible to dynamically generate the text on the fly to construct a skill.  What about docs?  What if some docs are useful in some contexts, but not others?  What if docs could benefit from dynamic injection of content/context without a tool call (pricing data, current system status, etc.)?
+2. **Automatic and consistent updates**.  When `*.md` files are delivered as part of the repo or as part of a package import, the downside is that they can become out of sync and require explicit syncs by on the local system.  This is not the case with server-delivered skills and resources via MCP prompts as these are always up to date. What about third party, official sources of docs and skills?  Do you manually reproduce and update these in your repo?  Or would it be easier to simply proxy it through a server?
+3. **Org-wide knowledge**.  Some content applies org-wide.  For example, standard best practices for security or telemetry in apps or infrastructure deployment considerations for apps.  What about orgs that use microservices where one team may need to have docs for another service.  Or what if a service team could provide skills for their service dynamically each time they ship?  Does it make sense to reproduce these docs into every repo?  How does an org keep them up-to-date and in sync?
+
+MCP is the answer to all of these.
+
+Here is an MCP delivered prompt in OpenCode:
+
+![MCP Prompt](/public/img/mcp/mcp-prompt.gif)
+
+And a set of MCP delivered resources:
+
+![MCP Prompt (OpenCode)](/public/img/mcp/mcp-resources.gif)
+
+The same in Claude Code CLI:
+
+![MCP Prompt (Claude)](/public/img/mcp/mcp-claude.gif)
+
+Each of these resources is a dynamically generated, "virtual" index of documents that are available (similar to Vercel's index in `AGENTS.md`) and we have the benefit of bringing these documents into any project, always up-to-date, and with full server telemetry on which documents are being accessed.
+
+In all cases, delivery of this capability requires only configuring the MCP client; it's fire and forget.
+
+----
+
+## Closing Thoughts
+
+I get it; the industry moves fast now and these social media influencers need to keep chasing something new to keep their audience engaged.  6 months ago, MCP was the hot ticket.  Now it's a has-been; blamed for context bloat while often not even understanding the tradeoffs and similar traps with custom CLIs.
+
+But a simple thought exercise of how teams can move engineering orgs from vibe-coding towards agentic-engineering would land one pretty squarely on the design and mission of the Model Context Protocol.  In any scenario beyond a solo vibe-coder, MCP's telemetry, simplified considerations for managing security, automatic content synchronization, schema + standards based approach, and ease of observability (how can you tell which tools are effective otherwise?) mean that teams that buy into the current zeitgeist will make a mistake when selecting an approach for delivering the scaffolding that enables agentic-engineering.
+
+![Amazon's recent challenges with AI assisted code](/public/img/mcp/ars-amazon.png)
+
+We are still relatively in these early days, and because the field moves quickly, there is an emphasis on speed at all costs.  But as we've seen with [Amazon's recent challenges in their AWS division](https://arstechnica.com/ai/2026/03/after-outages-amazon-to-make-senior-engineers-sign-off-on-ai-assisted-changes/), *teams eventually have to operationalize and maintain these software systems produced by AI agents*.  And for that, we still need an engineering discipline that ensures consistency, high quality, and correctness -- even when the producers of that software is an AI agent.  Organizations need architectures and processes that start to move beyond cowboy, vibe-coding culture to organizationally aligned agentic-engineering practices.  And for that, MCP is the right tool.
+
+Long live MCP!
