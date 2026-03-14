@@ -57,7 +57,7 @@ Yes, they do.  There are two modalities in token savings to be had, but it might
 
 First is that CLI utilities *in the models' training dataset* like `jq`, `curl`, `git`, `grep`, `psql`,  `aws`, `s3`, `gcloud`, etc. benefit tremendously from the underlying models already having encountered *innumerable examples* of how to use these tools.  Because of this, the agent does not need additional instruction, schemas (not true when calling custom REST APIs, though), or context on how to use these tools; it can simply one-shot the tool in many cases.  This can be a significant savings over MCP because in MCP, the tools must be declared up front in the `tools/list` response.
 
-For CLI tools that will already be in the agents training dataset, ***absolutely*** always prefer them over MCP (for custom REST APIs, that's a "maybe").
+For CLI tools that will already be in the agent's training dataset, ***absolutely*** always prefer them over MCP (for custom REST APIs, that's a "maybe").
 
 However, this is *not* true of a custom, bespoke CLI tool.  The LLM has no way of knowing which CLI to use and how it should use it...unless each tool is listed with a description *somewhere* either in `AGENTS|CLAUDE.md` or a `README.md`.  You *must* provide the LLM some instruction on how and when to use a bespoke CLI tool that it has never seen before.
 
