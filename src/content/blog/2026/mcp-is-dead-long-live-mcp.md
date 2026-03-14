@@ -4,7 +4,7 @@ description: "Understanding the social media zeitgeist around CLIs and the prema
 pubDate: "2026 March 14"
 socialImage: "/public/img/mcp/death-to-mcp-long-live-mcp.png"
 slug: "2026/03/mcp-is-dead-long-live-mcp"
-tags: "llms,ai.mcp"
+tags: "llms,ai,mcp"
 ---
 
 ----
