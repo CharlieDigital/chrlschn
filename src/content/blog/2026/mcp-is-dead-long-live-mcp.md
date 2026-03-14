@@ -166,7 +166,7 @@ For example, when exposing remote tools and APIs to agents running in GitHub.  H
 
 ![Copilot Agent MCP configuration](/public/img/mcp/copilot-agent-mcp.png)
 
-If offloads management of stateful workloads in stateless, ephemeral contexts to a centralized server.
+It offloads management of stateful workloads in stateless, ephemeral contexts to a centralized server.
 
 ### Auth and Security
 
