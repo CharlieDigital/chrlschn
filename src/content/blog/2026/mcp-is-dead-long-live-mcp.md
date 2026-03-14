@@ -176,7 +176,7 @@ An engineer leaves your team?  Revoke their OAuth token and access to the MCP se
 
 ### Telemetry and Observability
 
-For teams, another big win with centralized streamable MCP is the story around telemetry and observability.  Which tools are having an impact?  Which agent runtimes are the team using?  Which tools are low value?  Where and how are tools failing?  Without centralized, standardized telemetry, it is exceedingly difficult as an engineering or go understand what's working and what's not.
+For teams, another big win with centralized streamable MCP is the story around telemetry and observability.  Which tools are having an impact?  Which agent runtimes are the team using?  Which tools are low value?  Where and how are tools failing?  Without centralized, standardized telemetry, it is exceedingly difficult as an engineering org to understand what's working and what's not.
 
 With a centralized MCP server, this is simply a matter of emitting OpenTelemetry traces and metrics and collecting them using standard, off-the-shelf tooling.
 
