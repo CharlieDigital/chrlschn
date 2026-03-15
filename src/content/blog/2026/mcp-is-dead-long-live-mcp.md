@@ -42,7 +42,7 @@ The influencer-driven discourse has now shifted towards hating on MCP and praisi
 
 ## Understanding the Misunderstanding
 
-Before we dive any deeper, I would like to make clear that I think ***MCP is indeed the wrong choice for a class of use cases***, but as the title might suggest, there is a deep misunderstanding of where and how CLI tools can yield savings.
+Before we dive any deeper, I would like to make clear that I think ***MCP is indeed the wrong choice for a class of use cases***, but as the title might suggest, there is a deep misunderstanding of where and how CLI tools can yield savings and the important role of Model Context Protocol in moving orgs and enterprises towards more structured engineering with AI coding agents.
 
 There are two topics at the core of the debate of CLI vs MCP and the foundation of much of the discussion:
 
@@ -242,7 +242,7 @@ But a simple thought exercise of how teams can move engineering orgs from vibe-c
 
 ![Amazon's recent challenges with AI assisted code](/public/img/mcp/ars-amazon.png)
 
-We are still relatively in the early days of AI agents taking a leading role in software engineering, and because the field moves quickly, there is an emphasis on speed at all costs.  But as we've seen with [Amazon's recent challenges in their AWS division](https://arstechnica.com/ai/2026/03/after-outages-amazon-to-make-senior-engineers-sign-off-on-ai-assisted-changes/), *teams eventually have to operationalize and maintain these software systems produced by AI agents*.  And for that, we still need an engineering discipline that ensures consistency, high quality, and correctness -- even when the producer of that software is an AI agent.  Organizations need architectures and processes that start to move beyond cowboy, vibe-coding culture to organizationally aligned agentic engineering practices.  And for that, MCP is the right tool for orgs and enterprises.
+We are still relatively in the early days of AI agents taking a leading role in software engineering, and because the field moves quickly, there is an emphasis on speed at all costs.  But as we've seen with [Amazon's recent challenges in their AWS division](https://arstechnica.com/ai/2026/03/after-outages-amazon-to-make-senior-engineers-sign-off-on-ai-assisted-changes/), *teams eventually have to operationalize and maintain these software systems produced by AI agents*.  If the goal is to ship software that is dependable and maintainable once operationalized,  we still need an engineering discipline that ensures consistency, security, high quality, and correctness -- even when the producer of that software is an AI agent.  Organizations need architectures and processes that start to move beyond cowboy, vibe-coding culture to organizationally aligned *agentic engineering* practices.  And for that, MCP is currently the right tool for orgs and enterprises.
 
 Long live MCP!
 
