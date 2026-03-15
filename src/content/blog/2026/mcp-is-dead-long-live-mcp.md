@@ -216,7 +216,7 @@ Well, it's easy to see several benefits.
 
 MCP is the answer to all of these.
 
-***If you want to deliver standard planning prompts (skills) and standard docs across all repositories, all workflows, all teams, and all agent front-ends (Claude Code, Codex, VS Code Copilot, GitHub Agents, OpenCode, etc.) consistently and always up-to-date with server telemetry to measure adherence and usage across an org then MCP prompts and resources IS that delivery mechanism.***
+***If you want to deliver standard planning prompts (skills) and standard docs across all repositories, all workflows, all teams, and all agent front-ends (Claude Code, Codex, VS Code Copilot, GitHub Agents, OpenCode, etc.) consistently and always up-to-date with server telemetry to measure adherence and usage across an org, then MCP prompts and resources IS that delivery mechanism.***
 
 Here is an MCP delivered prompt in OpenCode:
 
