@@ -51,7 +51,7 @@ There are two topics at the core of the debate of CLI vs MCP and the foundation 
 
 ### Do Token Savings Exist?
 
-Yes, they do.  There are two modalities in token savings to be had, but it might not be as dramatic as social media would have you believe.
+Yes, they do.  There are three modalities in token savings to be had, but it might not be as dramatic as social media would have you believe.
 
 #### CLI Tools in the Training Dataset
 
@@ -64,6 +64,10 @@ However, this is *not* true of a custom, bespoke CLI tool.  The LLM has no way o
 It is possible to point it to a directory called `/cli-tools` and rely on descriptive naming to have the agent pick and choose the tool, but anyone that works with agents day in and day out already knows that agents are often not very good at this without more explicit instructions.  It will make mistakes and you will have to update your `AGENTS|CLAUDE.md` or other docs somewhere and fill it with more and more descriptions each time you find the agent misbehaving with your bespoke CLI tools.
 
 Aside from that, even with a tool like `curl`, any token savings are lost the moment the agent has to understand a bespoke OpenAPI schema to correctly call the API since the entire OpenAPI schema may need to be loaded into context or extensive examples given to the agent in context to instruct it on how to use it.  *Oops*; there goes all of your hyped up context savings.
+
+#### Chained Extraction and Transform
+
+In some workflows, it is possible to use a chain of CLIs to perform retrieval and then a transform or use extraction to reduce the data that makes it into the context window.  In this scenario, there can be significant savings to be had, but it is also not unique to CLIs since most content that follows a format (HTML, JSON, XML, etc.) can be extracted using standard libraries via selectors (DOM/CSS, JSONPath, XPath, etc.).  I don't see this as a unique capability of a CLI based approach, but rather an underutilized approach because it is generally easier to just stuff it into context and let the LLM figure it out and optimize later.
 
 #### Progressive Context Consumption
 
@@ -105,7 +109,7 @@ command: searchFlights     Search for available flights
 
 I don't know about you, but this sure looks like the MCP schema...just without any structure.
 
-It is true that this could be progressively loaded instead by first listing all of the commands and then having the agent only `--help` the the desired command to disclose the costly payload descriptor for the tool:
+It is true that this could be progressively loaded instead by first listing all of the commands and then having the agent only `--help` the desired command to disclose the costly payload descriptor for the tool:
 
 ```text
 # Progressively loading instead of loading the entire schema
@@ -119,12 +123,13 @@ commands: searchFlights      Search for available flights
           ...
 ```
 
-However, I would make four points here:
+However, I would make 5 points here:
 
 1. For a sufficiently complex flow, the agent will end up traversing most of the tree, regardless.
 2. The likely context savings will end up pretty minimal if the MCP toolset is smartly designed in the first place; the agent just ends up taking more turns with a CLI while progressively discovering commands and parameter descriptors.
 3. Without giving the agent the full schema up front, the chance of the agent using the toolset correctly will go down.  In the same way that [Vercel found agent usage of docs improved when they placed the full doc index into `AGENTS.md`](https://vercel.com/blog/agents-md-outperforms-skills-in-our-agent-evals), our intuition should tell us that if the agent is aware of all of the tools and parameters at the outset, it will be better equipped to select the right one.
 4. Don't give your agent complex, useless MCP tools in the first place?  CLI and MCP are not mutually exclusive.  Be selective in both cases.
+5. With Claude Code also offering 1m context window now, is this still the defining argument to make?
 
 If you're still not convinced that a lot of this discourse lacks nuance and is just hype, *congrats on buying into the current AI-influencer FOMO hype cycle*; see you in 6 months when the influencers move on to the next revelation of the moment to stay relevant and get your eyeballs and dollars.
 
