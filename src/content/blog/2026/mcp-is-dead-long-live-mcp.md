@@ -129,7 +129,7 @@ However, I would make 5 points here:
 2. The likely context savings will end up pretty minimal if the MCP toolset is smartly designed in the first place; the agent just ends up taking more turns with a CLI while progressively discovering commands and parameter descriptors.
 3. Without giving the agent the full schema up front, the chance of the agent using the toolset correctly will go down.  In the same way that [Vercel found agent usage of docs improved when they placed the full doc index into `AGENTS.md`](https://vercel.com/blog/agents-md-outperforms-skills-in-our-agent-evals), our intuition should tell us that if the agent is aware of all of the tools and parameters at the outset, it will be better equipped to select the right one.
 4. Don't give your agent complex, useless MCP tools in the first place?  CLI and MCP are not mutually exclusive.  Be selective in both cases.
-5. With Claude Code also offering 1m context window now, is this still the defining argument to make?
+5. With Anthropic also offering 1m context window now, is this still the defining argument to make?
 
 If you're still not convinced that a lot of this discourse lacks nuance and is just hype, *congrats on buying into the current AI-influencer FOMO hype cycle*; see you in 6 months when the influencers move on to the next revelation of the moment to stay relevant and get your eyeballs and dollars.
 
