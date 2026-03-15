@@ -14,7 +14,7 @@ tags: "llms,ai,mcp"
 - There is currently a social media and industry zeitgeist dialed-in on CLIs...just as there was a moment for MCP but just a few short months ago
 - While it is true that there are token savings to be had by using a CLI, many folks have not considered how agents using custom CLIs run into the same context problem as MCP, except now without structure and many other sacrifices
 - In much of the discourse, there is a lack of distinction between local MCP over `stdio` versus server MCP over HTTP; *the latter is a very different use case*
-- Many folks are also only familiar with MCP tools, but overlook *MCP prompts and resources* as an important org- and enterprise-level mechanism for moving from *cowboy vibe-coding* to organizationally aligned *agentic engineering*.
+- Many folks are also only familiar with MCP tools, but overlook ***MCP [prompts](https://modelcontextprotocol.io/specification/2025-11-25/server/prompts) and [resources](https://modelcontextprotocol.io/specification/2025-11-25/server/resources)*** as an important org- and enterprise-level mechanism for moving from *cowboy vibe-coding* to organizationally aligned *agentic engineering*.
 - The importance of MCP auth is also commonly misunderstood as is the role and importance of telemetry in understanding org-wide tool use
 - For enterprise and org-level use cases, MCP is the present and future and teams need to be able to cut through the hype of the moment.
 
