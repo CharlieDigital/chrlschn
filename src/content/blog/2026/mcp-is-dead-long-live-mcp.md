@@ -16,6 +16,7 @@ tags: "llms,ai,mcp"
 - In much of the discourse, there is a lack of distinction between local MCP over `stdio` versus server MCP over HTTP; *the latter is a very different use case*
 - Many folks are also only familiar with MCP tools, but overlook ***MCP [prompts](https://modelcontextprotocol.io/specification/2025-11-25/server/prompts) and [resources](https://modelcontextprotocol.io/specification/2025-11-25/server/resources)*** as an important org- and enterprise-level mechanism for moving from *cowboy vibe-coding* to organizationally aligned *agentic engineering*.
 - The importance of MCP auth is also commonly misunderstood as is the role and importance of telemetry in understanding org-wide tool use
+- The oversight made by many is that *individual usage* of coding agents looks very different from *organizational adoption* of coding agents where there is an emphasis on visibility, telemetry, security, quality, and being able to operationalize and maintain agent-coded systems by a team of varying degrees of skill and experience.
 - For enterprise and org-level use cases, MCP is the present and future and teams need to be able to cut through the hype of the moment.
 
 ----
