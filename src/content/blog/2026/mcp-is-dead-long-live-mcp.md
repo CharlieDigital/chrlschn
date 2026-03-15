@@ -251,3 +251,5 @@ Long live MCP!
 ----
 
 All content was human written; [see the file history in the repo](https://github.com/CharlieDigital/chrlschn/commits/main/src/content/blog/2026/mcp-is-dead-long-live-mcp.md).
+
+[Hackernews discussion](https://news.ycombinator.com/item?id=47380270)
