@@ -19,7 +19,7 @@ What I wrote then:
 >
 > But MCP over streamable HTTP?  ***This is an absolute game changer*** and will be a key linchpin in organizational and enterprise adoption shifting from *vibe-coding* to *agentic engineering*.
 
-This seemed obvious after having spent a few weeks building [Motion's internal agent context and telemetry system](https://zeeq.ai).
+This seemed obvious after having spent a few weeks building [Motion's internal agent context and telemetry system](https://zeeq.ai) ([now open sourced](https://github.com/zeeq-ai/zeeq-app)).
 
 Here we are, ~6 months later, and the protocol (and industry) has aligned towards stateless MCP over streamable HTTP.
 
@@ -37,7 +37,7 @@ Simon Willison's [recent blog post](https://simonwillison.net/2026/Jul/31/statel
 
 As I wrote in the original post, MCP over HTTP has several advantages that a local CLI cannot provide around security, ease of rollout and deployment, and ability to scale.  For enterprise operating environments, CLIs were never going to be the answer for all use cases because they pose an operational and security risk.
 
-The obvious answer to "why MCP" is that "it's just HTTP" and (for better or for worse) much of our infrastructure, expertise, and tooling for the largest network for exchange of text-based communication and information is built around HTTP and its mature, well-established supporting standards like OAuth and OIDC.
+The obvious answer to *"why MCP"* is that *"it's just HTTP"* and (for better or for worse) much of our infrastructure, expertise, and tooling for the largest network for exchange of text-based communication and information is built around HTTP and its mature, well-established supporting standards like OAuth and OIDC.
 
 - All of the ways you would secure HTTP endpoints (TLS, OAuth, OIDC, etc.) apply to securing an MCP endpoint.
 - All of the ways you would rollout observability and telemetry for HTTP endpoints (OTEL, logging) apply to MCP endpoints.
@@ -94,7 +94,7 @@ The AI space is one that is still heavily susceptible to hype cycles because the
 
 The way to cut through a lot of the noise is to simply focus on first principles and deeply understand the underlying technical details.
 
-MCP is assuredly ***not dead*** because anyone that spent a bit of time building with the streamable HTTP mode could see: *it's just HTTP* and for as inefficient and imperfect as HTTP is, it is still the single most successful protocol for the exchange of text-based content and information that human's have invented (thus far).
+MCP is assuredly ***not dead*** because anyone that spent a bit of time building with the streamable HTTP mode could see: *it's just HTTP* and for as inefficient and imperfect as HTTP is, it is still the single most successful protocol for the exchange of text-based content and information that humans have invented (thus far).
 
 ---
 
