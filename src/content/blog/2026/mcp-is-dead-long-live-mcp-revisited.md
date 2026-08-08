@@ -35,7 +35,7 @@ Simon Willison's [recent blog post](https://simonwillison.net/2026/Jul/31/statel
 
 ## Why MCP Seemed "Obvious"
 
-As I wrote in the original post, MCP over HTTP has several advantages that a local CLI cannot provide around security, ease of rollout and deployment, and ability to scale.  For enterprise operating environments, CLIs were never going to be the answer for all use cases because they pose an operational and security risk.
+As I wrote in the original post, MCP over HTTP has several advantages that a local CLI cannot provide around security, ease of rollout and deployment, and ability to scale.  For enterprise operating environments, CLIs were never going to be the answer for all use cases because they pose an operational and security risk.  (They are fine for use cases that do not require auth, fine for solo cowboy vibe-coders, but clearly not the right fit for an entire class of organizational and enterprise use cases.)
 
 The obvious answer to *"why MCP"* is that *"it's just HTTP"* and (for better or for worse) much of our infrastructure, expertise, and tooling for the largest network for exchange of text-based communication and information is built around HTTP and its mature, well-established supporting standards like OAuth and OIDC.
 
@@ -72,7 +72,7 @@ Stateless MCP over HTTP is built more or less just as you would build any other 
 
 All that said, there are still gaps in MCP across different *client* implementations.
 
-Most notable is ChatGPT/Codex's lack of support for MCP Prompts, which promises to fix one of the biggest issues right now with the nonsensical way we deploy agent skills via raw text files.
+Most notable [is ChatGPT/Codex's lack of support for MCP Prompts](https://github.com/openai/codex/issues/5059), which promises to fix one of the biggest issues right now with the nonsensical way we deploy agent skills via manually synchronizing raw text files.
 
 For the unfamiliar, MCP Prompts is roughly equivalent to local skills and in most harnesses, is activated via a "slash" command just like skills.
 
