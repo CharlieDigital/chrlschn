@@ -2,7 +2,7 @@
 title: "MCP is Dead; Long Live MCP! - Revisited"
 description: "6 months later, where does MCP stand today?"
 pubDate: "2026 August 8"
-socialImage: "/public/img/mcp/death-to-mcp-long-live-mcp.png"
+socialImage: "/public/img/mcp/death-to-mcp-long-live-mcp-revisited.png"
 slug: "2026/08/mcp-is-dead-long-live-mcp"
 tags: "llms,ai,mcp"
 ---
