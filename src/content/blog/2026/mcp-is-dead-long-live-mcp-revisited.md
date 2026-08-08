@@ -94,7 +94,7 @@ The AI space is one that is still heavily susceptible to hype cycles because the
 
 The way to cut through a lot of the noise is to simply focus on first principles and deeply understand the underlying technical details.
 
-MCP is assuredly ***not dead*** because anyone that spent a bit of time building with the streamable HTTP mode could see: *it's just HTTP* and for as inefficient and imperfect as HTTP is, it is still the single most successful protocol for the exchange of text-based content and information that humans have invented (thus far).
+MCP is assuredly ***not dead*** because anyone that has spent a bit of time building with the streamable HTTP mode could see: *it's just HTTP* and for as inefficient and imperfect as HTTP is, it is still the single most successful protocol for the exchange of text-based content and information that humans have invented (thus far).
 
 ---
 
