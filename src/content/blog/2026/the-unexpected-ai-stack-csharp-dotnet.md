@@ -11,7 +11,11 @@ tags: "llms,ai,mcp"
 
 ## Summary
 
-(TBD)
+- C# and .NET as stack are probably flying under the radar for many teams building new apps in an agentic era
+- For teams already using legacy C# and .NET, it may not be clear how to best leverage the modern .NET stack tooling to speed up agentic development
+- The Aspire stack provides agents a programmable, isolated runtime orchestration layer that improves agent autonomy and facilitates agentic patterns like worktrees and parallel development.
+- CSharpRepl lets agents interact with an instance of *the running application* and manipulate the runtime state of the application including wrapping and replacing existing functions.
+- Combined, this set of tooling gives agents more autonomy to iterate and build stable, correct, functional code that is proven in runtime configurations.
 
 ----
 
@@ -45,11 +49,15 @@ In this series, I want to shed some light on a few particular aspects that engin
 - **Part 1** (you are here) will introduce two  under-the-radar components of the .NET stack that make it surprisingly amenable to building software with agents: `CSharpRepl` and Aspire.
 - **Part 2** will dive into a handles on implementation from the ground up with an open-source template for you to build your own solutions on top of.
 
+---
+
 ## Encapsulating the Runtime with Aspire
 
 If you're using Docker Compose or [Tilt](https://tilt.dev/) for dev runtime orchestration, you may have occasionally wished that it was just a bit more *programmable*.  That's exactly the gap that [Aspire](https://aspire.dev/) fills: a programmable orchestration layer that makes it easy to build an isolated, runtime stack that agents can control while building software.
 
 The best analogy is to consider the difference between Terraform and Pulumi.  Terraform is a declarative tool for building infrastructure, while Pulumi is a *programmable* tool that allows teams to build infrastructure with code.  Aspire is the same thing for orchestrating your runtime stack.
+
+> Early iterations of Aspire were focused more on building distributed, microservices systems.  While Aspire is still great for that, it is even better as an agent-friendly runtime orchestration layer.
 
 It has several key features that I think make it a foundational component of an agent-friendly software stack:
 
@@ -58,7 +66,7 @@ It has several key features that I think make it a foundational component of an 
 - The `aspire` CLI supports searching and filtering console logs as well as OTEL structured logs and traces by resource.
 - It is deeply programmable and supports C#, TypeScript, and Python for building runtime orchestration logic.  And of course, it can run any code and has [built-in extensions for handling most common runtime stack components](https://aspire.dev/integrations/gallery/?) like JS frontends, databases, messaging, caching, etc.
 
-### Aspire telemetry and observability
+### Built in telemetry and observability
 
 This screenshot of the Zeeq Aspire dashboard shows what a typical local runtime looks like:
 
@@ -67,10 +75,12 @@ This screenshot of the Zeeq Aspire dashboard shows what a typical local runtime 
 It doesn't look too different from Tilt or Docker Desktop, but peek the telemetry:
 
 ![Example of the telemetry in the dashboard](/public/img/ai-sleeper-stack/telemetry-example.webp)
+*Rich built in telemetry lets agents get visibility into everyday types of issues like the underlying database queries being issued.*
 
 Most importantly, the telemetry sink also surfaces `gen.ai` attributes that give visibility into standard agent interactions: materialized prompts, tool calls, etc.
 
 ![Example of the telemetry in the dashboard](/public/img/ai-sleeper-stack/gen-ai-telemetry.webp)
+*Aspire materializes `gen.ai` spans to make it easier to see final prompts, tool calls, and agent interactions.  The agents can search these spans directly.*
 
 You will certainly get much, much richer telemetry via specialized tools like Langfuse (not mutually exclusive since it becomes just another OTEL sink), but Aspire's built-in, searchable telemetry sink let's agents autonomously iterate with visibility into the runtime state.
 
@@ -80,8 +90,112 @@ aspire otel spans zeeq --search "BEGIN CHANGES" \
   --dashboard-url http://localhost:15010
 ```
 
-Produces the list of spans that the agent can then query and trace the full execution path of the action.
+Searches through the list of spans that the agent can then then read for a full trace of the execution flow (assuming your code has been well-instrumented!):
 
 ![Example of querying spans from Aspire](/public/img/ai-sleeper-stack/query-traces.png)
+*The CLI allows agents to search through the telemetry spans before doing a full read*
 
 ### Agent interaction with runtime resources
+
+The `aspire` CLI becomes a primary interaction point with agents for runtime resources including:
+
+- Reading logs via `aspire logs`
+- Query the state of running resources via `aspire describe <resource>`
+- Controlling resource lifecycle via `aspire resource <resource> start|stop|rebuild`
+
+```bash
+# Search logs for a given resource
+aspire logs zeeq-server --search "principal" \
+  --non-interactive --nologo
+
+# Allow agent to further filter via jq
+aspire logs zeeq-server --search "principal" \
+  --non-interactive --nologo --format json
+
+# Check application status with all environment variables
+aspire describe zeeq-server --format json
+
+# Check application status and query for specific properties
+aspire describe zeeq-server --apphost ./host --format json | \
+  jq -c '.resources[] | {
+    name,
+    displayName,
+    state,
+    healthStatus,
+    commands: (.commands // {} | keys)
+  }'
+
+# Rebuild and restart a compiled resource like a .NET or Rust backend
+aspire resource zeeq-server rebuild
+
+# Restart a Node frontend resource
+aspire resource zeeq-web restart
+```
+
+### Port isolation for worktrees
+
+The inner network loop becomes a key feature if you're using worktrees and you want to [run the full application stack in isolation to allow for agents to work in parallel](https://devblogs.microsoft.com/aspire/aspire-isolated-mode-parallel-development/).
+
+```bash
+# Run with randomized ports and isolated user secrets
+aspire run --isolated
+```
+
+----
+
+## Wiring CSharpRepl into the running application
+
+[CSharpRepl (CSR)](https://fuqua.io/CSharpRepl/) is a command line REPL that allows interactive C# scripting.
+
+In the past, this has been generally useful for quickly trying out C# code without having to create a project or compile and run.  However, the real unlock with CSR is that it can be *wired into a running instance of the application*.
+
+### Direct access to runtime dependencies
+
+Imagine the following dependency graph:
+
+![Dependency graph for an API handler](/public/img/ai-sleeper-stack/di-graph.png)
+*A typical dependency graph for a web API handler endpoint.*
+
+If the agent can only test the web API handler entrypoint via `curl`, then it cannot easily diagnose issues with `Service α` since it must always pass through three layers of dependencies before it can test an input scenario with `Service α`.  While some of this can be covered with unit and integration tests, in some cases -- especially with AI-enabled apps -- there's no substitute for being able to test the runtime application directly like a human might with a debugger.
+
+This is precisely what CSR allows.  Will Fuqua (author of CSharpRepl) [has a writeup that shows the gist of this](https://fuqua.io/blog/2026/06/injecting-a-csharp-repl-into-a-running-net-process/):
+
+```bash
+# Get the installation location of the CSharpRepl tool hooks
+csharprepl connect init
+
+# This yields two environment variables (example) that can be wired up via Aspire
+export DOTNET_STARTUP_HOOKS=".../tools/csharprepl/.../connector/CSharpRepl.InjectedHook.dll"
+export ASPNETCORE_HOSTINGSTARTUPASSEMBLIES="CSharpRepl.InjectedHook"
+
+# Then list the candidate processes for CSR to connect to
+csharprepl connect list
+
+# And connect to the PID
+csharprepl connect 6580
+```
+
+Once connected, the agent can then *directly manipulate `Service α`* and any other runtime dependencies without having to go through the API entrypoint.  This allows agents to diagnose issues and iterate on fixes much more quickly.
+
+### Wrapping and replacing functions at runtime
+
+But it goes beyond that:
+
+- `#replace` allows agents to intercept and *replace* a running function with another implementation
+- `#wrap` allows agents to intercept and *wrap* a running function with additional logic (like logging, telemetry, etc.)
+
+Together, this toolset gives agents a **huge** unlock because the agents can reach deep into the runtime configuration of the application to test different scenarios.  Three aspects that I find this boosts:
+
+1. Agents can better diagnose production issues by directly interacting with a local running instance and simulate the failure conditions or attempt to recreate the failure conditions from a production trace.
+2. Agents can build more stable runtime systems and regression test backends without the need to use slower frontend browser/client manipulation.
+3. Agents can experiment and iterate faster while building more stable runtime/production code.
+
+----
+
+## Closing Thoughts
+
+While it is true that a lot of the innovation in the AI space originates from the Python ecosystem, for most teams *building business applications using AI*, the C# and .NET stack is a highly underrated and perhaps surprising option, especially for folks that haven't seen .NET since the *.NET Framework* era.
+
+Modern .NET and C# are well-suited for teams that want to build real products and real software on a stable base in a programming language and stack that offers agents strong build-time guardrails as well as throughput and performance at scale where it matters (consider the API boundary serialization of JSON and gRPC/Protobuf, for example -- both areas where C# and .NET excel).
+
+In **Part 2**, we'll build a practical template for a C# + .NET agent-enabled application that you can use as a starting point for your own projects (wiring EF core for build time checked database queries, minimal web API endpoints, test containers for integration testing, etc.).  We'll also go into real-world examples of how to let agents operate the stack effectively when building autonomously including a skill that guides agents on getting the most out of CSharpRepl
