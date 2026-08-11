@@ -208,4 +208,4 @@ In **Part 2**, we'll build a practical template for a C# + .NET agent-enabled ap
 
 ---
 
-Still human written (mistakes and all!); [see the file history in the repo](https://github.com/CharlieDigital/chrlschn/commits/main/src/content/blog/2026/mcp-is-dead-long-live-mcp-revisited.md).
+Still human written (mistakes and all!); [see the file history in the repo](https://github.com/CharlieDigital/chrlschn/blob/main/src/content/blog/2026/the-unexpected-ai-stack-csharp-dotnet-part-1.md).
