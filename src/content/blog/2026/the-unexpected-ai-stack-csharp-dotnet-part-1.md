@@ -38,7 +38,7 @@ The reasons are numerous and [I've written about this extensively before](https:
 Aside from that, if developers are no longer writing code, why *not* choose a platform that has:
 
 - Built-in primitives for in-process asynchronous coordination (`System.Threading.Channels`, Orleans actor model)
-- Higher performance and throughput where it matters (boundary serialization for both JSON and gRPC/Protobuf, etc.)
+- Higher performance and throughput where it matters (boundary serialization for both JSON and [gRPC/Protobuf](https://github.com/LesnyRumcajs/grpc_bench/discussions/559), etc.)
 - Better story around ecosystem security and dependency management (NPM vs Nuget)
 - A whole professional organization continuously patching and fixing the platform and libraries
 
@@ -193,6 +193,9 @@ But it goes beyond that:
 - `#replace` allows agents to intercept and *replace* a running function with another implementation
 - `#wrap` allows agents to intercept and *wrap* a running function with additional logic (like logging, telemetry, etc.)
 
+![Conceptual overview of how agents can use CSharpRepl to wrap and replace ](/public/img/ai-sleeper-stack/service-wrap-replace.png)
+*A typical dependency graph for a web API handler endpoint.*
+
 Together, this toolset gives agents a **huge** unlock because the agents can reach deep into the runtime configuration of the application to test different scenarios.  Three aspects that I find this boosts:
 
 1. Agents can better diagnose production issues by directly interacting with a local running instance and simulate the failure conditions or attempt to recreate the failure conditions from a production trace.
@@ -201,9 +204,9 @@ Together, this toolset gives agents a **huge** unlock because the agents can rea
 
 ----
 
-## Closing Thoughts
+## Closing thoughts
 
-While it is true that a lot of the innovation in the AI space originates from the Python ecosystem, for most teams *building business applications using AI*, the C# and .NET stack is a highly underrated and perhaps surprising option, especially for folks that haven't seen .NET since the *.NET Framework* era.
+While it is true that a lot of the innovation in the AI space originates from the Python ecosystem, for most teams *building business applications using AI*, the C# and .NET stack is a highly underrated and perhaps surprising option, especially for folks that haven't dabbled in C# or .NET since the *.NET Framework* era.
 
 Modern .NET and C# are well-suited for teams that want to build real products and real software on a stable base in a programming language and stack that offers agents strong build-time guardrails as well as throughput and performance at scale where it matters (consider the API boundary serialization of JSON and gRPC/Protobuf, for example -- both areas where C# and .NET excel).
 
@@ -211,6 +214,6 @@ In **Part 2**, we'll build a practical template for a C# + .NET agent-enabled ap
 
 > If you are curious to see a real-world setup, check out the [Zeeq.ai](https://zeeq.ai) repo: [https://github.com/zeeq-ai/zeeq-app](https://github.com/zeeq-ai/zeeq-app)
 
----
+----
 
 Still human written (mistakes and all!); [see the file history in the repo](https://github.com/CharlieDigital/chrlschn/blob/main/src/content/blog/2026/the-unexpected-ai-stack-csharp-dotnet-part-1.md).
