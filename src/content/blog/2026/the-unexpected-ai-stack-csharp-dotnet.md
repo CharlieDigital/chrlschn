@@ -13,9 +13,9 @@ tags: "llms,ai,mcp"
 
 - C# and .NET as stack are probably flying under the radar for many teams building new apps in an agentic era
 - For teams already using legacy C# and .NET, it may not be clear how to best leverage the modern .NET stack tooling to speed up agentic development
-- The Aspire stack provides agents a programmable, isolated runtime orchestration layer that improves agent autonomy and facilitates agentic patterns like worktrees and parallel development.
+- Aspire tooling provides agents a programmable, isolated runtime orchestration layer that improves agent autonomy and facilitates agentic patterns like worktrees and parallel development.
 - CSharpRepl lets agents interact with an instance of *the running application* and manipulate the runtime state of the application including wrapping and replacing existing functions.
-- Combined, this set of tooling gives agents more autonomy to iterate and build stable, correct, functional code that is proven in runtime configurations.
+- Combined, this set of tooling gives agents more autonomy to iterate and build stable, correct, functional code that is proven in *runtime configurations*.
 
 ----
 
@@ -27,46 +27,48 @@ Last year, I was a key part of the effort at Motion ($500m valuation, series C, 
 
 The reasons are numerous and [I've written about this extensively before](https://typescript-is-like-csharp.chrlschn.dev/pages/intro-and-motivation.html), but it's worth summarizing this again in mid 2026 framed in the context of building in an agent first reality:
 
-- Build- *and* run-time type checks provide one layer of safety and correctness for agents to work with
+- Build- *and* run-time type checks provide a foundational layer of safety and correctness to check agent outputs
 - Clean, easy to understand error stacks (story is even better with upcoming C# 15 and runtime async); compare this to typical TypeScript type error stacks...
-- Roslyn static analyzers that allow for custom static analysis to build guardrails for agents
-- Roslyn source generators for terse runtime code to remove boilerplate and reducing context for agents
+- Roslyn static analyzers that allow for custom static analysis for agent guardrails
+- Roslyn source generators for terse runtime code to remove boilerplate and reduce context for agents on the read path
 - Extensively and richly documented with broad first-party libraries means that LLMs have very good coverage in their training data. While Python and JavaScript may have more coverage, the lack of a standard library and BCL means that there are many variants of how to accomplish the same task.
 - EF Core (mature, powerful .NET ORM) provides build-time checks for database schemas and decreases the likelihood of runtime errors from schema changes.
-- Mature, stable, *consistent*, easy to use tooling and tool chain.  Just `dotnet`.  Again, easy for agents to work with.
+- Mature, stable, *consistent*, easy to use tooling and tool chain.  Just `dotnet`.  Again, easy for agents to work with, minimizing the need for skills or explanatory text for the agents.
 
 Aside from that, if developers are no longer writing code, why *not* choose a platform that has:
 
-- Better built-in primitives for in-process asynchronous coordination (`System.Threading.Channels`, Orleans actor model)
+- Built-in primitives for in-process asynchronous coordination (`System.Threading.Channels`, Orleans actor model)
 - Higher performance and throughput where it matters (boundary serialization for both JSON and gRPC/Protobuf, etc.)
-- Better story around ecosystem security and dependency management
+- Better story around ecosystem security and dependency management (NPM vs Nuget)
 - A whole professional organization continuously patching and fixing the platform and libraries
 
-Given the benefits of adding both build and runtime type safety as well as a mature, well-documented, and broad platform, C# is a surprisingly strong choice for building real software with AI.
+Given the benefits of adding both build and runtime type safety as well as a mature, well-documented, and broad first party platform, C# is a surprisingly strong choice for building real software with AI.
 
-In this series, I want to shed some light on a few particular aspects that engineering teams might be sleeping on.
+The objective of this two-part series is to shed some light on how C# and the .NET ecosystem is an ideal foundation for building production software with agents.
 
-- **Part 1** (you are here) will introduce two  under-the-radar components of the .NET stack that make it surprisingly amenable to building software with agents: `CSharpRepl` and Aspire.
-- **Part 2** will dive into a handles on implementation from the ground up with an open-source template for you to build your own solutions on top of.
+- **Part 1** (you are here) will introduce two under-the-radar components of the .NET stack that make it surprisingly amenable to building software with agents: Aspire and `CSharpRepl`.
+- **Part 2** will dive into a hands-on implementation from the ground up with an open-source template for teams to build on top of.
 
----
+----
 
 ## Encapsulating the Runtime with Aspire
 
-If you're using Docker Compose or [Tilt](https://tilt.dev/) for dev runtime orchestration, you may have occasionally wished that it was just a bit more *programmable*.  That's exactly the gap that [Aspire](https://aspire.dev/) fills: a programmable orchestration layer that makes it easy to build an isolated, runtime stack that agents can control while building software.
+If you're using Docker Compose or [Tilt](https://tilt.dev/) for dev runtime orchestration, you may have occasionally wished that it was just a bit more *programmable*.  That's exactly the gap that [Aspire](https://aspire.dev/) fills: a programmable orchestration layer that makes it easy to build an isolated runtime stack that agents can control while building software.
 
-The best analogy is to consider the difference between Terraform and Pulumi.  Terraform is a declarative tool for building infrastructure, while Pulumi is a *programmable* tool that allows teams to build infrastructure with code.  Aspire is the same thing for orchestrating your runtime stack.
+The best analogy is to consider the difference between Terraform and Pulumi or CDK.  Terraform is a declarative tool for building infrastructure, while Pulumi and CDK are *programmable* tools that allows teams to build infrastructure with code.  Aspire is the same thing for orchestrating your runtime stack.
 
 > Early iterations of Aspire were focused more on building distributed, microservices systems.  While Aspire is still great for that, it is even better as an agent-friendly runtime orchestration layer.
 
-It has several key features that I think make it a foundational component of an agent-friendly software stack:
+It has several key features that make it a foundational component of an agent-friendly software stack:
 
-- It has a [built-in internal network loop](https://aspire.dev/fundamentals/networking-overview/) that isolates individual runtime instances.  This is important for agent development and worktrees because this allows agents to run the full stack in isolation.
+- It has a [built-in internal network loop](https://aspire.dev/fundamentals/networking-overview/) that isolates individual runtime stacks.  This is important for agent development and worktrees because this allows agents to run the full stack in isolation.
 - It has a [built-in, queryable OpenTelemetry target](https://aspire.dev/fundamentals/telemetry/) that gives agents the richness to access not just logs, but logical flows through traces and spans with rich metadata attributes on logs, traces/spans, and metrics.
 - The `aspire` CLI supports searching and filtering console logs as well as OTEL structured logs and traces by resource.
-- It is deeply programmable and supports C#, TypeScript, and Python for building runtime orchestration logic.  And of course, it can run any code and has [built-in extensions for handling most common runtime stack components](https://aspire.dev/integrations/gallery/?) like JS frontends, databases, messaging, caching, etc.
+- It is deeply programmable and supports C#, TypeScript, and Python for building runtime orchestration logic.  And of course, it can run any code and has [built-in extensions for handling most common runtime stack components](https://aspire.dev/integrations/gallery/?) like Vite powered JS frontends, databases, messaging, caching, etc.
 
 ### Built in telemetry and observability
+
+A key piece of the story is Aspire's easy-to-use and built-in telemetry and observability backend.
 
 This screenshot of the Zeeq Aspire dashboard shows what a typical local runtime looks like:
 
@@ -93,7 +95,7 @@ aspire otel spans zeeq --search "BEGIN CHANGES" \
 Searches through the list of spans that the agent can then then read for a full trace of the execution flow (assuming your code has been well-instrumented!):
 
 ![Example of querying spans from Aspire](/public/img/ai-sleeper-stack/query-traces.png)
-*The CLI allows agents to search through the telemetry spans before doing a full read*
+*The CLI allows agents to search through the telemetry spans before doing a full read to trace through an instrumented execution flow*
 
 ### Agent interaction with runtime resources
 
@@ -175,7 +177,9 @@ csharprepl connect list
 csharprepl connect 6580
 ```
 
-Once connected, the agent can then *directly manipulate `Service α`* and any other runtime dependencies without having to go through the API entrypoint.  This allows agents to diagnose issues and iterate on fixes much more quickly.
+Once connected, the agent can then *directly manipulate `Service α`* and any other runtime dependencies without having to go through the API entrypoint.  This allows agents to diagnose issues and iterate on fixes much more quickly since it can wrap the running functions, test different input scenarios, replace the current implementation and run a live test reaching directly into the DI container.
+
+Think of it like a blood test versus directly examining an organ or tumor.  The blood test is still useful, but being able to directly probe the organ or tumor directly gives a more complete picture of underlying operational behavior and diagnosing issues.
 
 ### Wrapping and replacing functions at runtime
 
@@ -198,4 +202,6 @@ While it is true that a lot of the innovation in the AI space originates from th
 
 Modern .NET and C# are well-suited for teams that want to build real products and real software on a stable base in a programming language and stack that offers agents strong build-time guardrails as well as throughput and performance at scale where it matters (consider the API boundary serialization of JSON and gRPC/Protobuf, for example -- both areas where C# and .NET excel).
 
-In **Part 2**, we'll build a practical template for a C# + .NET agent-enabled application that you can use as a starting point for your own projects (wiring EF core for build time checked database queries, minimal web API endpoints, test containers for integration testing, etc.).  We'll also go into real-world examples of how to let agents operate the stack effectively when building autonomously including a skill that guides agents on getting the most out of CSharpRepl
+In **Part 2**, we'll build a practical template for a C# + .NET agent-enabled application that you can use as a starting point for your own projects (wiring EF core for build time checked database queries, minimal web API endpoints, test containers for integration testing, etc.).  We'll also go into real-world examples of how to let agents operate the stack effectively when building autonomously including a skill that guides agents on getting the most out of CSharpRepl.
+
+> If you are curious to see a real-world setup, check out the [Zeeq.ai](https://zeeq.ai) repo: [https://github.com/zeeq-ai/zeeq-app](https://github.com/zeeq-ai/zeeq-app)
