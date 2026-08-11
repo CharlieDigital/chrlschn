@@ -47,7 +47,11 @@ Given the benefits of adding both build and runtime type safety as well as a mat
 The objective of this two-part series is to shed some light on how C# and the .NET ecosystem is an ideal foundation for building production software with agents.
 
 - **Part 1** (you are here) will introduce two under-the-radar components of the .NET stack that make it surprisingly amenable to building software with agents: Aspire and `CSharpRepl`.
-- **Part 2** will dive into a hands-on implementation from the ground up with an open-source template for teams to build on top of.
+- [Part 2]((https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-2/)) will dive into a hands-on implementation from the ground up with an open-source template for teams to build on top of.
+- **Part 3** will implement the next layer of the application including a simple streaming interface to the Copilot SDK agent.
+- **Part 4** will extend the application with Testcontainers to demonstrate how to simplify test execution for agents with stateless containers as well as telemetry for runtime visibility.
+
+***The full repo***: <https://github.com/zeeq-ai/zeeq-tmpl>
 
 ----
 
@@ -194,7 +198,7 @@ But it goes beyond that:
 - `#wrap` allows agents to intercept and *wrap* a running function with additional logic (like logging, telemetry, etc.)
 
 ![Conceptual overview of how agents can use CSharpRepl to wrap and replace ](/public/img/ai-sleeper-stack/service-wrap-replace.png)
-*A typical dependency graph for a web API handler endpoint.*
+*How wrap and replace can be used by agents to diagnose runtime issues, insert additional telemetry, and test new implementations rapidly.*
 
 Together, this toolset gives agents a **huge** unlock because the agents can reach deep into the runtime configuration of the application to test different scenarios.  Three aspects that I find this boosts:
 
@@ -210,7 +214,7 @@ While it is true that a lot of the innovation in the AI space originates from th
 
 Modern .NET and C# are well-suited for teams that want to build real products and real software on a stable base in a programming language and stack that offers agents strong build-time guardrails as well as throughput and performance at scale where it matters (consider the API boundary serialization of JSON and gRPC/Protobuf, for example -- both areas where C# and .NET excel).
 
-In **Part 2**, we'll build a practical template for a C# + .NET agent-enabled application that you can use as a starting point for your own projects (wiring EF core for build time checked database queries, minimal web API endpoints, test containers for integration testing, etc.).  We'll also go into real-world examples of how to let agents operate the stack effectively when building autonomously including a skill that guides agents on getting the most out of CSharpRepl.
+In [Part 2](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-4/), we'll build a practical template for a C# + .NET agent-enabled application that you can use as a starting point for your own projects (wiring EF core for build time checked database queries, minimal web API endpoints, test containers for integration testing, etc.).  We'll also go into real-world examples of how to let agents operate the stack effectively when building autonomously including a skill that guides agents on getting the most out of CSharpRepl.
 
 > If you are curious to see a real-world setup, check out the [Zeeq.ai](https://zeeq.ai) repo: [https://github.com/zeeq-ai/zeeq-app](https://github.com/zeeq-ai/zeeq-app)
 
