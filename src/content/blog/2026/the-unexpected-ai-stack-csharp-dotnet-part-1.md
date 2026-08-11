@@ -177,9 +177,14 @@ csharprepl connect list
 csharprepl connect 6580
 ```
 
-Once connected, the agent can then *directly manipulate `Service α`* and any other runtime dependencies without having to go through the API entrypoint.  This allows agents to diagnose issues and iterate on fixes much more quickly since it can wrap the running functions, test different input scenarios, replace the current implementation and run a live test reaching directly into the DI container.
+Once connected, the agent can then *directly manipulate `Service α`* and any other runtime dependencies without having to go through the API entrypoint.  This allows agents to:
 
-Think of it like a blood test versus directly examining an organ or tumor.  The blood test is still useful, but being able to directly probe the organ or tumor directly gives a more complete picture of underlying operational behavior and diagnosing issues.
+- Diagnose issues and iterate on fixes much more quickly since it can wrap the running functions,
+- Test different input scenarios,
+- Replace the current implementation and run a live test reaching directly into the DI container,
+- Bypass the authentication and authorization layers at the boundary to simulate different users without having complicated agent authorization paths or weakened surface areas to create an affordance to let agents access the runtime.
+
+Think of it like a blood test versus directly examining an organ or tumor.  The blood test is still useful, but being able to directly probe the organ or tumor will give a more complete picture of underlying "operational runtime behavior" and make it easier for diagnosing issues.
 
 ### Wrapping and replacing functions at runtime
 
