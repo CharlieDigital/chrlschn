@@ -3,7 +3,7 @@ title: "The Unexpected AI Stack: C# + .NET (Part 1)"
 description: "Exploring an unconventional stack for building AI- and agent-enabled applications: C# and .NET"
 pubDate: "2026 August 10"
 socialImage: "/public/img/ai-sleeper-stack/netcore-csharp-aspire.png"
-slug: "2026/08/the-unexpected-ai-stack-csharp-dotnet"
+slug: "2026/08/the-unexpected-ai-stack-csharp-dotnet-part-1"
 tags: "llms,ai,mcp"
 ---
 
@@ -11,11 +11,11 @@ tags: "llms,ai,mcp"
 
 ## Summary
 
-- C# and .NET as stack are probably flying under the radar for many teams building new apps in an agentic era
+- C# and .NET as stack are probably flying under the radar for many teams building new apps in the agentic era
 - For teams already using legacy C# and .NET, it may not be clear how to best leverage the modern .NET stack tooling to speed up agentic development
 - Aspire tooling provides agents a programmable, isolated runtime orchestration layer that improves agent autonomy and facilitates agentic patterns like worktrees and parallel development.
 - CSharpRepl lets agents interact with an instance of *the running application* and manipulate the runtime state of the application including wrapping and replacing existing functions.
-- Combined, this set of tooling gives agents more autonomy to iterate and build stable, correct, functional code that is proven in *runtime configurations*.
+- Combined, this set of tooling gives agents more autonomy to iterate and build stable, correct, production-ready code that is proven in *runtime configurations* efficiently.
 
 ----
 
@@ -23,15 +23,15 @@ tags: "llms,ai,mcp"
 
 In an age when agents can write code in any programming language, it's fair to ask: why have agents write code in C#?
 
-Last year, I was a key part of the effort at Motion ($500m valuation, series C, post YCombinator startup) [to move the entire backend off of TypeScript + Node and shift to a combination of C# and F# for all future backends](https://engineering.usemotion.com/moving-off-of-typescript-e7bb1f3ad091).
+Last year, I was a technical lead on the effort at Motion ($500m valuation, series C, post YCombinator startup, ~40 engineers) [to move the entire backend off of TypeScript + Node and shift to a combination of C# and F# for all future backends](https://engineering.usemotion.com/moving-off-of-typescript-e7bb1f3ad091).
 
-The reasons are numerous and [I've written about this extensively before](https://typescript-is-like-csharp.chrlschn.dev/pages/intro-and-motivation.html), but it's worth summarizing this again in mid 2026 framed in the context of building in an agent first reality:
+The reasons are numerous and [I've written about this extensively before](https://typescript-is-like-csharp.chrlschn.dev/pages/intro-and-motivation.html), but it's worth summarizing this again in mid 2026 framed in the context of building in an agent-first reality:
 
 - Build- *and* run-time type checks provide a foundational layer of safety and correctness to check agent outputs
-- Clean, easy to understand error stacks (story is even better with upcoming C# 15 and runtime async); compare this to typical TypeScript type error stacks...
+- Clean, easy to understand build-time error traces; compare this to typical TypeScript type error stacks...
 - Roslyn static analyzers that allow for custom static analysis for agent guardrails
 - Roslyn source generators for terse runtime code to remove boilerplate and reduce context for agents on the read path
-- Extensively and richly documented with broad first-party libraries means that LLMs have very good coverage in their training data. While Python and JavaScript may have more coverage, the lack of a standard library and BCL means that there are many variants of how to accomplish the same task.
+- Extensively and richly documented with broad first-party libraries means that LLMs have very good coverage in their training data. While Python and JavaScript may have *more representation*, the lack of a standard library and BCL means that there are many variants of how to accomplish the same task.
 - EF Core (mature, powerful .NET ORM) provides build-time checks for database schemas and decreases the likelihood of runtime errors from schema changes.
 - Mature, stable, *consistent*, easy to use tooling and tool chain.  Just `dotnet`.  Again, easy for agents to work with, minimizing the need for skills or explanatory text for the agents.
 
@@ -205,3 +205,7 @@ Modern .NET and C# are well-suited for teams that want to build real products an
 In **Part 2**, we'll build a practical template for a C# + .NET agent-enabled application that you can use as a starting point for your own projects (wiring EF core for build time checked database queries, minimal web API endpoints, test containers for integration testing, etc.).  We'll also go into real-world examples of how to let agents operate the stack effectively when building autonomously including a skill that guides agents on getting the most out of CSharpRepl.
 
 > If you are curious to see a real-world setup, check out the [Zeeq.ai](https://zeeq.ai) repo: [https://github.com/zeeq-ai/zeeq-app](https://github.com/zeeq-ai/zeeq-app)
+
+---
+
+Still human written (mistakes and all!); [see the file history in the repo](https://github.com/CharlieDigital/chrlschn/commits/main/src/content/blog/2026/mcp-is-dead-long-live-mcp-revisited.md).
