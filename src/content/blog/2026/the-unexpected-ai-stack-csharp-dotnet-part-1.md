@@ -194,7 +194,7 @@ But it goes beyond that:
 - `#wrap` allows agents to intercept and *wrap* a running function with additional logic (like logging, telemetry, etc.)
 
 ![Conceptual overview of how agents can use CSharpRepl to wrap and replace ](/public/img/ai-sleeper-stack/service-wrap-replace.png)
-*A typical dependency graph for a web API handler endpoint.*
+*How wrap and replace can be used by agents to diagnose runtime issues, insert additional telemetry, and test new implementations rapidly.*
 
 Together, this toolset gives agents a **huge** unlock because the agents can reach deep into the runtime configuration of the application to test different scenarios.  Three aspects that I find this boosts:
 
