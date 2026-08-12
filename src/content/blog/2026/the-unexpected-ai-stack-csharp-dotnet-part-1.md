@@ -11,7 +11,7 @@ tags: "llms,ai,mcp"
 
 ## Summary
 
-- C# and .NET as stack are probably flying under the radar for many teams building new apps in the agentic era
+- C# and .NET as a stack are probably flying under the radar for many teams building new apps in the agentic era
 - For teams already using legacy C# and .NET, it may not be clear how to best leverage the modern .NET stack tooling to speed up agentic development
 - Aspire tooling provides agents a programmable, isolated runtime orchestration layer that improves agent autonomy and facilitates agentic patterns like worktrees and parallel development.
 - CSharpRepl lets agents interact with an instance of *the running application* and manipulate the runtime state of the application including wrapping and replacing existing functions.
@@ -55,7 +55,7 @@ The objective of this two-part series is to shed some light on how C# and the .N
 
 ----
 
-## Encapsulating the Runtime with Aspire
+## Encapsulating the runtime with Aspire
 
 If you're using Docker Compose or [Tilt](https://tilt.dev/) for dev runtime orchestration, you may have occasionally wished that it was just a bit more *programmable*.  That's exactly the gap that [Aspire](https://aspire.dev/) fills: a programmable orchestration layer that makes it easy to build an isolated runtime stack that agents can control while building software.
 
@@ -91,7 +91,7 @@ Most importantly, the telemetry sink also surfaces `gen.ai` attributes that give
 You will certainly get much, much richer telemetry via specialized tools like Langfuse (not mutually exclusive since it becomes just another OTEL sink), but Aspire's built-in, searchable telemetry sink let's agents autonomously iterate with visibility into the runtime state.
 
 ```bash
-aspire otel spans zeeq --search "BEGIN CHANGES" \
+aspire otel spans zeeq-server --search "BEGIN CHANGES" \
   --non-interactive -nologo \
   --dashboard-url http://localhost:15010
 ```
