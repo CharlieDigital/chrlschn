@@ -69,6 +69,13 @@ This will add entries into the `mise.toml` file like this:
 dotnet = "10.0.302"
 ```
 
+To add tools:
+
+```bash
+# After the @, the versions will resolve from Nuget
+mise use dotnet:Aspire.Cli@
+```
+
 Here's the full file of the tools we'll need:
 
 ```toml
@@ -77,6 +84,7 @@ dotnet = "10.0.302"
 "dotnet:Aspire.Cli" = "13.4.6"
 "dotnet:CsharpRepl" = "0.9.2"
 "dotnet:Csharpier" = "1.3.0"
+"dotnet:dotnet-ef" = "10.0.11"
 node = "26"
 pnpm = "11.18.0"
 ```
@@ -375,7 +383,7 @@ var frontend = builder
 builder.Build().Run();
 ```
 
-We can now run the stack 🚀:
+The stack is ready to run 🚀:
 
 ```bash
 # Start the stack
@@ -430,7 +438,7 @@ var frontend = builder
 
 builder.Build().Run();
 
-// A helper function that runs `csharprepl connect init` and extracts the path to
+// ⭐️ A helper function that runs `csharprepl connect init` and extracts the path to
 // the hook .dll from the output.
 string ResolveCSharpReplHook()
 {
