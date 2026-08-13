@@ -11,7 +11,7 @@ tags: "llms,ai,mcp"
 
 ## Summary
 
-- C# and .NET as stack are probably flying under the radar for many teams building new apps in the agentic era
+- C# and .NET as a stack are probably flying under the radar for many teams building new apps in the agentic era
 - For teams already using legacy C# and .NET, it may not be clear how to best leverage the modern .NET stack tooling to speed up agentic development
 - Aspire tooling provides agents a programmable, isolated runtime orchestration layer that improves agent autonomy and facilitates agentic patterns like worktrees and parallel development.
 - CSharpRepl lets agents interact with an instance of *the running application* and manipulate the runtime state of the application including wrapping and replacing existing functions.
@@ -47,11 +47,15 @@ Given the benefits of adding both build and runtime type safety as well as a mat
 The objective of this two-part series is to shed some light on how C# and the .NET ecosystem is an ideal foundation for building production software with agents.
 
 - **Part 1** (you are here) will introduce two under-the-radar components of the .NET stack that make it surprisingly amenable to building software with agents: Aspire and `CSharpRepl`.
-- **Part 2** will dive into a hands-on implementation from the ground up with an open-source template for teams to build on top of.
+- [Part 2]((https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-2/)) will dive into a hands-on implementation from the ground up with an open-source template for teams to build on top of.
+- **Part 3** will implement the next layer of the application including a simple streaming interface to the Copilot SDK agent.
+- **Part 4** will extend the application with Testcontainers to demonstrate how to simplify test execution for agents with stateless containers as well as telemetry for runtime visibility.
+
+***The full repo***: <https://github.com/zeeq-ai/zeeq-tmpl>
 
 ----
 
-## Encapsulating the Runtime with Aspire
+## Encapsulating the runtime with Aspire
 
 If you're using Docker Compose or [Tilt](https://tilt.dev/) for dev runtime orchestration, you may have occasionally wished that it was just a bit more *programmable*.  That's exactly the gap that [Aspire](https://aspire.dev/) fills: a programmable orchestration layer that makes it easy to build an isolated runtime stack that agents can control while building software.
 
@@ -87,7 +91,7 @@ Most importantly, the telemetry sink also surfaces `gen.ai` attributes that give
 You will certainly get much, much richer telemetry via specialized tools like Langfuse (not mutually exclusive since it becomes just another OTEL sink), but Aspire's built-in, searchable telemetry sink let's agents autonomously iterate with visibility into the runtime state.
 
 ```bash
-aspire otel spans zeeq --search "BEGIN CHANGES" \
+aspire otel spans zeeq-server --search "BEGIN CHANGES" \
   --non-interactive -nologo \
   --dashboard-url http://localhost:15010
 ```
@@ -210,7 +214,7 @@ While it is true that a lot of the innovation in the AI space originates from th
 
 Modern .NET and C# are well-suited for teams that want to build real products and real software on a stable base in a programming language and stack that offers agents strong build-time guardrails as well as throughput and performance at scale where it matters (consider the API boundary serialization of JSON and gRPC/Protobuf, for example -- both areas where C# and .NET excel).
 
-In **Part 2**, we'll build a practical template for a C# + .NET agent-enabled application that you can use as a starting point for your own projects (wiring EF core for build time checked database queries, minimal web API endpoints, test containers for integration testing, etc.).  We'll also go into real-world examples of how to let agents operate the stack effectively when building autonomously including a skill that guides agents on getting the most out of CSharpRepl.
+In [Part 2](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-4/), we'll build a practical template for a C# + .NET agent-enabled application that you can use as a starting point for your own projects (wiring EF core for build time checked database queries, minimal web API endpoints, test containers for integration testing, etc.).  We'll also go into real-world examples of how to let agents operate the stack effectively when building autonomously including a skill that guides agents on getting the most out of CSharpRepl.
 
 > If you are curious to see a real-world setup, check out the [Zeeq.ai](https://zeeq.ai) repo: [https://github.com/zeeq-ai/zeeq-app](https://github.com/zeeq-ai/zeeq-app)
 
