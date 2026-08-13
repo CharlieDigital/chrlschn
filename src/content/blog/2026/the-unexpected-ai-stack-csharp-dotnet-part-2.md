@@ -1,6 +1,6 @@
 ---
 title: "The Unexpected AI Stack: C# + .NET (Part 2)"
-description: "Exploring an unconventional stack for building AI- and agent-enabled applications: C# and .NET"
+description: "Scaffolding an AI-enabled codebase from the ground up to support agentic engineering."
 pubDate: "2026 August 13"
 socialImage: "/public/img/ai-sleeper-stack/netcore-csharp-aspire.png"
 slug: "2026/08/the-unexpected-ai-stack-csharp-dotnet-part-2"
@@ -11,8 +11,7 @@ tags: "llms,ai,mcp"
 
 ## Summary
 
-- [Part 1](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-1/) covered a high level intro to using Aspire and CSharpRepl to enable agentic development for C# and .NET applications.
-- This exercise will set up the foundational scaffolding for a typical Vite frontend app connected to a standalone backend via OpenAPI.
+- This exercise will set up the foundational scaffolding for a typical Vite frontend app connected to a standalone backend via OpenAPI.  The objective is to focus on the DX and getting key pieces in place so that agents a team can  operate on top of this codebase and iterate rapidly with agents.
 - Mise is used to simplify the installation of required tooling and the runtime environment for development
 - Aspire is used to orchestrate the runtime components of the application
 - We'll also wire up CSharpRepl and give it a test run, but there's not much for it to do yet!
@@ -294,6 +293,8 @@ public class HealthHandler : IEndpointHandler
     public string Handle() => $"Healthy @ {DateTime.UtcNow}";
 }
 ```
+
+This design is intentional even though the health handler is simple enough to implement directly inline with the `MapGet`.  By injecting handlers as a dependency, we'll be able to directly manipulate it at runtime later using CSharpRepl.  While this example is simple, a key ingredient to successful agentic engineering is ***consistency***.  So a goal here is to establish the pattern that the agent will follow when building the next set of handlers.
 
 Now we can quickly run and `curl` this as a smoke test:
 
