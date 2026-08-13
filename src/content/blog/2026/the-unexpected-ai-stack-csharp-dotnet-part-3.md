@@ -25,8 +25,12 @@ tags: "llms,ai,mcp"
 - **Part 4** will extend the application with Testcontainers to demonstrate how to simplify test execution for agents with stateless containers as well as add telemetry for runtime visibility.
 =======
 - [Part 4](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-4/) will extend the application with Testcontainers to demonstrate how to simplify test execution for agents with stateless containers.
+<<<<<<< HEAD
 - **Part 5** will configure the application with logging, telemetry, and observability before diving into building the actual application using your coding agent.
 >>>>>>> f477e32 (blog(post): Unexpected AI Stack Part 4)
+=======
+- [Part 5](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-5/) will configure the application with logging, telemetry, and observability before diving into building the actual application using your coding agent.
+>>>>>>> 81bce96 (blog(post): Unexpected AI Stack Part 5)
 
 ***The full repo***: <https://github.com/zeeq-ai/zeeq-tmpl>
 

@@ -22,7 +22,7 @@ tags: "llms,ai,mcp"
 - **Part 2** (you are here) will dive into a hands-on implementation from the ground up to scaffold an open-source template for teams to build on top of.
 - [Part 3](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-3/) will implement the next layer of the application including a simple streaming interface to the Copilot SDK agent.
 - [Part 4](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-4/) will extend the application with Testcontainers to demonstrate how to simplify test execution for agents with stateless containers as well as telemetry for runtime visibility.
-- **Part 5** will configure the application with logging, telemetry, and observability before diving into building the actual application using your coding agent.
+- [Part 5](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-5/) will configure the application with logging, telemetry, and observability before diving into building the actual application using your coding agent.
 
 ***The full repo***: <https://github.com/zeeq-ai/zeeq-tmpl>
 
