@@ -375,7 +375,7 @@ var frontend = builder
 builder.Build().Run();
 ```
 
-We can now run the stack 🚀:
+The stack is ready to run 🚀:
 
 ```bash
 # Start the stack
@@ -430,7 +430,7 @@ var frontend = builder
 
 builder.Build().Run();
 
-// A helper function that runs `csharprepl connect init` and extracts the path to
+// ⭐️ A helper function that runs `csharprepl connect init` and extracts the path to
 // the hook .dll from the output.
 string ResolveCSharpReplHook()
 {

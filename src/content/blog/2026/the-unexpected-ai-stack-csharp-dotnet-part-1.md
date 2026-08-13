@@ -19,6 +19,15 @@ tags: "llms,ai,mcp"
 
 ----
 
+- **Part 1** (you are here)will introduce two under-the-radar components of the .NET stack that make it surprisingly amenable to building software with agents: Aspire and `CSharpRepl`.
+- [Part 2](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-2/) will dive into a hands-on implementation from the ground up to scaffold an open-source template for teams to build on top of.
+- **Part 3** will implement the next layer of the application including a simple streaming interface to the Copilot SDK agent.
+- **Part 4** will extend the application with Testcontainers to demonstrate how to simplify test execution for agents with stateless containers as well as telemetry for runtime visibility.
+
+***The full repo***: <https://github.com/zeeq-ai/zeeq-tmpl>
+
+----
+
 ## Why C#?
 
 In an age when agents can write code in any programming language, it's fair to ask: why have agents write code in C#?
@@ -214,7 +223,7 @@ While it is true that a lot of the innovation in the AI space originates from th
 
 Modern .NET and C# are well-suited for teams that want to build real products and real software on a stable base in a programming language and stack that offers agents strong build-time guardrails as well as throughput and performance at scale where it matters (consider the API boundary serialization of JSON and gRPC/Protobuf, for example -- both areas where C# and .NET excel).
 
-In [Part 2](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-4/), we'll build a practical template for a C# + .NET agent-enabled application that you can use as a starting point for your own projects (wiring EF core for build time checked database queries, minimal web API endpoints, test containers for integration testing, etc.).  We'll also go into real-world examples of how to let agents operate the stack effectively when building autonomously including a skill that guides agents on getting the most out of CSharpRepl.
+In [Part 2](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-2/), we'll build a practical template for a C# + .NET agent-enabled application that you can use as a starting point for your own projects (wiring EF core for build time checked database queries, minimal web API endpoints, test containers for integration testing, etc.).  We'll also go into real-world examples of how to let agents operate the stack effectively when building autonomously including a skill that guides agents on getting the most out of CSharpRepl.
 
 > If you are curious to see a real-world setup, check out the [Zeeq.ai](https://zeeq.ai) repo: [https://github.com/zeeq-ai/zeeq-app](https://github.com/zeeq-ai/zeeq-app)
 
