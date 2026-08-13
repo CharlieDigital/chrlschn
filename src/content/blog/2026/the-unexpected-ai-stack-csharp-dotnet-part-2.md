@@ -30,15 +30,17 @@ tags: "llms,ai,mcp"
 
 ## What we're building
 
-This exercise will build a simple chat application connected to an instance of a Copilot agent via the [Copilot SDK](https://github.com/github/copilot-sdk).
+This exercise will build a chat frontend application connected to an instance of a Copilot agent via the [Copilot SDK](https://github.com/github/copilot-sdk).
 
-The Copilot SDK is a good choice for building agentic applications because:
+The Copilot SDK is a solid choice for building agentic applications because:
 
 - The SDK supports multiple language bindings including TypeScript, Python, Go, C#, Rust, and Java
 - The harness is model agnostic and allows using different models for different tasks and BYOK or use the GitHub Copilot subscription (we'll be using BYOK for this exercise)
 - The SDK is well documented and comes with advanced features for working with and navigating source code.
 
 For the front-end, we'll build a chat interface using a Vite + Nuxt UI web app using a streaming API.  We'll use [Kubb.dev](https://kubb.dev/) for client generation from OpenAPI specs.
+
+Part 3 will focus more on the build out; here, we're setting up the foundation first.
 
 ----
 
