@@ -20,8 +20,8 @@ tags: "llms,ai,mcp"
 
 - [Part 1](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-1/) will introduce two under-the-radar components of the .NET stack that make it surprisingly amenable to building software with agents: Aspire and `CSharpRepl`.
 - **Part 2** (you are here) will dive into a hands-on implementation from the ground up to scaffold an open-source template for teams to build on top of.
-- **Part 3** will implement the next layer of the application including a simple streaming interface to the Copilot SDK agent.
-- **Part 4** will extend the application with Testcontainers to demonstrate how to simplify test execution for agents with stateless containers as well as telemetry for runtime visibility.
+- [Part 3(https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-3/) will implement the next layer of the application including a simple streaming interface to the Copilot SDK agent.
+- **Part 4** will extend the application with Testcontainers to demonstrate how to simplify test execution for agents with stateless containers as well as add telemetry for runtime visibility.
 
 ***The full repo***: <https://github.com/zeeq-ai/zeeq-tmpl>
 
@@ -69,6 +69,13 @@ This will add entries into the `mise.toml` file like this:
 dotnet = "10.0.302"
 ```
 
+To add tools:
+
+```bash
+# After the @, the versions will resolve from Nuget
+mise use dotnet:Aspire.Cli@
+```
+
 Here's the full file of the tools we'll need:
 
 ```toml
@@ -77,6 +84,7 @@ dotnet = "10.0.302"
 "dotnet:Aspire.Cli" = "13.4.6"
 "dotnet:CsharpRepl" = "0.9.2"
 "dotnet:Csharpier" = "1.3.0"
+"dotnet:dotnet-ef" = "10.0.11"
 node = "26"
 pnpm = "11.18.0"
 ```
