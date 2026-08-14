@@ -190,7 +190,9 @@ command = "npx"
 args = ["@playwright/mcp@latest", "--extension"]
 ```
 
-In practice, with CSharpRepl, Playwright becomes only necessary to address UI layout since the agent can directly interface with the application at the API interface layer for E2E integration testing (bypassing the need to perform auth or use slower UI interactions altogether).
+Install [the Chrome extension for Playwright MCP](https://chromewebstore.google.com/detail/playwright-extension/mmlmfjhmonkocbjadbfplnigmagldckm).  This extension is useful because it allows the agent to drive an existing browser session so you can manually log in and bypass the complexity of auth flows.
+
+In practice, with CSharpRepl, Playwright becomes only necessary to address UI layout since the agent can directly interface with the application at the API interface layer for E2E integration testing (bypassing the need to perform auth or use slower UI interactions altogether).  But applications that implement auth will still benefit from using Playwright with the extension when iterating on the UI.
 
 ----
 
@@ -292,17 +294,43 @@ public class HealthEndpoint : IEndpoint
 {
     public void MapEndpoints(IEndpointRouteBuilder endpoints)
     {
+        // 👇 DI at the endpoint to separate the HTTP binding from the app code
         endpoints.MapGet("/health", (HealthHandler handler) => handler.Handle());
     }
 }
 
 public class HealthHandler : IEndpointHandler
 {
+    // 👇 This simple example looks like overkill, but scales well!
     public string Handle() => $"Healthy @ {DateTime.UtcNow}";
 }
 ```
 
-This design is intentional even though the health handler is simple enough to implement directly inline with the `MapGet`.  By injecting handlers as a dependency, we'll be able to directly manipulate it at runtime later using CSharpRepl.  While this example is simple, a key ingredient to successful agentic engineering is ***consistency***.  So a goal here is to establish the pattern that the agent will follow when building the next set of handlers.
+This design is intentional even though the health handler is simple enough to implement directly inline with the `MapGet`.  By injecting handlers as a dependency, we'll be able to directly manipulate it at runtime later using CSharpRepl.  While this example is simple, a key ingredient to successful agentic engineering is ***consistency***.  So a goal here is to *establish the pattern that the agent will follow* when building the next set of handlers.
+
+In practice, I generally create separate files for the endpoint and the handler so the agents follow the pattern.
+
+An important note with minimal API endpoints is that it is possible to directly access the user as a DI injected parameter:
+
+```csharp
+// src/server/SomeAuthenticatedEndpoint.cs
+public class SomeAuthenticatedEndpoint : IEndpoint
+{
+    public void MapEndpoints(IEndpointRouteBuilder endpoints)
+    {
+        // 👇 DI at the endpoint to separate the HTTP binding from the app code
+        endpoints.MapGet(
+            "/some-authenticated-endpoint",
+            (
+                ClaimsPrincipal user, // 👈 DI will resolve and inject this
+                SomeAuthenticatedHandler handler
+            ) => handler.Handle(user) // 👈 Pass forward to the handler
+        );
+    }
+}
+```
+
+This distinction is very useful since it means when CSharpRepl is connected, it can easily simulate different users by pulling out the injected handler and directly injecting a different `ClaimsPrincipal` to simulate different users and test the behavior of the handler *without going through auth*.
 
 Now we can quickly run and `curl` this as a smoke test:
 
