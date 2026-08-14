@@ -55,13 +55,6 @@ Given the benefits of adding both build and runtime type safety as well as a mat
 
 The objective of this two-part series is to shed some light on how C# and the .NET ecosystem is an ideal foundation for building production software with agents.
 
-- **Part 1** (you are here) will introduce two under-the-radar components of the .NET stack that make it surprisingly amenable to building software with agents: Aspire and `CSharpRepl`.
-- [Part 2]((https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-2/)) will dive into a hands-on implementation from the ground up with an open-source template for teams to build on top of.
-- **Part 3** will implement the next layer of the application including a simple streaming interface to the Copilot SDK agent.
-- **Part 4** will extend the application with Testcontainers to demonstrate how to simplify test execution for agents with stateless containers as well as telemetry for runtime visibility.
-
-***The full repo***: <https://github.com/zeeq-ai/zeeq-tmpl>
-
 ----
 
 ## Encapsulating the runtime with Aspire

@@ -529,7 +529,7 @@ In part 2 of examining how to use C#, .NET, and Aspire to build agent-friendly a
 
 What should be evident at this stage is that Aspire and CSharpRepl provide a powerful combination of tools that allow agents to operate autonomously and iterate on an application rapidly.  This same scaffolding will make it easier to reproduce issues, reproduce production failure modes, check for regressions, and experiment with new features rapidly.
 
-In the next section, we'll:
+In [part 3](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-3/), we'll:
 
 - Add a skill to help agents understand how to effectively use CSharpRepl
 - Wire up the API client generation from the backend to the frontend
