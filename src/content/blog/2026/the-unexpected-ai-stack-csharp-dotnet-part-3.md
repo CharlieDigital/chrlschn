@@ -259,8 +259,10 @@ public class AgentServiceWorker(
                 Provider = new()
                 {
                     Type = "azure",
-                    BaseUrl = "https://zeeq-open-ai.openai.azure.com", // 👈 This is an Azure OpenAI endpoint
+                    // 👇 This is an Azure OpenAI endpoint; use your own
+                    BaseUrl = "https://zeeq-open-ai.openai.azure.com",
                     WireApi = "responses",
+                    // 👇 Key set in previous step via `dotnet user-secrets set...` (or hardcode here)
                     ApiKey = options.Value.LlmApiKey,
                 },
             },
@@ -290,6 +292,7 @@ public class AgentServiceWorker(
         {
             if (evt is AssistantMessageEvent messageEvent)
             {
+                // 👇 Streams messages out to the SSE endpoint via the channel
                 outboundChannel.Writer.TryWrite(messageEvent.Data.Content);
             }
         });
@@ -299,6 +302,7 @@ public class AgentServiceWorker(
         {
             while (inboundChannel.Reader.TryRead(out var message))
             {
+                // 👇 Reads messages from the inbound channel and forwards to the agent
                 await _session.SendAsync(message, cancellationToken: stoppingToken);
             }
         }
@@ -653,6 +657,8 @@ function onSubmit() {
 </script>
 ```
 
+Here, we can see Nuxt UI paying huge dividends by providing not only a very rich, comprehensive set of components, but also agent-friendly docs to build rapidly.
+
 Nuxt UI includes a nice set of components for this, out of the box:
 
 - [`UChatMessages`](https://ui.nuxt.com/docs/components/chat-messages)
@@ -664,9 +670,9 @@ With plenty more to build a fully-featured agent interface.
 
 ## Adding a skill for CSharpRepl
 
-Agents *can* figure out CSharpRepl by themselves since the CLI itself has good instructions, but it will help A LOT if we provide the agents examples of how to work with CSharpRepl.
+Agents *can* figure out CSharpRepl by themselves since the CLI itself has good instructions, but it will help A LOT if we provide the agents examples of how to work with CSharpRepl.  We can effectively capture the key scenarios that the agents need to know about by walking the agent through how we want it to use the CSharpRepl CLI.
 
-Rather than provide the skill, I'll share the prompts that you can use to get the agent to build the skill.
+Rather than provide the finished skill, I'll share the prompts that you can use to get the agent to build the skill.
 
 ### Create the skill directory and placeholder file
 
@@ -696,6 +702,8 @@ This should cover all mainstream harnesses.
 We'll use the agent to build the skill directly by having the agent run the CLI.
 
 Your results may vary by harness, model, and your prompts so here's my guide to help the agent discover and build the key elements of the skill.
+
+*(Note: best to paste each prompt one-by-one to see the agent iterate on building the skill)*
 
 ```md
 <!-- Prime the agent so it knows what we're doing -->
@@ -748,6 +756,8 @@ Test -u --using <namespace> and document
 This makes scripts more terse (no namespace inline)
 Update and document any findings necessary in the file
 ```
+
+By providing the agent reference docs and a few examples with clear instructions for discovery, the agent is able to self-materialize the skill with the key information we need it to have.
 
 ----
 
