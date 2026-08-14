@@ -28,7 +28,7 @@ tags: "llms,ai,mcp"
 - **Part 5** will configure the application with logging, telemetry, and observability before diving into building the actual application using your coding agent.
 >>>>>>> f477e32 (blog(post): Unexpected AI Stack Part 4)
 
-***The full repo***: <https://github.com/zeeq-ai/zeeq-tmpl>
+***The full repo***: <https://github.com/zeeq-ai/zeeq-tmpl/tree/feat-part3-Part-3-code-changes> (note the branch; [see the PR for the diff](https://github.com/zeeq-ai/zeeq-tmpl/pull/1))
 
 ----
 
