@@ -770,7 +770,7 @@ This set of exercises moves very intentionally so human operators can have a cle
 
 The setup is now built for coding agents to work with the codebase and iterate on the application itself.
 
-In the next part of this series ([Part 4](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-4/)), we'll wire up telemetry and add a planning surface that is designed to interact with agents as you write a specification.  This allows the agents to work iteratively as you build your plan.
+In the next part of this series ([Part 4](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-4/)), we'll wire up the the data model as well as Testcontainers for isolated, transactional integration testing to let agents move autonomously as they build and verify correctness.  Then in the final part, we'll wire up logging, telemetry, and observability before building the final prototype specification writing application that will use the Copilot SDK to write a technical specification as we type out modify the business requirements.
 
 We'll still move with purpose so that each technical decision is clear and explained in the context of building an agentic foundation for an application.
 
