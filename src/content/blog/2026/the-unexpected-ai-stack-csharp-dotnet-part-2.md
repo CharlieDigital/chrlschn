@@ -4,7 +4,7 @@ description: "Scaffolding an AI-enabled codebase from the ground up to support a
 pubDate: "2026 August 13"
 socialImage: "/public/img/ai-sleeper-stack/netcore-csharp-aspire.png"
 slug: "2026/08/the-unexpected-ai-stack-csharp-dotnet-part-2"
-tags: "llms,ai,mcp"
+tags: "llms,ai,.net,c#,architecture,aspire"
 ---
 
 ----

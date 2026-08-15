@@ -1,10 +1,10 @@
 ---
 title: "The Unexpected AI Stack: C# + .NET (Part 1)"
-description: "Exploring an unconventional stack for building AI- and agent-enabled applications: C# and .NET"
+description: "Exploring an unconventional and underrated sleeper stack for building AI- and agent-enabled applications: C# and .NET"
 pubDate: "2026 August 10"
 socialImage: "/public/img/ai-sleeper-stack/netcore-csharp-aspire.png"
 slug: "2026/08/the-unexpected-ai-stack-csharp-dotnet-part-1"
-tags: "llms,ai,mcp"
+tags: "llms,ai,.net,c#,architecture"
 ---
 
 ----

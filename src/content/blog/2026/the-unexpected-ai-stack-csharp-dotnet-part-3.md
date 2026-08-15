@@ -4,7 +4,7 @@ description: "Building an AI-enabled application using the Copilot SDK, C#, .NET
 pubDate: "2026 August 14"
 socialImage: "/public/img/ai-sleeper-stack/netcore-csharp-aspire.png"
 slug: "2026/08/the-unexpected-ai-stack-csharp-dotnet-part-3"
-tags: "llms,ai,mcp"
+tags: "llms,ai,.net,c#,architecture"
 ---
 
 ----
