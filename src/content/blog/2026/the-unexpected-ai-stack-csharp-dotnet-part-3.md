@@ -20,13 +20,9 @@ tags: "llms,ai,mcp"
 
 - [Part 1](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-1/) will introduce two under-the-radar components of the .NET stack that make it surprisingly amenable to building software with agents: Aspire and `CSharpRepl`.
 - [Part 2](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-2/) will dive into a hands-on implementation from the ground up to scaffold an open-source template for teams to build on top of.
-- **Part 3** (you are here) will implement the next layer of the application including a simple streaming interface to the Copilot SDK agent.
-<<<<<<< HEAD
-- **Part 4** will extend the application with Testcontainers to demonstrate how to simplify test execution for agents with stateless containers as well as add telemetry for runtime visibility.
-=======
+- **Part 3** (👈 you are here) will implement the next layer of the application including a simple streaming interface to the Copilot SDK agent.
 - [Part 4](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-4/) will extend the application with Testcontainers to demonstrate how to simplify test execution for agents with stateless containers.
 - **Part 5** will configure the application with logging, telemetry, and observability before diving into building the actual application using your coding agent.
->>>>>>> f477e32 (blog(post): Unexpected AI Stack Part 4)
 
 ***The full repo***: <https://github.com/zeeq-ai/zeeq-tmpl/tree/feat-part3-Part-3-code-changes> (note the branch; [see the PR for the diff](https://github.com/zeeq-ai/zeeq-tmpl/pull/1))
 
@@ -774,7 +770,7 @@ This set of exercises moves very intentionally so human operators can have a cle
 
 The setup is now built for coding agents to work with the codebase and iterate on the application itself.
 
-In the final part of this series, we'll add a planning surface that is designed to interact with agents as you write a specification.  This allows the agents to work iteratively as you build your plan.
+In the next part of this series ([Part 4](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-4/)), we'll wire up telemetry and add a planning surface that is designed to interact with agents as you write a specification.  This allows the agents to work iteratively as you build your plan.
 
 We'll still move with purpose so that each technical decision is clear and explained in the context of building an agentic foundation for an application.
 
