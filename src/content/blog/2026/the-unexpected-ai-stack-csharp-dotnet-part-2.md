@@ -21,7 +21,8 @@ tags: "llms,ai,mcp"
 - [Part 1](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-1/) will introduce two under-the-radar components of the .NET stack that make it surprisingly amenable to building software with agents: Aspire and `CSharpRepl`.
 - **Part 2** (you are here) will dive into a hands-on implementation from the ground up to scaffold an open-source template for teams to build on top of.
 - [Part 3](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-3/) will implement the next layer of the application including a simple streaming interface to the Copilot SDK agent.
-- **Part 4** will extend the application with Testcontainers to demonstrate how to simplify test execution for agents with stateless containers as well as add telemetry for runtime visibility.
+- [Part 4](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-4/) will extend the application with Testcontainers to demonstrate how to simplify test execution for agents with stateless containers as well as telemetry for runtime visibility.
+- **Part 5** will configure the application with logging, telemetry, and observability before diving into building the actual application using your coding agent.
 
 ***The full repo***: <https://github.com/zeeq-ai/zeeq-tmpl>
 
@@ -529,7 +530,7 @@ In part 2 of examining how to use C#, .NET, and Aspire to build agent-friendly a
 
 What should be evident at this stage is that Aspire and CSharpRepl provide a powerful combination of tools that allow agents to operate autonomously and iterate on an application rapidly.  This same scaffolding will make it easier to reproduce issues, reproduce production failure modes, check for regressions, and experiment with new features rapidly.
 
-In [part 3](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-3/), we'll:
+In the next section ([Part 3](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-3/)), we'll:
 
 - Add a skill to help agents understand how to effectively use CSharpRepl
 - Wire up the API client generation from the backend to the frontend
