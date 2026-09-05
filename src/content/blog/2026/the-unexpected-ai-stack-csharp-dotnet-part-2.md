@@ -184,7 +184,7 @@ Codex/ChatGPT doesn't (yet?) have a project local CLI command for MCP so we'll m
 ```toml
 [mcp_servers.nuxt-ui-remote]
 enabled = true
-url = https://ui.nuxt.com/mcp"
+url = "https://ui.nuxt.com/mcp"
 
 [mcp_servers.playwright]
 command = "npx"
