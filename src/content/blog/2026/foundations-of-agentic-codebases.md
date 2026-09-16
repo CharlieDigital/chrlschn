@@ -92,7 +92,7 @@ For your platform and runtime:
 
 The latter is one of the hardest things to do well for both humans and agents.  But doing so has big gains because it allows tests to run significantly faster.
 
-**Bonus**: clearly tag your tests using your test library's tagging or annotation features so agents can easily filter subsets of related tests and have an efficient execution strategy.
+**Bonus**: clearly tag your tests using your test library's tagging or annotation features so agents can easily filter subsets of related tests and have an efficient execution strategy (run less tests each cycle; only run the full suite as a final check).
 
 ## 5. Runtime mutability of the application
 
@@ -321,3 +321,7 @@ These 10 foundational pillars help both humans and agents work more effectively 
 While these facets are irrespective of tech stack, I have a writeup of how to incorporate these in C# and .NET: [The Unexpected AI Stack: C# + .NET (Part 1)](https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-1/).
 
 What other foundational pillars or practices have you found useful in making codebases more agent-friendly?
+
+----
+
+Still human written (mistakes and all!); [see the file history in the repo](https://github.com/CharlieDigital/chrlschn/commits/main/src/content/blog/2026/foundations-of-agentic-codebases.md).
