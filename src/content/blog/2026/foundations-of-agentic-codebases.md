@@ -37,7 +37,9 @@ All the same things that make codebases more navigable, maintainable, and unders
 
 To that end (from experience) here are 10 pillars that help agents operate more competently and more efficiently in any codebase.
 
-## 1. End-to-end types (runtime, too!)
+## 10 Foundational Pillars for Agent-Friendly Codebases
+
+### End-to-end types (runtime, too!)
 
 Types are a feedback mechanism for both humans and agents on the domain space and basic "rules" within the codebase.
 
@@ -53,13 +55,13 @@ Pick runtime typed languages like C#, Rust, Go or incorporate schema validations
 
 **Bonus**: use domain modeling and leverage your programming language's visibility modifier as a strong signal to the agents on how types are intended to be used.  I find that current generation agents are very good a honoring `private` vs `public` and will use those as hints on how they should or should not use a type.
 
-## 2. Static analysis
+### Static analysis
 
 Types are just one form of static analysis.  Most platforms include other forms of static analysis like linters and powerful analyzers like C#'s Roslyn Analyzers that allow authoring of rich, powerful static checks that enforce rules by surfacing signals as soon as the code is generated.
 
 Any form of static analysis that provides additional signals on correctness decreases the risk of runtime errors due to invalid states by providing feedback to coding agents as early as possible.
 
-## 3. Context enriched logging and telemetry
+### Context enriched logging and telemetry
 
 Like human teammates, agents will benefit from access to additional runtime context in well-placed logs and structured OpenTelemetry spans.
 
@@ -77,7 +79,7 @@ This is especially useful for diagnosing runtime issues.  Making this available 
 
 **Bonus**: use middleware to enrich your logs and telemetry consistently and automatically on the request.
 
-## 4. Test isolation, concurrency, and composition
+### Test isolation, concurrency, and composition
 
 Tests (unit, integration, and end-to-end) are one of the mechanisms agents can leverage to verify their work.
 
@@ -94,7 +96,7 @@ The latter is one of the hardest things to do well for both humans and agents.  
 
 **Bonus**: clearly tag your tests using your test library's tagging or annotation features so agents can easily filter subsets of related tests and have an efficient execution strategy (run less tests each cycle; only run the full suite as a final check).
 
-## 5. Runtime mutability of the application
+### Runtime mutability of the application
 
 Doing logs and telemetry well give agents a boost when tracing, but providing an option of *mutating the runtime state* of the application is like turning on the afterburners.
 
@@ -108,7 +110,7 @@ In C#, for example, [the CSharpRepl package](https://fuqua.io/CSharpRepl/) allow
 
 Runtime mutability gives agents superpowers for both diagnostic tasks as well as exploratory work.
 
-## 6. Programmable runtime orchestration
+### Programmable runtime orchestration
 
 For any non-trivial application, the runtime will require many pieces to come together.  Redis, Postgres, the backend, the frontend, etc.
 
@@ -118,7 +120,7 @@ The ability to run multiple instances of the full stack through Aspire's port is
 
 In general, this programmability provides agents flexible ways to wire up and run components with one command (e.g. `docker compose up`, `tilt up`, `aspire run`).  Aspire also lets agents inspect runtime state because it includes CLI tools that let agents search through logs and OTEL traces.
 
-## 7. Modularity and plugability
+### Modularity and plugability
 
 When paired with runtime mutability, modular, pluggable application components let agents swap out components at runtime and replace with fakes or experimental implementations.
 
@@ -129,7 +131,7 @@ It also assists agents in two other ways:
 
 At a broader, platform level, modularity of the application itself helps teams move faster by partitioning runtime components into separate contexts.  This better matches how agents work best: when given control over a fully isolated context.  This means that building a pluggable "micro-frontend" architecture, for example, will pay dividends for agents by allow more parallelism.
 
-## 8. Terseness of expressions
+### Terseness of expressions
 
 Having terse, expressive code that conveys the behavioral intent with less text is obviously helpful for agents because each string that is pulled into context has a cost and also influences how the underlying LLM understands the codebase.
 
@@ -270,17 +272,17 @@ foreach (var graph in organizationGraphs)
 }
 ```
 
-Not only is the first form more context *efficient*, it also doesn't pollute the context with unnecessary noise.  In this case, it also makes use of the type system to enforce correct setup of tests.
+Not only is the first form more context *efficient*, it also doesn't pollute the context with unnecessary noise.  In this case, it also makes use of the type system to enforce correct setup of tests. *Agents will never write code like this left to their own devices*; you have to prompt it to do so or set up the scaffolding and examples so think additional scaffolding to instruct the agent to produce so highly repetitive code can be structurally enforced by the type system and more terse (and thereby more context efficient).
 
 The rule holds: whatever improvements you make in the code that would make it easier for humans also makes it easier for agents.  Take the time to write framework level code when you notice this kind of verbosity and loss of terseness.
 
-## 9. Use well-documented foundations
+### Use well-documented foundations
 
 The more well-documented the foundational parts of a stack are, the less guidance an agent will need.  The more stable the platform has been historically, the less the agents will make mistakes based on its training data.  The more documentation a novel codebase and toolset has, the more likely it is that an agent will get it right and follow best practices.
 
 As is the case with human teams, picking platforms, languages, packages, and tools that have historically been stable, well-documented (not just well-represented in the training corpus with potentially many variants) helps agents write "correct" code.  Stacks with high representation but also *high variance* will generally require more guidance to get the agent to write code that is idiomatic to a given team.  This will then require more context (skills, references) to force the agents into the desired behavior.
 
-## 10. Strategic use of comments as durable, infrastructure-free memory
+### Strategic use of comments as durable, infrastructure-free memory
 
 Code comments are a practice that I have always embraced as a way to help future travelers (usually myself) quickly orient in the codebase and understand technical decisions, tradeoffs made, and *business context* for some piece of code.
 
