@@ -1,6 +1,6 @@
 ---
 title: "LARPing with Agents (and Why It Works)"
-description: "Configuring an auto-adaptive, multi-agent orchestration by assigning anthropomorphic human traits to agents."
+description: "Configuring an effective, auto-adaptive, multi-agent orchestration by assigning anthropomorphic human traits to agents."
 pubDate: "2026 October 27"
 socialImage: "/public/img/larping/og-larping.png"
 slug: "2026/10/larping-with-agents-and-why-it-works"
@@ -29,15 +29,16 @@ I first stumbled upon [Paseo (Apache 2.0)](https://paseo.sh) a few weeks back wh
 
 Before recommending it, I decided to use it as a daily driver for a week and quickly discovered the agent profiles as I was going through the configuration.  In all honesty?  It seemed quite underwhelming and tacked on as an afterthought.
 
-The misleading part stems from the default agent profile dialog:
+The misleading first impression stems from the default agent profile dialog:
 
 ![Default dialog](/public/img/larping/agent-dialog.png)
+*The agent profile dialog seems far too simplistic at first glance to have much power*
 
 No scoping to workspaces, no skills, no tool restrictions, generally very little control over the configuration, seemingly far too simple.  You must be thinking: *"why am I reading this?!"*. As it turns out, the simplicity and flexibility of this model is what gives Paseo the right curve of complexity vs productivity.
 
 ### Understanding the prompt flow
 
-The example in the dialog is too simplistic and indeed, when configured as guided by the example, the results are likely to be...underwhelming.   But committing to it and spending some more time tweaking, I started to understand that I needed to *invert* the way I looked at this feature from the direction of the orchestrator.
+The example in the dialog is too simplistic and indeed, when configured as guided by the example, the results are likely to be...underwhelming.   But committing to it and spending some more time tweaking, I started to understand that it is necessary to *invert* the way I looked at this feature from the direction of the orchestrator instead *(to be fair, the micro-sized hint text also kind of explains this...)*.
 
 The trick is to actually understand how the agent profiles *flow*.  Paseo ships with a set of skills and MCP tools that manage agent orchestration.  Of particular interest is the `list_profiles` tool:
 
@@ -48,7 +49,7 @@ profile's `notes`. Pick a named profile the user requested, or the profile
 whose notes best match the work.
 ```
 
-In practice, a ***lead*** or ***orchestrator*** will use this tool to list out the profiles by first reading the configuration and then matching the work to the `note` for the profile.  Understanding this inversion, *it is then simply a matter of using it to inject instructions into the lead* (to be fair, the micro-sized hint text also kind of explains this...).
+In practice, a ***lead*** or ***orchestrator*** will use this tool to list out the profiles by first reading the configuration and then matching the work to the `note` for the profile.  Understanding this inversion, *it is then simply a matter of using it to inject instructions into the lead*.
 
 Here is an example of a profile for a "Distinguished Member of Technical Staff":
 
@@ -73,6 +74,7 @@ This is all that is needed to get agentic behavior working with shocking efficac
 Go ahead and configure a full team of profiles and watch Paseo *just work*:
 
 ![Agent profiles configured in Paseo](/public/img/larping/profiles.png)
+*A subset of my agent profile configuration with different roles and profiles.  Note that some profiles are plan only; I do not use more costly models for code output.*
 
 It turns out that additional tool configuration, skill configuration, directory scoping, and any number of harness bolt-ons are simply not necessary to get an agentic team to actually produce useful work.
 
@@ -125,6 +127,7 @@ This has the effect of consistently shaping the instruction that the lead provid
 For the skeptic, it is instructive to see exactly how a lead uses this when it decides to create a new sub-agent:
 
 ![Example of an agent prompt to a sub-agent](/public/img/larping/agent-prompt.png)
+*A lead generated prompt used to initialize another agent.*
 
 You can see the structure, but more importantly, you can see the *detail*; far richer and more specific than anything a human might write.  The system prompt guides the lead to structure:
 
@@ -138,6 +141,7 @@ You can see the structure, but more importantly, you can see the *detail*; far r
 Here is another:
 
 ![Example of an agent prompt to a sub-agent](/public/img/larping/agent-prompt-staff.png)
+*Another example; here a "Staff Engineer" being initialized by the lead.*
 
 ## Does it work?  A few observations
 
@@ -169,8 +173,11 @@ You're skeptical.  So was I.  A key problem I've run into in the past is agents 
 Additionally, what is different about a meta-harness like Paseo is that it allows orchestrating agents across multiple platforms:
 
 ![Agents spanning platforms](/public/img/larping/multi-platform.png)
+*A set of agent profiles for my coding-focused agents spanning multiple providers and models.*
 
 The result is that it is possible to move implementation and high "tokens out" work to a mix of cheaper models across harnesses and platforms, freely mixing Sonnet 5.5 with GPT-6 Luna and DeepSeek v4.1 Flash 1017.  The lower cost models are able to deliver surprisingly high quality code because the instruction from the lead is very detailed; far more detailed than any spec a human would hand write.
+
+The other factor at play here is that the lead can choose to assign more complex, higher risk work to the Principal which is configured with a more expensive, more model. The assignment of discrete roles means that the lead knows the right heuristics to use and the team becomes auto-adaptive to the complexity of each work item.
 
 What I find is that my work capacity in a given token session window is now extended significantly (caveat below with Anthropic platform models).
 
