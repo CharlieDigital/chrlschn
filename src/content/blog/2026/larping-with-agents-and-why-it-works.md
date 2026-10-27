@@ -38,7 +38,7 @@ No scoping to workspaces, no skills, no tool restrictions, generally very little
 
 ### Understanding the prompt flow
 
-The example in the dialog is simplistic and indeed, when configured as guided by the example, the results are likely to be...underwhelming.   But playing with it bit-by-bit, I started to understand that I needed *invert* the way I was looking at this feature from the direction of the orchestrator since it is not possible to directly configure the profile with tools and skills.
+The example in the dialog is simplistic and indeed, when configured as guided by the example, the results are likely to be...underwhelming.   But playing with it bit-by-bit, I started to understand that I needed to *invert* the way I was looking at this feature from the direction of the orchestrator since it is not possible to directly configure the profile with tools and skills.
 
 The trick is to actually understand how the agent profiles *flow*.  Paseo ships with a set of skills and MCP tools that manage agent orchestration.  Of particular interest is the `list_profiles` tool:
 
