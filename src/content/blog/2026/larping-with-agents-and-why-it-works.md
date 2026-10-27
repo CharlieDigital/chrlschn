@@ -2,7 +2,7 @@
 title: "LARPing with Agents (and Why It Works)"
 description: "Understanding how assigning anthropomorphic traits to agents can improve their effectiveness and interaction."
 pubDate: "2026 October 27"
-socialImage: "/public/img/larping/agent-lobby.png"
+socialImage: "/public/img/larping/og-larping.png"
 slug: "2026/10/larping-with-agents-and-why-it-works"
 tags: "ai,llm,agents"
 ---
@@ -11,9 +11,10 @@ tags: "ai,llm,agents"
 
 ## Summary
 
-- Multi-agent orchestration has traditionally been challenging to get right, first hand experience with earlier models and harnesses rightfully leaves teams with the impression of very little payoff for the extra effort and token spend.
+- Multi-agent orchestration has traditionally been challenging to get right, firsthand experience with earlier models and harnesses rightfully leaves teams with the impression of very little payoff for the extra effort and token spend.
 - As models and harnesses have advanced, it has become a more viable, more accessible technique that can allow agents to operate with increased autonomy without sacrificing quality.
-- While nearly all harnesses and models now support "native" sub-agents, not all multi-agent orchestrators are created equally and using them effectively is still a matter of configuration and tuning to your workload in most cases
+- While nearly all harnesses and models now support "native" sub-agents, not all multi-agent orchestrators are created equally and using them effectively is still a matter of configuration and tuning to your workload in most cases.
+- Using a meta-harness has an additional advantage of using different models for different sub-agents, allowing better leverage of token spend across subscriptions; different inputs from different models/platforms, and more efficient use of tokens for specific tasks.
 - Getting the most out of multi-agent orchestration requires understanding "why" it works and how to leverage agent teams to autonomously deliver high quality software.  [A recent paper](https://arxiv.org/pdf/2606.01770) published by a team from Emory, Amazon, Penn State, and other institutions offers some insights into how an adaptive, multi-agent approach can improve agent performance.
 - This blog post covers the theory of "why" and the practical configuration of "how" using Paseo (<https://paseo.sh>; Apache 2.0; no affiliation) to achieve this with very low lift but high payoff.
 
@@ -27,7 +28,7 @@ Up until this point, I have personally been a strict TUI user, generally staying
 
 Finding success with Paseo for multi-host orchestration, I decided that I would use it as my daily driver for at least a week before recommending it.
 
-In doing so, I stumbled upon the first bit of curiosity: the agent profiles which turned out to be the gateway to building a powerful, low-friction, highly effective agentic team.  It did not "click" at first since the profiles seemed not much different from other multi-agent systems I've looked at before.  Indeed, the agent profiles feel like they come up quite short at first blush.
+In doing so, I stumbled upon the first bit of curiosity: *the agent profiles* which turned out to be the gateway to building a powerful, low-friction, highly effective agentic team.  It did not "click" at first since the profiles seemed not much different from other multi-agent systems I've looked at before.  Indeed, the agent profiles feel like they come up quite short at first blush.
 
 The misleading part stems from the default agent profile dialog:
 
