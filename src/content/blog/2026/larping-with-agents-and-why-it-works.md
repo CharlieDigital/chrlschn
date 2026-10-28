@@ -51,6 +51,9 @@ whose notes best match the work.
 
 In practice, a ***lead*** or ***orchestrator*** will use this tool to list out the profiles by first reading the configuration and then matching the work to the `note` for the profile.  Understanding this inversion, *it is then simply a matter of using it to inject instructions into the lead*.
 
+![Understanding the agent profile flow](/public/img/larping/agent-construction.png)
+*The sub-agents are not statically defined; they are dynamically constructed with "just-in-time" skills and instructions specific for the task*
+
 Here is an example of a profile for a "Distinguished Member of Technical Staff":
 
 ```markdown
@@ -64,8 +67,7 @@ Explicitly instruct: DO NOT CODE; only research, ideate, expand solution space,
 provide feedback.
 ```
 
-Take note of the verbiage: these are not instructions for the sub-agent; these are instructions for the *lead agent* to follow when it instantiates the sub-agent.  When the lead reads the profiles, it will first select the correct set of agents by matching the task to the team.  This profile configuration then causes it to prompt the sub-agent teammate with specific "asks" upon initialization.  Observe the
-"inverted" nature of this configuration; *instead of setting up the sub-agent with a role, the setup instructs the lead agent on how to dynamically select and prompt the sub-agents*.
+Take note of the verbiage: these are not instructions for the sub-agent; these are instructions for the *lead agent* to follow when it instantiates the sub-agent dynamically.  When the lead reads the profiles, it will first select the correct set of agents by matching the task to the team.  This profile configuration then causes it to prompt the sub-agent teammate with specific "asks" upon initialization.  Observe the "inverted" nature of this configuration; *instead of setting up the sub-agent with a role, the setup instructs the lead agent on how to dynamically select and prompt the sub-agents*.  This can also include the lead specifically telling the sub-agent to use certain skills for the task, follow specific rules, or use specific tools.
 
 ### Getting consistent behavior
 
@@ -177,7 +179,7 @@ Additionally, what is different about a meta-harness like Paseo is that it allow
 
 The result is that it is possible to move implementation and high "tokens out" work to a mix of cheaper models across harnesses and platforms, freely mixing Sonnet 5.5 with GPT-6 Luna and DeepSeek v4.1 Flash 1017.  The lower cost models are able to deliver surprisingly high quality code because the instruction from the lead is very detailed; far more detailed than any spec a human would hand write.
 
-The other factor at play here is that the lead can choose to assign more complex, higher risk work to the Principal which is configured with a more expensive, more model. The assignment of discrete roles means that the lead knows the right heuristics to use and the team becomes auto-adaptive to the complexity of each work item.
+The other factor at play here is that the lead can choose to assign more complex, higher risk work to the Principal which is configured with a more expensive, more capable model. The tagging of profiles with discrete roles means that the lead knows the right heuristics to use and the team becomes auto-adaptive to the complexity of each work item.
 
 What I find is that my work capacity in a given token session window is now extended significantly (caveat below with Anthropic platform models).
 
@@ -199,9 +201,7 @@ In this example, the lead gives clear, explicit direction on how the sub-agent n
 
 ## Why This Works
 
-No, I did not benchmark this; most of this is through observation of the agent behavior as well as watching my token limits at work.  I have now built multiple projects using this approach and it is plain as day in my usage how this affects autonomy, quality, and token use.
-
-I had my own intuition on why this worked so well, but a recent paper sheds some light on why this setup delivers results over the promises and hype of AIDLCs and other adaptive harnesses.
+I have now built multiple projects using this approach and it is plain as day in my usage how this affects autonomy, quality, and token use.  I have my own intuition on why this worked so well, but a recent research paper sheds some light on why this setup delivers results over other approaches that rely on post-task reinforcement/learning.
 
 [*Adaptive Auto-Harness: Sustained Self-Improvement for Agentic System Deployment on Open-Ended Task Streams* was recently published by an a team from Emory, Amazon, Penn State, and Northeastern University (Arxiv)](https://arxiv.org/pdf/2606.01770) and explores why most so-called "adaptive harnesses" have failed to prove their efficacy in a real-world software engineering environment.
 
@@ -209,7 +209,7 @@ The abstract opens with this:
 
 > Auto-harness systems such as A-Evolve, GEPA, and Meta-Harness improve LLM agents by optimizing prompts, skills, tools, memories, and supporting infrastructure from execution feedback, but they are typically evaluated on fixed offline benchmarks. Real deployments instead present open-ended task streams: histories grow without a fixed endpoint, heterogeneous tasks require different harnesses, and problem distributions shift over time.
 
-In other words, these harnesses require an offline/asynchronous recalibration which does not evolve dynamically enough for real-world, unbounded streams of tasks which then actively harms efficacy when the stream is high in "task heterogeneity".
+In other words, harnesses that require an offline/asynchronous recalibration do not evolve dynamically enough for real-world, unbounded streams of tasks which then actively harms efficacy when the stream is high in "task heterogeneity".  Such configurations are suitable if the stream of tasks that the agent handles is homogenous in nature; good if your agent constantly processes PDFs or spreadsheets of the same shape and same nature; bad if your agents are constantly performing different kinds of tasks (like coding).
 
 Offline/async calibration is also difficult to achieve since it requires a large corpus of real-world datasets across this heterogenous mix from simple button color changes to complex new features.  This is also true for AIDLCs which have an additional flaw in that they propose fixed workflows and a fixed menu of skills both are likely over- or under-fitted to the complexity and variety of the tasks.  Optimizing a fixed skill after-the-fact seems like an obvious flaw in hindsight, especially if the stream of tasks is highly variable.
 
