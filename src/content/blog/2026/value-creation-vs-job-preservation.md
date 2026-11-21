@@ -49,6 +49,8 @@ That's why culture, alignment, and communication are so important; because these
 
 ----
 
+It's a lot more fun working in value creation mode and the outcome is generally more rewarding (not always monetary).
+
 Be careful when you hire; especially in a small team and startups.  Hiring someone that is focused on job preservation instead of value creation can create some bad vibes.
 
 It's taken me this long to figure out why some teams and people have "good vibes".  It's because the people and org are fully aligned on *value creation* and no one cares about *job preservation*.
