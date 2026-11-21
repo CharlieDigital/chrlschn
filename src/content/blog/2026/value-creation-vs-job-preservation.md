@@ -41,9 +41,11 @@ People and teams that operate in value creation mode can often disagree on how v
 
 Both people and companies can oscillate from one to the other (companies more than people, I think).
 
-This is what Thiel meant by "don't fuck up the culture". Don't become a company where teams lose the line of sight to value and focus instead of job preservation.
+This is what Thiel meant by "don't fuck up the culture". Don't become a company where teams lose the line of sight to value and focus instead on job preservation.
 
 When a company or team goes from value creation mode to job preservation mode, organizational alignment is lost; everyone is looking out for themselves instead of trying to figure out how they add value to the whole.
+
+That's why culture, alignment, and communication are so important; because these are what effect value creation mode.
 
 ----
 
