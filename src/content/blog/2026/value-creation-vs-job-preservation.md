@@ -23,7 +23,7 @@ When people talk about "politics", this is usually what they mean: job preservat
 
 (I've also written a bit about this before as well: *[Beware the Complexity Merchants](https://chrlschn.dev/blog/2025/05/beware-the-complexity-merchants/)*)
 
-People who didn't carry their weight on school projects?  They're probably job-preservationists; they'll do anything to preserve their grade aside from actually doing the work.
+People who didn't carry their weight on school projects?  They're probably job-preservationists; they'll do anything to preserve their grade...*aside from actually doing the work*.
 
 ## Value creation
 
@@ -31,7 +31,7 @@ On the other end is *value creation*.  For me, this feels energizing; there's a 
 
 People that operate in this mode don't ask *"what's in it for me?"*, *"is this billable?"* (except to follow process), *"is it assigned to me?"*. Something of value needs to get done?  They do it because they place value creation above all else.
 
-In an organization that is oriented for value creation, autonomy is easy and natural because the direction towards value is clearly communicated and everyone can see how more value gets created and how their work contributes to that value.  When more value gets created, *everyone wins*; no one stops and thinks about getting more credit because everyone can see where value originates. No one has to guess what the right action or the right decision is: it's the one the creates more value.
+In an organization that is oriented for value creation, autonomy is easy and natural because the direction towards value is clearly communicated and everyone can see how more value gets created and how their work contributes to that value.  When more value gets created, *everyone wins*; no one stops and thinks about getting more credit because everyone can see where value originates. No one has to guess what the right action or the right decision is: it's the one that creates more value.
 
 Brian Chesky's *[Don't Fuck Up the Culture](https://medium.com/@bchesky/dont-fuck-up-the-culture-597cde9ee9d4)* says that "culture is simply a shared way of doing something with passion."  I think a big piece of that is alignment on the value being created.  He follows: "When the culture is strong, you can trust everyone to do the right thing. People can be independent and autonomous."  That works because people understand where the value is being created and what needs to be done.
 
@@ -56,3 +56,5 @@ Be careful when you hire; especially in a small team and startups.  Hiring someo
 It's taken me this long to figure out why some teams and people have "good vibes".  It's because the people and org are fully aligned on *value creation* and no one cares about *job preservation*.
 
 I hope this helps you see things more clearly.
+
+*(Aside: I think this is why vibe-coding can also feel draining after a while.  You can create anything you want with ease, but much of it doesn't have value.)*
