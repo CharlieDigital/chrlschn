@@ -51,9 +51,6 @@ whose notes best match the work.
 
 In practice, a ***lead*** or ***orchestrator*** will use this tool to list out the profiles by first reading the configuration and then matching the work to the `note` for the profile.  Understanding this inversion, *it is then simply a matter of using it to inject instructions into the lead*.
 
-![Understanding the agent profile flow](/public/img/larping/agent-construction.png)
-*The sub-agents are not statically defined; they are dynamically constructed with "just-in-time" skills and instructions specific for the task*
-
 Here is an example of a profile for a "Distinguished Member of Technical Staff":
 
 ```markdown
@@ -67,18 +64,25 @@ Explicitly instruct: DO NOT CODE; only research, ideate, expand solution space,
 provide feedback.
 ```
 
-Take note of the verbiage: these are not instructions for the sub-agent; these are instructions for the *lead agent* to follow when it instantiates the sub-agent dynamically.  When the lead reads the profiles, it will first select the correct set of agents by matching the task to the team.  This profile configuration then causes it to prompt the sub-agent teammate with specific "asks" upon initialization.  Observe the "inverted" nature of this configuration; *instead of setting up the sub-agent with a role, the setup instructs the lead agent on how to dynamically select and prompt the sub-agents*.  This can also include the lead specifically telling the sub-agent to use certain skills for the task, follow specific rules, or use specific tools.
+Take note of the verbiage: these are not instructions for the sub-agent; these are instructions for the *lead agent* to follow when it instantiates the sub-agent dynamically.  When the lead reads the profiles, it will first select the correct set of agents by matching the task to the team.  This profile configuration then causes it to prompt the sub-agent teammate with specific "asks" upon initialization.
+
+![Understanding the agent profile flow](/public/img/larping/agent-construction.png)
+*The sub-agents are not statically defined; they are dynamically constructed with "just-in-time" skills and instructions specific for the task*
+
+Observe the "inverted" nature of this configuration; *instead of setting up the sub-agent with a role, the setup instructs the lead agent on how to dynamically select and prompt the sub-agents*.  This can also include the lead specifically telling the sub-agent to use certain skills for the task, follow specific rules, or use specific tools.
+
+It is also important to note that this is not a static graph of sub-agents with a specific workflow or communication pattern.  Each "team" of agents is dynamically assembled for each task and the lead always decides the communication pattern and can request sub-agents *only* communicate via the lead or let all agents communicate with each other directly.
 
 ### Getting consistent behavior
 
-This is all that is needed to get agentic behavior working with shocking efficacy in Paseo; for very little input, the payoff is sizeable.
+This is all that is needed to get dynamic, multi-agent team behavior working with shocking efficacy in Paseo; for very little input, the payoff is sizeable.
 
 Go ahead and configure a full team of profiles and watch Paseo *just work*:
 
 ![Agent profiles configured in Paseo](/public/img/larping/profiles.png)
 *A subset of my agent profile configuration with different roles and profiles.  Note that some profiles are plan only; I do not use more costly models for code output.*
 
-It turns out that additional tool configuration, skill configuration, directory scoping, and any number of harness bolt-ons are simply not necessary to get an agentic team to actually produce useful work.
+It turns out that additional tool configuration, skill configuration, directory scoping, and any number of harness bolt-ons are simply not necessary to get an agentic team to actually produce useful work.  This is the opposite of configuring specific sub-agent with specific prompts, skills, and tools.
 
 When a lead agent sees the profiles in Paseo, the profile notes act like prompt-injected context (think of it as "dynamic skills") and the lead agent decides exactly how to build and coordinate a team for the task at hand. Complex tasks may recruit 6-8 sub-agents while simple tasks may only create 1-2.
 
@@ -183,7 +187,7 @@ The other factor at play here is that the lead can choose to assign more complex
 
 What I find is that my work capacity in a given token session window is now extended significantly (caveat below with Anthropic platform models).
 
-### Human prompts are simpler
+### Human input becomes simpler
 
 My observation is that *full specs are no longer needed* in this flow to get good results.  Of course, the more intent and direction imparted to the lead, the closer the output is to the objective held in the human mind.  But the mixture of agent roles is overall very effective at figuring out the edges by LARPing as the end user or as the UX expert.
 
@@ -197,9 +201,17 @@ Adherence to guidelines, proper usage of skills and tools, and coding best pract
 
 In this example, the lead gives clear, explicit direction on how the sub-agent needs to work and what it needs to read.  The result is more consistency and better rule following, even with Anthropic models (notorious, IME, for not following guidance).
 
+### A memory system is useful, but you don't need to recalibrate with offline evals
+
+Recalibration and post-alignment of agents makes sense when a team of agents will see the same "shape" of tasks again and again.  The same PDF format, the same set of inputs with different values to process, the same type of spreadsheet.  However, for building software, this is probably not *that* useful since tasks are generally novel with specific high level steps like "run tests before pushing PR".
+
+In this setup, each team of sub-agents is dynamically assembled and scoped specifically to the task.  There is likely not much utility to recalibration unless there is an expectation of seeing the same shape frequently and the shape of the task is sufficiently complex to benefit from being calibrated from prior experience.
+
+Otherwise, memory is perfectly suitable.
+
 ----
 
-## Why This Works
+## Why this works
 
 I have now built multiple projects using this approach and it is plain as day in my usage how this affects autonomy, quality, and token use.  I have my own intuition on why this worked so well, but a recent research paper sheds some light on why this setup delivers results over other approaches that rely on post-task reinforcement/learning.
 
@@ -296,3 +308,4 @@ Give it a shot; you have nothing to lose.  Paseo is free, open source, and doesn
 
 1. <https://arxiv.org/abs/2606.01770>
 2. <https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices#give-claude-a-role>
+3. <https://github.com/guregodevo/memdoor/tree/main/examples/workflows/team-solve>
