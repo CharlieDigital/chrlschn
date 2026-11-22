@@ -15,11 +15,11 @@ There are two ends of the spectrum of how people look at their work and the type
 
 I find people and environments that are oriented towards *job preservation* to be *exhausting*.
 
-People in this camp tend to focus on work that aids in preserving their job (including teeing up their next promotion).  Their attention will often be narrowly focused instead of broader value creation; they're not concerned with understanding the value of the work, only that doing the task preserves their job.  Deliver the project, get a promotion or a bonus.
+People in this camp tend to focus on work that aids in preserving their job (including teeing up their next promotion).  Their attention will often be narrowly focused instead of broader value creation; they're not concerned with understanding the value of the work, only that doing the task preserves their job.  Deliver the project, get a promotion or a bonus.  *But was it the right project? Did it create value?*
 
-Environments that orient towards job preservation can feel draining.  A lot of effort goes into proving why a job should be preserved instead of creating value.  Orgs are stuck in a loop of struggle to deliver features that should be table stakes because the focus is on job preservation, not value creation.
+Environments that orient towards job preservation can feel draining.  A lot of effort goes into proving why a job should be preserved instead of creating value.  Orgs are stuck in a loop of struggle to deliver features that should be table stakes because the focus long shifted to job preservation, not value creation.  The value creation threshold has moved ahead with new competitors, new technology, new thinking; the org is stuck in job preservation.
 
-When people talk about "politics", this is usually what they mean: job preservation.  People who are very focused on job preservation also tend to bring a lot of *ego* (a big part of job preservation is fluffing themselves up).  It's really draining working with people who are focused on job preservation.
+When people talk about corporate "politics", this may actually be the root: job preservation.  People who are very focused on job preservation also tend to bring a lot of *ego* (a big part of job preservation is posturing).
 
 (I've also written a bit about this before as well: *[Beware the Complexity Merchants](https://chrlschn.dev/blog/2025/05/beware-the-complexity-merchants/)*)
 
@@ -29,9 +29,11 @@ On the other end is *value creation*.  Work is actually energizing when the line
 
 People that operate in this mode don't ask *"what's in it for me?"*, *"is this billable?"* (except to follow process), *"is it assigned to me?"*. Something of value needs to get done?  They do it because they place value creation above all else.
 
-In an organization that is oriented for value creation, autonomy is easy and natural because the direction towards value is clearly communicated and everyone can see how more value gets created and how their work contributes to that value.  When more value gets created, *everyone wins*; no one stops and thinks about getting more credit because everyone can see where value originates. No one has to guess what the right action or the right decision is: it's the one that creates more value.
+In an organization that is oriented for value creation, autonomy is easy and natural because the direction towards value is clearly communicated and everyone can see how more value gets created and how their work contributes to that value.
 
-The irony: ***value creation is naturally job preserving***.
+When more value gets created, *everyone wins*; no one stops and thinks about getting more credit because everyone can see where value originates. No one has to guess what the right action or the right decision is: it's the one that creates more value.
+
+The irony: ***value creation is (usually) naturally job preserving***.
 
 ## When one becomes the other
 
@@ -43,9 +45,9 @@ Both people and companies can oscillate from one to the other (companies more th
 
 This is what Thiel meant by *"don't fuck up the culture"*; don't become a company where teams lose the line of sight to value and focus instead on job preservation.
 
-When a company or team goes from value creation mode to job preservation mode, organizational alignment is lost; everyone is looking out for themselves instead of trying to figure out how they add value to the whole.
+When a company or team goes from value creation mode to job preservation mode, organizational alignment is lost; people and teams start looking out for themselves instead of trying to figure out how they add value to the whole.
 
-That's why culture, alignment, and communication are so important: because these are what effect value creation mode.
+That's why culture, alignment, communication, and vision from leadership are so important: because these are what effect value creation mode.
 
 ## *Making Startups Powerful* - Paul Graham
 
@@ -61,6 +63,8 @@ A great read for anyone thinking about a startup...or enterprises adapting to th
 
 ----
 
+## Closing Thoughts
+
 It's a lot more fun working in value creation mode and the outcome is generally more rewarding (not always monetary).
 
 Be careful when you hire; especially in a small team and startups.  Hiring someone that is focused on job preservation instead of value creation can create some bad vibes.
@@ -70,3 +74,10 @@ It's taken me this long to figure out why some teams and people have "good vibes
 I hope this helps you see things more clearly.
 
 *(Aside: I think this is why vibe-coding can also feel draining after a while.  You can create anything you want with ease, but much of it doesn't have value.)*
+
+---
+
+## See Also...
+
+- [Beware the Complexity Merchants](https://chrlschn.dev/blog/2025/05/beware-the-complexity-merchants/)
+- [Lessons Learned from Working at Startups](https://chrlschn.dev/blog/2024/12/lessons-learned-from-working-at-startups/)

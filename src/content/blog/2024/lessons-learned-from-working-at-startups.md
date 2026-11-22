@@ -181,3 +181,10 @@ In most cases, I have found startup founders to be receptive of these types of q
 But you know what?  Sometimes it's *OK* to join a startup because it looks like it'll be fun; there's something to be said for working with a great team, even if the team doesn't produce some product that reaches commercial success.  Life is short; live a little.  I don't regret taking 6 months off to work on [Turas.app](https://turas.app) (a little bit of regret leaving Motion early 🤣).
 
 **Advice to self**: really understand the business, the team, and how the team operates before committing.  There are so many startups out there and so many interesting things to work on -- even your own projects -- that it is vitally important to consider whether the fit is right beyond just the $$$.
+
+----
+
+## See Also...
+
+- [Beware the Complexity Merchants](https://chrlschn.dev/blog/2025/05/beware-the-complexity-merchants/)
+- [Value Creation vs Job Preservation](https://chrlschn.dev/blog/2026/11/value-creation-vs-job-preservation/)
