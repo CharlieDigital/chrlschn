@@ -78,3 +78,4 @@ So a word of warning to you, dear traveler: beware of the complexity merchants a
 
 - [Hackernews](https://news.ycombinator.com/item?id=44090302)
 - [Reddit](https://www.reddit.com/r/programming/comments/1kny3em/beware_the_complexity_merchants/)
+- [Value Creation vs. Job Preservation](https://chrlschn.dev/blog/2026/11/value-creation-vs-job-preservation/)
