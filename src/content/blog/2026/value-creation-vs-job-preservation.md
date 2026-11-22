@@ -17,9 +17,9 @@ I find people and environments that are oriented towards *job preservation* to b
 
 The people who think like this only do work that aids in preserving their job (including teeing up their next promotion).  They don't just do the things that need to get done; they do it if it helps them preserve their job.
 
-Environments that orient towards job preservation are also exhausting.  A lot of effort goes into proving why your job should be preserved instead of creating value.
+Environments that orient towards job preservation are also exhausting.  A lot of effort goes into proving why their job should be preserved instead of creating value.
 
-When people talk about "politics", this is usually what they mean: job preservation.  People who are very focused on job preservation also tend to bring a lot of *ego* (a big part of job preservation is fluffing yourself up).  It's really draining working with people who are focused on job preservation.
+When people talk about "politics", this is usually what they mean: job preservation.  People who are very focused on job preservation also tend to bring a lot of *ego* (a big part of job preservation is fluffing themselves up).  It's really draining working with people who are focused on job preservation.
 
 (I've also written a bit about this before as well: *[Beware the Complexity Merchants](https://chrlschn.dev/blog/2025/05/beware-the-complexity-merchants/)*)
 
@@ -27,7 +27,7 @@ People who didn't carry their weight on school projects?  They're probably job-p
 
 ## Value creation
 
-On the other end is *value creation*.  For me, this feels energizing; there's a clear reason and a mission.  Working 12x7 doesn't drain me because the line from my work to the value created is so direct.
+On the other end is *value creation*.  For me, this feels energizing; there's a clear reason and a mission.  Working 12x7 doesn't feel draining because the line from the work to the value created is so direct.
 
 People that operate in this mode don't ask *"what's in it for me?"*, *"is this billable?"* (except to follow process), *"is it assigned to me?"*. Something of value needs to get done?  They do it because they place value creation above all else.
 
@@ -46,6 +46,18 @@ This is what Thiel meant by "don't fuck up the culture". Don't become a company 
 When a company or team goes from value creation mode to job preservation mode, organizational alignment is lost; everyone is looking out for themselves instead of trying to figure out how they add value to the whole.
 
 That's why culture, alignment, and communication are so important; because these are what effect value creation mode.
+
+## *Making Startups Powerful* - Paul Graham
+
+[Paul Graham has a great essay on this](https://paulgraham.com/powerful.html) that aligns with this idea of value creation vs job preservation:
+
+> The reason Paypal grew so fast was that it helped users make money. Few things make you more powerful than that. When you help users make money, they're (a) quick to adopt your product and (b) will pay a lot for it. So your revenues grow doubly fast. Most of the most successful companies we've funded help their users to make money, as does YC itself.
+>
+> Playing the long game makes you more powerful, because most other people you encounter won't be. Most startups competing with you will be run by opportunists hoping to be acquired. Most big companies you deal with will be run by executives who don't expect to be there for more than a few years and are only thinking about this quarter's numbers.
+>
+> Being generous makes you more powerful. As Tim O'Reilly said, you should create more value than you capture. Many hard-headed business types would write this off as idealistic hippy stuff, but in fact this is the route to becoming really rich. Squeezing every last penny out of customers is a distraction. It gets you 2x returns at most. Whereas discovering some new thing you could make for them could easily get you 10x or 100x returns. They're two different ways of looking at the world, and the O'Reilly way makes more, for those who can do it.
+
+A great read for anyone thinking about a startup...or enterprises adapting to this new world when anyone can vibe code software; organizational job preservation is perhaps a losing proposition to value creation.
 
 ----
 
