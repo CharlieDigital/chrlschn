@@ -9,6 +9,9 @@ tags: "llms,ai,mcp,architecture"
 
 ----
 
+![Reddit question on r/Backend](/public/img/end-of-python/reddit-capture.png)
+*Inspired by reading [this post](https://www.reddit.com/r/Backend/comments/1y6qwq6/anthropic_is_moving_its_messages_api_from_python/)*
+
 2026 is likely the beginning of the end of Python (and other interpreted languages) for large scale production backends.
 
 Programming languages are ultimately human abstractions to transform human-space processes into instructions for a machine to execute.  They have proliferated, aligning to the different ways we model and translate ideas in our heads into running software that gets deployed onto a machine.  There has always been a tradeoff to "easy" and low-ceremony languages like Python or JavaScript versus more "complex", compiled languages like C/C++, Rust, Java, or even C#.
@@ -71,9 +74,9 @@ While not a backend and with different motivations, the end result is the same: 
 
 As teams move towards agents writing the majority of the code, the "inner loop" of agent coding has come into focus.
 
-The Anthropic blog post talks about this a bit (though at a higher level), but the gist of it is that there is a limited set of tools for agents to verify the correctness of the code they produce.  Anthropic calls this ***"the generator-verifier gap"***.  The objective is to close this gap by making it easier for the agent to verify its own output.
+The Anthropic blog post talks about this a bit (though, to be clear, at a higher level of their overall migration), but the gist of it is that there is a limited set of tools for agents to verify the correctness of the code they produce.  Anthropic calls this ***"the generator-verifier gap"***.  The objective is to close this gap by making it easier and faster for the agent to verify its own output.
 
-To that end, there is mounting body of evidence that ***types*** are a key element of [an agent-friendly codebase](https://chrlschn.dev/blog/2026/09/foundations-of-agent-friendly-codebases/).
+To that end, there is a mounting body of evidence that ***types*** are a key element of [an agent-friendly codebase](https://chrlschn.dev/blog/2026/09/foundations-of-agent-friendly-codebases/).
 
 ***[Why AI is pushing developers toward typed languages](https://github.blog/ai-and-ml/llms/why-ai-is-pushing-developers-toward-typed-languages/)***
 
@@ -93,19 +96,19 @@ To that end, there is mounting body of evidence that ***types*** are a key eleme
 >
 > By analyzing a curated, balanced corpus of 2,254 source files harvested from 881 open-source GitHub projects, the authors established that languages enforcing formal type disciplines, most notably <u>Java, Go, and C#, consistently yield lower perplexity scores than flexible scripting environments such as Perl, Ruby, and Shell</u>.
 
-As teams start to focus more on the agentic inner loop, we will see types become more important and typed languages will become the norm simply because it's another tool for the agent.
+As teams start to focus more on the agentic inner loop, we will see types become more important and typed languages will become the norm simply because it's another tool for the agent to verify the correctness of its work in the tightest loop.
 
 ## What I'm NOT Saying...
 
 I'm certain that the above may read as controversial or sacrilegious to many, but I'm NOT saying that Python is done for.
 
-It will continue to see usage as a powerful scripting language and continue to be used heavily in ML and data science because of the large body of tooling that exists here.
+It will continue to see usage as a powerful, high-utility scripting language and continue to be used heavily in ML and data science because of the large body of tooling that exists here.
 
 But adopting Python for large scale, production backends in 2027 will not be a wise choice and will almost certainly be looked back upon as a mistake.
 
 ## What's the Alternative?
 
-I think that for *serious* engineering orgs, *you should probably go with Rust*; the gains to be had are undeniable, especially if you do not plan on minimally reading the code or not reading the code at all.
+I think that for *serious* engineering orgs, *teams should probably go with Rust*; the gains to be had are undeniable, especially if the team plans on minimally reading the code or not reading the code at all.
 
 For everyone else?  ***I think C# is an underrated contender*** (yes, I'm biased 😅).
 
