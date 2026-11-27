@@ -2,7 +2,7 @@
 title: "Python on the Backend is Dead"
 description: "2026 likely marks the beginning of the end of Python (and other interpreted languages) for large scale production backends"
 pubDate: "2026 November 27"
-socialImage: "/public/img/end-of-python/python-backend-dead-og.png"
+socialImage: "/public/img/end-of-python/python-on-the-backend-is-dead-og.png"
 slug: "2026/11/python-on-the-backend-is-dead"
 tags: "llms,ai,mcp,architecture"
 ---
