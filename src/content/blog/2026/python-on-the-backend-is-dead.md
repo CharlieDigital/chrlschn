@@ -107,7 +107,7 @@ But adopting Python for large scale, production backends in 2027 will not be a w
 
 I think that for *serious* engineering orgs, *you should probably go with Rust*; the gains to be had are undeniable, especially if you do not plan on minimally reading the code or not reading the code at all.
 
-For everyone else?  ***I think C# is an underrated contender*** (yes, I'm biased).
+For everyone else?  ***I think C# is an underrated contender*** (yes, I'm biased 😅).
 
 While it can't top Rust or Go in raw performance, it is competitive and offers some niceties that are worth considering:
 
@@ -125,7 +125,7 @@ While it can't top Rust or Go in raw performance, it is competitive and offers s
 
 While languages like Python, JavaScript, and Ruby have traditionally biased for simplicity, flexibility, speed of human authoring, and human ergonomics, the tradeoff is higher operating costs at scale as a result of the nature of the languages and runtimes.  Teams starting greenfield backend or considering a target language for an AI re-write should seriously do the calculus on which language and platform to target once human authoring is removed from the process.
 
-As we look forward, it is likely that more and more application backends will actually shift into HTTP-based MCP servers...which are just web backends.  Here, teams should seriously consider whether a language and runtime like Python is the right operational choice for the future.
+As we look forward, it is likely that ***more and more application backends will actually shift into HTTP-based MCP servers***...*which are just web backends*.  Here, teams should seriously consider whether a language and runtime like Python is the right operational choice for the future.
 
 Rust has established itself as a prime target for engineering teams that have already decided to forgo human code review or have deep Rust expertise already.
 
