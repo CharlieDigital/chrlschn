@@ -122,6 +122,8 @@ While it can't top Rust or Go in raw performance, it is competitive and offers s
 - For teams already comfortable reading TypeScript and still plan to apply human review to code, *[TypeScript is like C#](https://typescript-is-like-csharp.chrlschn.dev/)*; both are can credit Anders Hejlsberg for their creation.
 - CSharpRepl is a pretty incredible agent verification tool [because it can be injected into a running .NET application](https://fuqua.io/blog/2026/06/injecting-a-csharp-repl-into-a-running-net-process/).  I think this is hard for folks to grasp at first blush, but it effectively lets an agent modify *the running behavior of an application* without losing state.  It provides the agent an insanely powerful tool that can wrap or replace runtime code as it experiments, verifies, or performs diagnosis.
 
+*(Yes, I am aware the Anders Hjelsberg (lead designer of both C# and TS) did not choose C# for the TypeScript rewrite; C# is great for *web backends* and just "OK" for other domains)*
+
 ----
 
 ## Closing Thoughts
