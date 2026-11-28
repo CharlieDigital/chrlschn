@@ -4,7 +4,7 @@ description: "2026 likely marks the beginning of the end of Python (and other in
 pubDate: "2026 November 27"
 socialImage: "/public/img/end-of-python/python-on-the-backend-is-dead-og.png"
 slug: "2026/11/python-on-the-backend-is-dead"
-tags: "llms,ai,mcp,architecture"
+tags: "architecture,random thoughts"
 ---
 
 ----
@@ -135,3 +135,15 @@ As we look forward, it is likely that ***more and more application backends will
 Rust has established itself as a prime target for engineering teams that have already decided to forgo human code review or have deep Rust expertise already.
 
 C# is a surprisingly effective (and underrated) alternative (see above), especially for organizations that value the enterprise support and investment from Microsoft with broad coverage from first-party maintained standard libraries.
+
+----
+
+## Addendum
+
+### "Python carried them to $2T!"
+
+This is the most common gut reaction to this article, but this is a logical fallacy (false cause; correlation != causation).  An alternate take: Python has been adding a tax this whole time.
+
+### Don't discount "Detective tokens"
+
+This was used by Adam Wilson in *[Language Plasticity is More Important Than Ever](https://blog.dlang.org/2026/08/10/language-plasticity-is-more-important-than-ever/)* to describe the extra tokens spent by agents trying to understand a variable or instance by searching for and reading extra code to build context.  This is an ongoing tax that teams will continue to pay over the lifespan of the codebase and why types are as big a part of this story as is the performance and operational angle.
