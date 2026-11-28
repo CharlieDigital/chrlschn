@@ -70,6 +70,13 @@ This isn't isolated to Python.  [Microsoft's Copilot SDK was recently re-written
 
 While not a backend and with different motivations, the end result is the same: lower memory usage, higher throughput, and faster response moving from a runtime interpreted language.
 
+[A 2022 AWS blog post](https://aws.amazon.com/blogs/opensource/sustainability-with-rust/) [cited in the AWS Well-Architected docs](https://docs.aws.amazon.com/wellarchitected/latest/iot-lens/choose-a-power-efficient-programming-language.html) takes a different angle: efficiency.  The post and the cited research focuses on energy efficiency of different programming languages and runtimes, but it is effectively a proxy for ***operational cost***.  The wide gulf between interpreted and compiled or virtual runtimes is *immense*.
+
+![Energy consumption by programming language](/public/img/end-of-python/energy-consumption.png)
+*Note that these are from 2017; [R.Pereira et. al.](https://greenlab.di.uminho.pt/wp-content/uploads/2017/10/sleFinal.pdf)*
+
+To choose Python is to choose to pay that tax from day 1.  Makes sense in a world where your team only knows Python.  Does not make sense if the agent is generating the code.
+
 ## The Correctness Angle and the Inner Loop
 
 As teams move towards agents writing the majority of the code, the "inner loop" of agent coding has come into focus.
