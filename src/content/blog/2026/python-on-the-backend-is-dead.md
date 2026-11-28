@@ -16,7 +16,7 @@ tags: "architecture,random thoughts"
 
 Programming languages are ultimately human abstractions to transform human-space processes into instructions for a machine to execute.  They have proliferated, aligning to the different ways we model and translate ideas in our heads into running software that gets deployed onto a machine.  There has always been a tradeoff to "easy" and low-ceremony languages like Python or JavaScript versus more "complex", compiled languages like C/C++, Rust, Java, or even C#.
 
-But that calculus is changing as we approach the end of Year One of agentic programming: *the future of code is no longer human written*.
+But that calculus is changing as we approach the end of Year One of agentic programming: *the future of code is no longer human written* and in this future, *optionally-typed/duck-typed languages are both an operational as well as a generative tax*.
 
 ## Throughput, Capacity, and Cost Savings at Scale
 
@@ -142,7 +142,7 @@ C# is a surprisingly effective (and underrated) alternative (see above), especia
 
 ### "Python carried them to $2T!"
 
-This is the most common gut reaction to this article, but this is a logical fallacy (false cause; correlation != causation).  An alternate take: Python has been adding a tax this whole time.
+This is the most common gut reaction to this article, but this is a logical fallacy (false cause; correlation != causation).  An alternate take: Python has been adding a tax this whole time.  Why willingly add this tax to a greenfield project?
 
 ### Don't discount "Detective tokens"
 
